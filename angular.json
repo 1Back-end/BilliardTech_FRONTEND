@@ -91,6 +91,10 @@
               {
                 "glob": "**/*",
                 "input": "public"
+              },
+              {
+                "glob": "**/*",
+                "input": "src/asset"
               }
             ],
             "styles": [

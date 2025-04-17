@@ -7,10 +7,13 @@ import { ToastrService } from 'ngx-toastr';
 import { HttpClient ,HttpParams} from '@angular/common/http';  // Import HttpClient
 import { CONFIG } from '../../config';
 import { FormsModule } from '@angular/forms';
+import { TranslateModule } from '@ngx-translate/core';
+import { TranslateService } from '@ngx-translate/core'; // Assure-toi que @ngx-translate/core est installé
+
 @Component({
   selector: 'app-student',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule,RouterLink, FormsModule],
+  imports: [CommonModule, ReactiveFormsModule,RouterLink, FormsModule,TranslateModule],
   templateUrl: './student.component.html',
   styleUrl: './student.component.css'
 })

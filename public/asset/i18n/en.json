@@ -1,0 +1,76 @@
+{
+  "LANGUAGE": {
+    "FRENCH": "French",
+    "ENGLISH": "English",
+    "GERMAN": "German",
+    "SPANISH": "Spanish"
+  },
+  "MENU": {
+    "DASHBOARD": "Dashboard",
+    "ACADEMIC_YEAR": "Academic Year Management",
+    "GROUPS": "Class Management",
+    "SEMESTER": "Semester Management",
+    "PROGRAMS": "Program Management",
+    "DEPARTMENTS": "Department Management",
+    "TYPE_OF_EXAMS": "Exam Type Management",
+    "PROFESSORS": "Professor Management",
+    "STUDENTS": "Student Management",
+    "NOTES": "Grade Management",
+    "USERS": "User Management"
+  },
+  "ACADEMIC_YEAR": {
+    "CREATE": "Creation of an academic year",
+    "EDIT": "Modification of an academic year",
+    "SCHOOL_YEAR": "School year",
+    "START_DATE" : "Start date",
+    "END_DATE" : "End date",
+    "LIST" : "List of academic years"
+  },
+  "VALIDATION": {
+    "REQUIRED_FIELD": "This field is required."
+  },
+  "ACTIONS": {
+    "CREATE": "Save",
+    "VALIDATE": "Validate",
+    "CANCEL": "Cancel",
+    "CLOSE": "Closed",
+    "EDIT": "Edit",
+    "DELETE": "Delete",
+    "ADD_NEW" : "Create a new",
+    "RELOAD" : "Refresh",
+    "EXPORT" : "Export"
+  },
+  "TABLE":{
+    "YEAR" : "School year",
+    "PHOTO": "Photo",
+    "REGISTRATION_NUMBER": "Registration Number",
+    "LAST_NAME": "Last Name",
+    "PHONE_NUMBER": "Phone Number",
+    "FIRST_NAME": "First Name",
+    "GENDER": "Gender",
+    "COURSE": "Course",
+    "SPECIALTY": "Specialty",
+    "CLASS": "Class"
+  },
+  "COMMON": {
+    "CREATED_BY_DATE": "Created by (Date)",
+    "STATUS" : "Status",
+    "OPERATIONS" : "Actions",
+    "LOADING": "Loading...",
+    "NO_DATA": "No items found",
+    "SHOW": "Show",
+    "LIST_STUDENT" : "List of students"
+  },
+  "STATUS": {
+    "ACTIVE": "In progress",
+    "INACTIVE": "Inactive",
+    "CLOSED": "Closed"
+  },
+  "PAGINATION": {
+    "PAGE_INFO": "{{current}} of {{total}} ({{items}} total)",
+     "PREVIOUS": "‹ Previous",
+      "NEXT": "Next ›"
+  }
+  
+  
+}

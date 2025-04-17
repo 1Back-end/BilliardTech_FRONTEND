@@ -1,7 +1,7 @@
 <main class="main d-flex">
     <!-- Sidebar, visible only if authenticated -->
     <nav *ngIf="authService.isAuthenticated()" class="d-none d-lg-block">
-      <div class="d-flex flex-column flex-shrink-0 p-2 shadow vh-100 bg-body-secondary h-100" style="width: 275px;">
+      <div class="d-flex flex-column flex-shrink-0 rounded-3  p-2 shadow vh-100 bg-body-secondary h-100" style="width: 275px;">
         <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
           <span class="fs-4 text-uppercase fw-bold">BilliardTech</span>
         </a>
@@ -22,8 +22,32 @@
                 </a>
               </div>
               <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <input type="search" class="form-control form-control-lg">
+                <li class="nav-item dropdown border-0">
+                  <!-- Affichage de la langue active et du drapeau -->
+                  <a class="nav-link dropdown-toggle d-flex align-items-center" role="button" data-bs-toggle="dropdown">
+                    <img [src]="currentLanguageFlag" width="30">
+                    <span class="text-capitalize mx-2">{{ currentLanguageName }}</span>
+                  </a>
+                  <ul class="dropdown-menu border-0">
+                    <li>
+                      <!-- Sélectionner la langue française -->
+                      <a class="dropdown-item d-flex align-items-center" (click)="changeLanguage('fr')">
+                        <img src="https://flagcdn.com/fr.svg" width="30" class="me-2"> {{ 'LANGUAGE.FRENCH' | translate }}
+                      </a>
+                    </li>
+                    <li>
+                      <!-- Sélectionner la langue anglaise -->
+                      <a class="dropdown-item d-flex align-items-center" (click)="changeLanguage('en')">
+                        <img src="https://flagcdn.com/gb.svg" width="30" class="me-2"> {{ 'LANGUAGE.ENGLISH' | translate }}
+                      </a>
+                    </li>
+                  </ul>
+                </li>
               </ul>
+              
+              
+              
+              
             </div>
     
             <!-- Profile section -->

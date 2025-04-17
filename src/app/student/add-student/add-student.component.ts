@@ -17,7 +17,7 @@ import { firstValueFrom } from 'rxjs';
 import { Router } from '@angular/router';
 @Component({
   selector: 'app-add-student',
-  imports: [CommonModule, ReactiveFormsModule, FormsModule,AngularMultiSelectModule,SelectDropDownModule],
+  imports: [CommonModule, ReactiveFormsModule, FormsModule,AngularMultiSelectModule,SelectDropDownModule,RouterLink],
   templateUrl: './add-student.component.html',
   styleUrl: './add-student.component.css'
 })

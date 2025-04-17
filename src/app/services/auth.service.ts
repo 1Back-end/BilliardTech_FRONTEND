@@ -59,13 +59,13 @@ export class AuthService {
   }
 
   getUserInfo() {
-    const userData = localStorage.getItem('user');
-    if (!userData) {
+    if (typeof window === 'undefined' || !localStorage.getItem('user')) {
       return { email: '', avatarUrl: 'assets/images/profile_user.png' };
     }
   
     try {
-      const user = JSON.parse(atob(userData));
+      const userData = localStorage.getItem('user');
+      const user = JSON.parse(atob(userData!));
       const avatarUrl = user.avatar?.url || 'assets/images/profile_user.png';
       return { email: user.email, avatarUrl: avatarUrl };
     } catch (error) {
@@ -73,6 +73,7 @@ export class AuthService {
       return { email: '', avatarUrl: 'assets/images/profile_user.png' };
     }
   }
+  
   
   
 

@@ -6,8 +6,18 @@
         <div class="d-flex justify-content-between gap-2 flex-column flex-lg-row">
           <h4>Créer un étudiant</h4>
           <div class="d-flex gap-2">
-            <button type="submit" class="btn btn-primary border-0 px-2 py-2 rounded-1" [disabled]="ServiceForm.invalid">Enregistrer</button>
-            <button type="reset" class="btn btn-secondary border-0 px-2 py-2 rounded-1">Annuler</button>
+            <button type="submit" class="btn btn-primary border-0 px-2 py-2 rounded-1" [disabled]="ServiceForm.invalid">
+              <i class="fa-solid fa-floppy-disk fs-5 mx-1"></i>
+              Enregistrer
+            </button>
+            <button type="reset" class="btn btn-danger border-0 px-2 py-2 rounded-1">
+              <i class="fa-solid fa-xmark mx-1 fs-5"></i> 
+              Annuler
+            </button>
+            <a  class="btn btn-secondary border-0 px-2 py-2 rounded-1" routerLink="/admin/students">
+              <i class="fa-solid fa-arrows-turn-right fs-5 mx-1"></i>
+              Retour
+          </a>
           </div>
         </div>
 

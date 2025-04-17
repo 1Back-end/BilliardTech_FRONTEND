@@ -1,0 +1,74 @@
+{
+  "LANGUAGE": {
+    "FRENCH": "Français",
+    "ENGLISH": "Anglais",
+    "GERMAN": "Allemand",
+    "SPANISH": "Espagnol"
+  },
+  "MENU": {
+    "DASHBOARD": "Tableau de bord",
+    "ACADEMIC_YEAR": "Gestion des années académiques",
+    "GROUPS": "Gestion des classes",
+    "SEMESTER": "Gestion des semestres",
+    "PROGRAMS": "Gestion des filières",
+    "DEPARTMENTS": "Gestion des spécialités",
+    "TYPE_OF_EXAMS": "Gestion des types d'examen",
+    "PROFESSORS": "Gestion des professeurs",
+    "STUDENTS": "Gestion des étudiants",
+    "NOTES": "Gestion des notes",
+    "USERS": "Gestion des utilisateurs"
+  },
+  "ACADEMIC_YEAR": {
+    "CREATE": "Création d'une année académique",
+    "EDIT": "Modification d'une année académique",
+    "SCHOOL_YEAR": "Année scolaire",
+    "START_DATE": "Date début",
+    "END_DATE" : "Date fin",
+    "LIST" : "Liste des années académiques"
+  },
+  "VALIDATION": {
+    "REQUIRED_FIELD": "Ce champ est requis."
+  },
+  "ACTIONS": {
+    "CREATE": "Enregistrer",
+    "CANCEL" : "Annuler",
+    "CLOSE": "Terminée",
+    "EDIT": "Modifier",
+    "DELETE": "Supprimer",
+    "ADD_NEW" : "Créer un nouveau",
+    "RELOAD" : "Rafraichir",
+    "EXPORT" : "Exporter"
+  },
+  "TABLE": {
+    "YEAR" : "Année scolaire",
+    "PHOTO": "Photo",
+    "REGISTRATION_NUMBER": "Matricule",
+    "LAST_NAME": "Nom",
+    "PHONE_NUMBER": "N° de téléphone",
+    "FIRST_NAME": "Prénom",
+    "GENDER": "Genre",
+    "COURSE": "Filière",
+    "SPECIALTY": "Spécialité",
+    "CLASS": "Classe"
+  },
+  "COMMON": {
+    "CREATED_BY_DATE": "Crée par (Date)",
+    "STATUS" : "Statut",
+    "OPERATIONS" : "Actions",
+    "LOADING": "Chargement...",
+    "NO_DATA": "Aucun élément trouvé",
+    "SHOW": "Afficher",
+    "LIST_STUDENT" : "Liste des étudiants"
+  },
+  "STATUS": {
+    "ACTIVE": "En cours",
+    "INACTIVE": "Inactif",
+    "CLOSED": "Terminé"
+  },
+  "PAGINATION": {
+      "PAGE_INFO": "{{current}} sur {{total}} ({{items}} total)",
+      "PREVIOUS": "‹ Précédent",
+      "NEXT": "Suivant ›"
+  }
+    
+}

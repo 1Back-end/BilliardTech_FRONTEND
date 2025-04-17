@@ -4,14 +4,17 @@ import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
-import { HttpClient ,HttpParams} from '@angular/common/http';  // Import HttpClient
+import { HttpClient,HttpHeaders  ,HttpParams} from '@angular/common/http';  // Import HttpClient
 import { CONFIG } from '../../config';
 import { FormsModule } from '@angular/forms'; 
 import {RoleService } from '../services/role.service';
+import { TranslateModule } from '@ngx-translate/core';
+import { TranslateService } from '@ngx-translate/core'; // Assure-toi que @ngx-translate/core est installé
+
 @Component({
   selector: 'app-academic-year',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, FormsModule],
+  imports: [CommonModule, ReactiveFormsModule, FormsModule,TranslateModule],
   templateUrl: './academic-year.component.html',
   styleUrl: './academic-year.component.css'
 })
@@ -29,7 +32,7 @@ export class AcademicYearComponent implements OnInit {
   direction: { [key: string]: 'asc' | 'desc' } = {};
 
 
-  constructor(private toastr: ToastrService, private fb: FormBuilder, private http: HttpClient,public role: RoleService) {
+  constructor(private toastr: ToastrService, private fb: FormBuilder, private http: HttpClient,public role: RoleService,private translate: TranslateService) {
     this.ServiceForm = this.fb.group({
       name: ['', Validators.required],
       start_date : ['',Validators.required],
@@ -103,8 +106,10 @@ export class AcademicYearComponent implements OnInit {
   // Ajouter un service
   async addService(): Promise<void> {
     const serviceData = this.ServiceForm.value;
-  
-    this.http.post(`${CONFIG.apiUrl}/academic_year/create`, serviceData).subscribe(
+    const currentLang = this.translate.currentLang || 'fr';  // Utilise ngx-translate ou un autre mécanisme pour obtenir la langue active.
+    // Ajouter l'en-tête Accept-Language
+    const headers = new HttpHeaders().set('Accept-Language', currentLang);
+    this.http.post(`${CONFIG.apiUrl}/academic_year/create`, serviceData,{ headers }).subscribe(
       (response: any) => {
         this.toastr.success(response?.message || 'Enregistrement effectué avec succès');
         this.resetForm(); 
@@ -125,8 +130,11 @@ export class AcademicYearComponent implements OnInit {
       ...this.ServiceForm.value,
       uuid: this.selectedService.uuid, // uuid ajouté dans le corps
     };
+    const currentLang = this.translate.currentLang || 'fr';  // Utilise ngx-translate ou un autre mécanisme pour obtenir la langue active.
+    // Ajouter l'en-tête Accept-Language
+    const headers = new HttpHeaders().set('Accept-Language', currentLang);
   
-    this.http.put(`${CONFIG.apiUrl}/academic_year/update`, serviceData).subscribe(
+    this.http.put(`${CONFIG.apiUrl}/academic_year/update`, serviceData,{ headers }).subscribe(
       (response: any) => {
         const index = this.services.findIndex(service => service.uuid === this.selectedService.uuid);
         if (index !== -1) this.services[index] = response.data;
@@ -155,7 +163,10 @@ export class AcademicYearComponent implements OnInit {
     // Supprimer un service
     deleteService(uuid: string): void {
       const body = { uuid };
-      this.http.put<any>(`${CONFIG.apiUrl}/academic_year/delete-academic-year`, body)
+      const currentLang = this.translate.currentLang || 'fr';  // Utilise ngx-translate ou un autre mécanisme pour obtenir la langue active.
+    // Ajouter l'en-tête Accept-Language
+      const headers = new HttpHeaders().set('Accept-Language', currentLang);
+      this.http.put<any>(`${CONFIG.apiUrl}/academic_year/delete-academic-year`, body,{headers})
         .subscribe(
           (response) => {
             this.toastr.success(response?.message || 'Suppression effectuée avec succès');

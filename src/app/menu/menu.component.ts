@@ -1,7 +1,8 @@
 import {Component, EventEmitter, Output} from '@angular/core';
 import {Router, RouterLink, RouterLinkActive} from '@angular/router';
 import {NgClass, NgForOf, NgIf} from '@angular/common';
-
+import { TranslateModule } from '@ngx-translate/core';
+import { TranslateService } from '@ngx-translate/core'; // Assure-toi que @ngx-translate/core est installé
 
 @Component({
   selector: 'app-menu',
@@ -11,6 +12,7 @@ import {NgClass, NgForOf, NgIf} from '@angular/common';
     NgForOf,
     NgIf,
     NgClass,
+    TranslateModule
   ],
   templateUrl: './menu.component.html',
   standalone: true,
@@ -24,8 +26,8 @@ export class MenuComponent {
     {
       id: 'dashboard',
       path: '/admin/dashboard',
-      label: 'Tableau de bord',
-      icon: 'fas fa-tachometer-alt', // Tableau de bord
+      label: 'MENU.DASHBOARD',
+      icon: 'fa-solid fa-chart-simple', // Tableau de bord
       permission: '',
       children: [],
       subMenuRoutes: [],
@@ -33,8 +35,8 @@ export class MenuComponent {
     {
       id: 'academic_year',
       path: '/admin/academic_year',
-      label: 'Gestion des années académiques',
-      icon: 'fas fa-calendar-alt', // Calendrier
+      label: 'MENU.ACADEMIC_YEAR',
+      icon: 'fa-solid fa-calendar-plus', // Calendrier
       permission: 'CentreController::index',
       children: [],
       subMenuRoutes: [],
@@ -42,8 +44,8 @@ export class MenuComponent {
     {
       id: 'groups',
       path: '/admin/groups',
-      label: 'Gestion des classes',
-      icon: 'fas fa-school', // Tableau de classe
+      label: 'MENU.GROUPS',
+      icon: 'fa-solid fa-landmark', // Tableau de classe
       permission: 'CentreController::index',
       children: [],
       subMenuRoutes: [],
@@ -51,7 +53,7 @@ export class MenuComponent {
     {
       id: 'semester',
       path: '/admin/semester',
-      label: 'Gestion des semestres',
+      label: 'MENU.SEMESTER',
       icon: 'fas fa-calendar', // Période
       permission: 'CentreController::index',
       children: [],
@@ -60,7 +62,7 @@ export class MenuComponent {
     {
       id: 'programs',
       path: '/admin/programs',
-      label: 'Gestion des filières',
+      label: 'MENU.PROGRAMS',
       icon: 'fas fa-project-diagram', // Structure
       permission: 'CentreController::index',
       children: [],
@@ -69,7 +71,7 @@ export class MenuComponent {
     {
       id: 'departments',
       path: '/admin/departments',
-      label: 'Gestion des spécialités',
+      label: 'MENU.DEPARTMENTS',
       icon: 'fas fa-layer-group', // Spécialisations
       permission: 'CentreController::index',
       children: [],
@@ -78,8 +80,8 @@ export class MenuComponent {
     {
       id: 'type_of_examns',
       path: '/admin/type_of_examns',
-      label: 'Gestion des types d\'examen',
-      icon: 'fas fa-bookmark', // Notes validées
+      label: 'MENU.TYPE_OF_EXAMS',
+      icon: 'fa-solid fa-book', // Notes validées
       permission: 'CentreController::index',
       children: [],
       subMenuRoutes: [],
@@ -87,8 +89,8 @@ export class MenuComponent {
     {
       id: 'profesors',
       path: '/admin/profesors',
-      label: 'Gestion des professeurs',
-      icon: 'fas fa-chalkboard-teacher', // Professeur
+      label: 'MENU.PROFESSORS',
+      icon: 'fa-solid fa-users-viewfinder', // Professeur
       permission: 'CentreController::index',
       children: [],
       subMenuRoutes: [],
@@ -96,8 +98,8 @@ export class MenuComponent {
     {
       id: 'students',
       path: '/admin/students',
-      label: 'Gestion des étudiants',
-      icon: 'fas fa-user-graduate', // Étudiants
+      label: 'MENU.STUDENTS',
+      icon: 'fa-solid fa-users-between-lines', // Étudiants
       permission: 'CentreController::index',
       children: [],
       subMenuRoutes: [],
@@ -105,7 +107,7 @@ export class MenuComponent {
     {
       id: 'notes',
       path: '/admin/notes',
-      label: 'Gestion des notes',
+      label: 'MENU.NOTES',
       icon: 'fas fa-clipboard-check', // Notes validées
       permission: 'CentreController::index',
       children: [],
@@ -114,8 +116,8 @@ export class MenuComponent {
     {
       id: 'Utilisateurs',
       path: '/admin/users',
-      label: 'Gestion des utilisateurs',
-      icon: 'fas fa-users', // Groupe d'utilisateurs
+      label: 'MENU.USERS',
+      icon: 'fa-solid fa-users-gear', // Groupe d'utilisateurs
       permission: 'UserController::index',
       children: [],
       subMenuRoutes: [],
