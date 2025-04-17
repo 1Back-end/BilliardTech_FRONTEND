@@ -1,0 +1,228 @@
+<div class="col-lg-12 col-sm-12 mb-3">
+    <div class="d-flex align-items-center justify-content-between">
+        <div class="mb-0">
+            <h4 class="text-uppercase fw-bold text-primary">Liste des Utilisateurs</h4>
+        </div>
+        <div class="ml-auto">
+            <a  class="mb-2 px-2 py-2 shadow-none btn btn-primary rounded-1 text-white btn-responsive mx-2" routerLink="/admin/users/add">
+                <i class="bi bi-plus-circle"></i> Créer un nouvel
+            </a>
+            <a  class="mb-2 px-2 py-2 shadow-none btn btn-success rounded-1 text-white btn-responsive mx-2" routerLink="/admin/users/add">
+                <i class="bi bi-arrow-clockwise"></i> Rafraichir
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="col-lg-12 col-sm-12 mb-3">
+    <div class="shadow-sm p-3 border-0">
+        <div class="table-responsive">
+            <table class="table table-striped table-bordered text-center">
+                <thead>
+                    <tr>
+                        <th scope="col" (click)="sortBy('id')" class="cursor-pointer">
+                            <span class="d-flex align-items-center gap-2 cursor-pointer">
+                                #
+                                <i class="fa-solid fs-5" [class]="direction['id'] === 'asc' ? 'fa-arrow-down-wide-short' : 'fa-arrow-up-wide-short'"></i>
+                            </span>
+                        </th>
+                        <th scope="col" (click)="sortBy('id')" class="cursor-pointer">
+                            <span class="d-flex align-items-center gap-2 cursor-pointer">
+                               Avatar
+                                <i class="fa-solid fs-5" [class]="direction['id'] === 'asc' ? 'fa-arrow-down-wide-short' : 'fa-arrow-up-wide-short'"></i>
+                            </span>
+                        </th>
+                        <th scope="col" (click)="sortBy('first_name')" class="cursor-pointer">
+                            <span class="d-flex align-items-center gap-2 cursor-pointer">
+                                Nom
+                                <i class="fa-solid fs-5" [class]="direction['first_name'] === 'asc' ? 'fa-arrow-down-wide-short' : 'fa-arrow-up-wide-short'"></i>
+                            </span>
+                        </th>
+                        <th scope="col" (click)="sortBy('last_name')" class="cursor-pointer">
+                            <span class="d-flex align-items-center gap-2 cursor-pointer">
+                                Prénom
+                                <i class="fa-solid fs-5" [class]="direction['last_name'] === 'asc' ? 'fa-arrow-down-wide-short' : 'fa-arrow-up-wide-short'"></i>
+                            </span>
+                        </th>
+                        <th scope="col" (click)="sortBy('login')" class="cursor-pointer">
+                            <span class="d-flex align-items-center gap-2 cursor-pointer">
+                                Login
+                                <i class="fa-solid fs-5" [class]="direction['login'] === 'asc' ? 'fa-arrow-down-wide-short' : 'fa-arrow-up-wide-short'"></i>
+                            </span>
+                        </th>
+                        <th scope="col" (click)="sortBy('email')" class="cursor-pointer">
+                            <span class="d-flex align-items-center gap-2 cursor-pointer">
+                                Email
+                                <i class="fa-solid fs-5" [class]="direction['email'] === 'asc' ? 'fa-arrow-down-wide-short' : 'fa-arrow-up-wide-short'"></i>
+                            </span>
+                        </th>
+                        <th scope="col" (click)="sortBy('phone_number')" class="cursor-pointer">
+                            <span class="d-flex align-items-center gap-2 cursor-pointer">
+                                N° de téléphone
+                                <i class="fa-solid fs-5" [class]="direction['phone_number'] === 'asc' ? 'fa-arrow-down-wide-short' : 'fa-arrow-up-wide-short'"></i>
+                            </span>
+                        </th>
+                        <th scope="col" (click)="sortBy('role')" class="cursor-pointer">
+                            <span class="d-flex align-items-center gap-2 cursor-pointer">
+                                Role
+                                <i class="fa-solid fs-5" [class]="direction['role'] === 'asc' ? 'fa-arrow-down-wide-short' : 'fa-arrow-up-wide-short'"></i>
+                            </span>
+                        </th>
+                        <th scope="col" (click)="sortBy('country_code')" class="cursor-pointer">
+                            <span class="d-flex align-items-center gap-2 cursor-pointer">
+                                Statut
+                                <i class="fa-solid fs-5" [class]="direction['country_code'] === 'asc' ? 'fa-arrow-down-wide-short' : 'fa-arrow-up-wide-short'"></i>
+                            </span>
+                        </th>
+                        <th scope="col" (click)="sortBy('created_at')" class="cursor-pointer">
+                            <span class="d-flex align-items-center gap-2 cursor-pointer">
+                                Crée le
+                                <i class="fa-solid fs-5" [class]="direction['created_at'] === 'asc' ? 'fa-arrow-down-wide-short' : 'fa-arrow-up-wide-short'"></i>
+                            </span>
+                        </th>
+                        <th scope="col" (click)="sortBy('updated_at')" class="cursor-pointer">
+                            <span class="d-flex align-items-center gap-2 cursor-pointer">
+                                Dernière mise à jour
+                                <i class="fa-solid fs-5" [class]="direction['updated_at'] === 'asc' ? 'fa-arrow-down-wide-short' : 'fa-arrow-up-wide-short'"></i>
+                            </span>
+                        </th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <!-- Si la liste des utilisateurs est vide, afficher un message -->
+                     <tr *ngIf="isLoading">
+                        <td colspan="10" class="text-center py-5">
+                            <div class="spinner-border text-primary" role="status">
+                                <span class="visually-hidden">Chargement...</span>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr *ngIf="users.length === 0">
+                        <td colspan="12" class="text-center">Aucun élément trouvé</td>
+                    </tr>
+                    <!-- Boucle à travers les utilisateurs et afficher chaque utilisateur dans une ligne -->
+                    <tr *ngFor="let user of users; let i = index">
+
+                        <td>{{ i + 1 }}</td> <!-- Affiche le numéro de ligne -->
+                        <td>
+                            <img *ngIf="user.avatar?.url; else defaultAvatar"
+                                 [src]="user.avatar.url"
+                                 alt="Avatar"
+                                 style="width: 50px; height: 50px; object-fit: cover; border-radius: 50%;">
+                            <ng-template #defaultAvatar>
+                              <img src="assets/images/profile_user.jpg"
+                                   alt="Avatar par défaut"
+                                   style="width: 50px; height: 50px; object-fit: cover; border-radius: 50%;">
+                            </ng-template>
+                          </td>
+                          
+                        <td>{{ user.first_name | uppercase }}</td>
+                        <td>{{ user.last_name | uppercase }}</td>
+                        <td>{{ user.login || 'Non renseigné' | uppercase }}</td>
+                        <td>{{ user.email }}</td>
+                        <td>{{ user.country_code }} {{ user.phone_number }}</td>
+                        <td>
+                            <span class="badge"
+                                  [ngClass]="{
+                                    'badge-success': user.role === 'ADMIN',
+                                    'badge-info': user.role === 'EDIMESTRE',
+                                  }">
+                               {{ user.role === 'ADMIN' ? 'admin system' : (user.role==='EDIMESTRE' ? 'édimestre system' : 'édimestre system') }}
+                            </span>
+                          </td>
+                          <td>
+                            <span class="badge"
+                                  [ngClass]="{
+                                    'badge-success': user.status === 'ACTIVED',
+                                    'badge-danger': user.status === 'UNACTIVED',
+                                    'badge-blocked': user.status === 'BLOCKED'
+                                  }">
+                              {{ user.status === 'ACTIVED' ? 'Activé' : (user.status === 'UNACTIVED' ? 'Désactivé' : 'Bloqué') }}
+                            </span>
+                          </td>
+                          
+                          <td>{{ user.created_at | date: 'dd/MM/yyyy HH:mm' }}</td> <!-- Date de création -->
+                          <td>{{ user.updated_at | date: 'dd/MM/yyyy HH:mm' }}</td> <!-- Dernière mise à jour -->
+                        
+                          <!-- Dropdown Actions -->
+                          <td>
+                            <div class="dropdown">
+                              <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Actions
+                              </button>
+                              <ul class="dropdown-menu border-0">
+                                <li><a class="dropdown-item text-danger"  (click)="deleteUser(user.uuid)">
+                                  <i class="bi bi-trash3 mx-1 text-danger"></i> Supprimer
+                                </a></li>
+                        
+                                <li [routerLink]="['/admin/users/edit', user.uuid]">
+                                    <a class="dropdown-item text-warning">
+                                  <i class="bi bi-pencil mx-1 text-warning"></i> Modifier
+                                </a>
+                            </li>
+                        
+                                <li *ngIf="user.status !== 'BLOCKED'">
+                                    <a class="dropdown-item text-info" (click)="updateStatus(user.uuid, 'BLOCKED')">
+                                      <i class="bi bi-lock-fill mx-1 text-info"></i> Bloquer
+                                    </a>
+                                  </li>
+                                  
+                                <!-- Condition d'affichage des actions en fonction de l'état -->
+                                <li *ngIf="user.status === 'ACTIVED'">
+                                  <a class="dropdown-item text-primary" (click)="updateStatus(user.uuid, 'UNACTIVED')">
+                                    <i class="bi bi-toggle-off text-primary"></i> Désactiver
+                                  </a>
+                                </li>
+                        
+                                <li *ngIf="user.status === 'UNACTIVED'">
+                                  <a class="dropdown-item text-success" (click)="updateStatus(user.uuid, 'ACTIVED')">
+                                    <i class="bi bi-toggle-on text-success"></i> Activer
+                                  </a>
+                                </li>
+                              </ul>
+                            </div>
+                          </td>
+                        </tr>
+                </tbody>
+            </table>
+        </div>
+        <!-- Pagination -->
+        <div class="d-flex justify-content-between align-items-center">
+            <div class="d-flex align-items-center">
+                <label for="itemsPerPage" class="me-2">Afficher:</label>
+                <select class="form-select cursor-pointer" id="itemsPerPage" [(ngModel)]="titlesPerPage" (change)="getAllServices()">
+                    <option value="5">5</option>
+                    <option value="10">10</option>
+                    <option value="25">25</option>
+                    <option value="50">50</option>
+                    <option value="100">100</option>
+                    
+                </select>
+            </div>
+
+            <div class="pagination-info d-flex align-items-center">
+           
+                <!-- Navigation buttons: Précédent / Suivant -->
+                <ul class="pagination mb-0">
+                    <li class="page-item" [class.disabled]="currentPage === 1">
+                        <a class="page-link" href="javascript:void(0)" (click)="goToPage(currentPage - 1)">‹ Précédent</a>
+                    </li>
+                    <li class="page-item" [class.disabled]="currentPage === totalPages">
+                        <a class="page-link" href="javascript:void(0)" (click)="goToPage(currentPage + 1)">Suivant ›</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="pagination-info">
+                <span>{{ currentPage }} sur {{ totalPages }} ({{ totalItems }} total)</span>
+            </div>
+        </div>
+
+         <!-- Pagination Info -->
+       
+
+    </div>
+    </div>
+

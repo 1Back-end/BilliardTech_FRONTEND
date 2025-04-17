@@ -1,1 +1,182 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+
+body {
+  font-family: 'Rubik', sans-serif;
+  margin: 0;
+  padding: 0;
+  /* overflow-x: hidden; Prevent horizontal scrolling */
+}
+.badge {
+    padding: 0.5rem;
+    border-radius: 0.25rem;
+    font-size: 0.875rem;
+  }
+
+.badge-success {
+  background-color: #28a745;
+  color: white;
+  font-family: 'Rubik', sans-serif;
+  font-size: 11px;
+}
+
+.badge-danger {
+  background-color: #dc3545;
+  color: white;
+  font-family: 'Rubik', sans-serif;
+  font-size: 11px;
+}
+.badge-warning {
+    background-color: #ffc107;
+    color: #212529;
+    font-family: 'Rubik', sans-serif;
+    font-size: 11px;
+  }
+  
+  .badge-dark {
+    background-color: #343a40;
+    color: white;
+    font-family: 'Rubik', sans-serif;
+    font-size: 11px;
+  }
+  
+  .badge-primary {
+    background-color: #007bff;
+    color: white;
+    font-family: 'Rubik', sans-serif;
+    font-size: 11px;
+  }
+
+  .badge-blocked {
+    background-color: #1F4283;
+    color: white;
+    font-family: 'Rubik', sans-serif;
+    font-size: 11px;
+  }
+  
+.badge-info {
+  background-color: #17a2b8;
+  color: white;
+  font-family: 'Rubik', sans-serif;
+  font-size: 11px;
+}
+li a{
+    cursor: pointer;
+  }
+  
+  .cursor-pointer {
+    cursor: pointer;
+  }
+  .profile-img {
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    object-fit: cover;
+  }
+
+ input[type="date"] {
+  cursor: pointer;
+ }
+
+.btn-contact{
+  border-radius: 100px !important;
+}
+/* Général - Appliquer une ombre douce */
+.navbar {
+  background-color: #ffffff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Titre du site */
+.navbar-brand {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #1f4283 !important; /* Bleu personnalisé */
+}
+
+/* Liens de menu */
+.navbar-nav .nav-link {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #333;
+  transition: color 0.3s;
+}
+
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link.active {
+  color: #1f4283; /* Bleu personnalisé */
+}
+
+
+.btn-outline-primary {
+  border: 1px solid #1f4283;
+  color: #1f4283;
+  background-color: transparent;
+}
+
+.btn-outline-primary:hover {
+  background-color: #1f4283;
+  color: #fff;
+}
+
+.btn-primary {
+  background-color: #1f4283;
+  border: none;
+}
+
+.btn-primary:hover {
+  background-color: #163362;
+}
+
+/* Mobile - Centrage des éléments */
+@media (max-width: 991.98px) {
+  .navbar-collapse {
+    justify-content: center !important;
+  }
+
+  .navbar-nav {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .d-flex {
+    justify-content: center;
+    width: 100%;
+    margin-top: 10px;
+  }
+}
+
+.form-shadow {
+  padding: 30px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2),
+              0 6px 20px rgba(0, 0, 0, 0.19);
+  background-color: #f9f9f9;
+  border-radius: 8px;
+}
+.text-title{
+  color: #163362;
+  font-size: 25px;
+  text-transform: uppercase;
+}
+
+@media (max-width: 896px) {
+  .text-title{
+    font-size: 20px;
+  }
+  
+}
+.navbar-tall {
+  height: 100px; /* ou 120px, selon ton besoin */
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+.selected-list .c-btn {
+  width: 100%;
+  padding:5px 10px;
+  cursor: pointer;
+  display: flex;
+  position: relative;
+  min-height: 55px;
+  appearance: none;
+}
+

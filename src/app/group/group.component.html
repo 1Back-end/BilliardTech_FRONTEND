@@ -1,0 +1,236 @@
+<div class="col-lg-12 col-sm-12">
+    <div class="row">
+      <div class="col-md-4 col-sm-12 mb-3">
+        <div class="card shadow border-0 p-3">
+          <h5 class="fw-bold mb-3">
+            {{ selectedService ? "Modification d'une classe" : "Création d'une classe" }}
+          </h5>
+          <form [formGroup]="ServiceForm" (ngSubmit)="onSubmit()">
+            
+            <div class="form-floating mb-3">
+              <input type="text" id="code" formControlName="name" class="form-control" [ngClass]="{'is-invalid': ServiceForm.get('name')?.invalid && ServiceForm.get('name')?.touched}">
+              <label for="code">Nom</label>
+              <div *ngIf="ServiceForm.get('name')?.invalid && ServiceForm.get('name')?.touched" class="invalid-feedback">
+                Ce champ est requis.
+              </div>
+            </div>
+  
+            <div class="form-floating mb-3">
+              <input type="text" id="level" formControlName="level" class="form-control" [ngClass]="{'is-invalid': ServiceForm.get('level')?.invalid && ServiceForm.get('level')?.touched}">
+              <label for="name">Niveau</label>
+              <div *ngIf="ServiceForm.get('level')?.invalid && ServiceForm.get('level')?.touched" class="invalid-feedback">
+                Ce champ est requis.
+              </div>
+            </div>
+  
+            <!-- Année scolaire -->
+            <div class="form-floating mb-3">
+                <angular2-multiselect
+                [ngClass]="{
+                    'is-invalid': ServiceForm.get('academic_year_uuid')?.invalid && ServiceForm.get('academic_year_uuid')?.touched
+                }"
+                id="academic_year_uuid"
+                [data]="academic_years"
+                [settings]="dropdownSettings"
+                formControlName="academic_year_uuid"
+                placeholder="Sélectionner une année scolaire">
+                </angular2-multiselect>
+                <div *ngIf="ServiceForm.get('academic_year_uuid')?.invalid && ServiceForm.get('academic_year_uuid')?.touched" class="invalid-feedback">
+                Ce champ est requis.
+                </div>
+            </div>
+            
+            <!-- Spécialité -->
+            <div class="form-floating mb-3">
+                <angular2-multiselect
+                [ngClass]="{
+                    'is-invalid': ServiceForm.get('speciality_uuid')?.invalid && ServiceForm.get('speciality_uuid')?.touched
+                }"
+                id="speciality_uuid"
+                [data]="speciality"
+                [settings]="specialityDropdownSettings"
+                formControlName="speciality_uuid"
+                placeholder="Sélectionner la spécialité">
+                </angular2-multiselect>
+                <div *ngIf="ServiceForm.get('speciality_uuid')?.invalid && ServiceForm.get('speciality_uuid')?.touched" class="invalid-feedback">
+                Ce champ est requis.
+                </div>
+            </div>
+  
+  
+            <div class="d-flex flex-column flex-md-row align-items-center justify-content-between mb-2">
+              <button type="submit" class="mb-2 px-2 rounded-1 py-2 shadow-none btn btn-primary text-white" [disabled]="ServiceForm.invalid || isLoading">
+                {{ selectedService ? 'Modifier' : 'Enregistrer' }}
+              </button>
+              <button type="button" (click)="resetForm()" class="mb-2 px-2 rounded-1 py-2 shadow-none btn btn-secondary text-white">
+                Annuler
+              </button>
+            </div>
+  
+          </form>
+        </div>
+      </div>
+    
+
+  
+        <div class="col-lg-8 col-sm-12 mb-3">
+            <div class="card shadow p-3 border-0">
+                <div class="mb-2">
+                    <h5 class="fw-bold">Liste des classes</h5>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-striped table-bordered text-center table-hover">
+                        <thead>
+                            <tr>
+                                <th scope="col" (click)="sortBy('id')" class="cursor-pointer">
+                                    <span class="d-flex align-items-center gap-2 cursor-pointer">
+                                        #
+                                        <i class="fa-solid fs-5" [class]="direction['id'] === 'asc' ? 'fa-arrow-down-wide-short' : 'fa-arrow-up-wide-short'"></i>
+                                    </span>
+                                </th>
+                                <th scope="col" (click)="sortBy('name')" class="cursor-pointer">
+                                    <span class="d-flex align-items-center gap-2 cursor-pointer">
+                                        Classe
+                                        <i class="fa-solid fs-5" [class]="direction['name'] === 'asc' ? 'fa-arrow-down-wide-short' : 'fa-arrow-up-wide-short'"></i>
+                                    </span>
+                                </th>
+                                <th scope="col" (click)="sortBy('level')" class="cursor-pointer">
+                                    <span class="d-flex align-items-center gap-2 cursor-pointer">
+                                        Niveau
+                                        <i class="fa-solid fs-5" [class]="direction['level'] === 'asc' ? 'fa-arrow-down-wide-short' : 'fa-arrow-up-wide-short'"></i>
+                                    </span>
+                                </th>
+                                <th scope="col" (click)="sortBy('speciality_uuid')" class="cursor-pointer">
+                                    <span class="d-flex align-items-center gap-2 cursor-pointer">
+                                        Spécialité
+                                        <i class="fa-solid fs-5" [class]="direction['speciality_uuid'] === 'asc' ? 'fa-arrow-down-wide-short' : 'fa-arrow-up-wide-short'"></i>
+                                    </span>
+                                </th>
+                                <th scope="col" (click)="sortBy('academic_year_uuid')" class="cursor-pointer">
+                                    <span class="d-flex align-items-center gap-2 cursor-pointer">
+                                       Année scolaire
+                                        <i class="fa-solid fs-5" [class]="direction['academic_year_uuid'] === 'asc' ? 'fa-arrow-down-wide-short' : 'fa-arrow-up-wide-short'"></i>
+                                    </span>
+                                </th>
+                            
+                                <th scope="col" (click)="sortBy('created_at')" class="cursor-pointer">
+                                    <span class="d-flex align-items-center gap-2 cursor-pointer">
+                                        Crée par (Date)
+                                        <i class="fa-solid fs-5" [class]="direction['created_at'] === 'asc' ? 'fa-arrow-down-wide-short' : 'fa-arrow-up-wide-short'"></i>
+                                    </span>
+                                </th>
+
+                                <th scope="col" (click)="sortBy('id')" class="cursor-pointer">
+                                    <span class="d-flex align-items-center gap-2 cursor-pointer">
+                                        Actions
+                                        <i class="fa-solid fs-5" [class]="direction[''] === 'asc' ? 'fa-arrow-down-wide-short' : 'fa-arrow-up-wide-short'"></i>
+                                    </span>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngIf="isLoading">
+                                <td colspan="10" class="text-center py-5">
+                                    <div class="spinner-border text-primary" role="status">
+                                        <span class="visually-hidden">Chargement...</span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr *ngIf="services.length === 0">
+                                <td colspan="12" class="text-center">Aucun élément trouvé</td>
+                            </tr>
+                            <tr *ngFor="let service of services; let i = index">
+                                <td>{{ i + 1 }}</td> <!-- Affiche le numéro de ligne -->
+                                <td>{{ service.name }}</td>
+                                <td>{{ service.level }}</td>
+                                <td>{{ service.speciality.name }}</td>
+                                <td>
+                                    {{ service.academic_year.name }}
+                                    <ng-container [ngSwitch]="service.academic_year.status">
+                                      <span *ngSwitchCase="'ACTIVE'" class="badge badge-success p-2">En cours</span>
+                                      <span *ngSwitchCase="'CLOSED'" class="badge badge-danger p-2">Terminé</span>
+                                    </ng-container>
+                                  </td>
+                                  <td>
+                                    <span class="badge"
+                                          [ngClass]="{
+                                            'badge-success': service.user.role === 'ADMIN',
+                                            'badge-info': service.user.role === 'EDIMESTRE',
+                                            'badge-primary': service.user.role === 'SUPER_ADMIN'
+                                          }">
+                                      {{ service.user.role ==='ADMIN' ? 'admin system' : (service.user.role ==='SUPER_ADMIN' ? 'super admin' : 'édimestre') }}
+                                    </span>
+                                    {{ service.created_at | date: 'dd/MM/yyyy HH:mm' }}
+                                  </td>
+        
+                                  <td>
+                                    <div class="dropdown">
+                                        <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                          Actions
+                                        </button>
+                                        <ul class="dropdown-menu border-0">
+                                            <li>
+                                                <a class="dropdown-item text-warning" (click)="editService(service)">
+                                                  <i class="fa fa-edit me-2"></i> Modifier
+                                                </a>
+                                              </li>
+                                              <li>
+                                                <a class="dropdown-item text-danger" (click)="deleteService(service.uuid)">
+                                                  <i class="fa fa-trash me-2"></i> Supprimer
+                                                </a>
+                                              </li>
+                                        </ul>
+                                      </div>
+                                  </td>
+        
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- Pagination -->
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="d-flex align-items-center">
+                        <label for="itemsPerPage" class="me-2">Afficher:</label>
+                        <select class="form-select cursor-pointer" id="itemsPerPage" [(ngModel)]="titlesPerPage" (change)="getAllServices()">
+                            <option value="5">5</option>
+                            <option value="10">10</option>
+                            <option value="25">25</option>
+                            <option value="50">50</option>
+                            <option value="100">100</option>
+                            
+                        </select>
+                    </div>
+        
+                    <div class="pagination-info d-flex align-items-center">
+                   
+                        <!-- Navigation buttons: Précédent / Suivant -->
+                        <ul class="pagination mb-0">
+                            <li class="page-item" [class.disabled]="currentPage === 1">
+                                <a class="page-link" href="javascript:void(0)" (click)="goToPage(currentPage - 1)">‹ Précédent</a>
+                            </li>
+                            <li class="page-item" [class.disabled]="currentPage === totalPages">
+                                <a class="page-link" href="javascript:void(0)" (click)="goToPage(currentPage + 1)">Suivant ›</a>
+                            </li>
+                        </ul>
+                    </div>
+        
+                    <div class="pagination-info">
+                        <span>{{ currentPage }} sur {{ totalPages }} ({{ totalItems }} total)</span>
+                    </div>
+                </div>
+        
+                 <!-- Pagination Info -->
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+

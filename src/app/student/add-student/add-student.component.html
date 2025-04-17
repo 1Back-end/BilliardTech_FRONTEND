@@ -1,0 +1,211 @@
+<div class="col-md-12 col-sm-12 mb-3">
+  <div class="card">
+    <div class="card-body border-2">
+      <form [formGroup]="ServiceForm" (ngSubmit)="onSubmit()">
+        <!-- Titre et Boutons -->
+        <div class="d-flex justify-content-between gap-2 flex-column flex-lg-row">
+          <h4>Créer un étudiant</h4>
+          <div class="d-flex gap-2">
+            <button type="submit" class="btn btn-primary border-0 px-2 py-2 rounded-1" [disabled]="ServiceForm.invalid">Enregistrer</button>
+            <button type="reset" class="btn btn-secondary border-0 px-2 py-2 rounded-1">Annuler</button>
+          </div>
+        </div>
+
+        <!-- Photo -->
+        <div class="row mt-4">
+          <div class="col-lg-4 mb-3">
+            <input
+              type="file"
+              (change)="onFileSelected($event)"
+              id="fileInput"
+              class="d-none"
+              formControlName="storage_uuid"
+              accept="image/*"
+            />
+            <label
+              for="fileInput"
+              class="border border-2 rounded-2 p-3 d-flex justify-content-center align-items-center text-center w-50"
+              style="border-style: dashed!important;"
+            >
+              <ng-container *ngIf="!filePreview">
+                <span class="d-flex justify-content-center align-items-center gap-2 cursor-pointer">
+                  <span>Choisir la photo</span>
+                  <i class='bx bx-cloud-upload fs-2'></i>
+                </span>
+              </ng-container>
+              <ng-container *ngIf="filePreview">
+                <div class="position-relative d-inline-block">
+                  <img [src]="filePreview" alt="Aperçu" class="img-thumbnail" style="max-width: 150px;">
+                  <button type="button" class="btn btn-danger btn-sm position-absolute top-0 end-0" (click)="removeFile()">
+                    &times;
+                  </button>
+                </div>
+              </ng-container>
+            </label>
+          </div>
+        </div>
+
+        <!-- Inputs principaux -->
+        <div class="row mt-4">
+
+          <!-- Nom -->
+          <div class="col-lg-4 mb-3">
+            <div class="form-floating">
+              <input type="text" formControlName="first_name" class="form-control"
+                [ngClass]="{'is-invalid': ServiceForm.get('first_name')?.invalid && ServiceForm.get('first_name')?.touched}">
+              <label for="first_name">Nom</label>
+              <div *ngIf="ServiceForm.get('first_name')?.invalid && ServiceForm.get('first_name')?.touched" class="invalid-feedback">
+                Ce champ est requis.
+              </div>
+            </div>
+          </div>
+
+          <!-- Prénom -->
+          <div class="col-lg-4 mb-3">
+            <div class="form-floating">
+              <input type="text" formControlName="last_name" class="form-control"
+                [ngClass]="{'is-invalid': ServiceForm.get('last_name')?.invalid && ServiceForm.get('last_name')?.touched}">
+              <label for="last_name">Prénom</label>
+              <div *ngIf="ServiceForm.get('last_name')?.invalid && ServiceForm.get('last_name')?.touched" class="invalid-feedback">
+                Ce champ est requis.
+              </div>
+            </div>
+          </div>
+
+          <!-- Email -->
+          <div class="col-lg-4 mb-3">
+            <div class="form-floating">
+              <input type="email" formControlName="email" class="form-control"
+                [ngClass]="{'is-invalid': ServiceForm.get('email')?.invalid && ServiceForm.get('email')?.touched}">
+              <label for="email">Email</label>
+              <div *ngIf="ServiceForm.get('email')?.invalid && ServiceForm.get('email')?.touched" class="invalid-feedback">
+                Email invalide.
+              </div>
+            </div>
+          </div>
+
+          <!-- Téléphone -->
+          <div class="col-lg-4 mb-3">
+            <div class="form-floating">
+              <input type="tel" formControlName="phone_number" class="form-control"
+                [ngClass]="{'is-invalid': ServiceForm.get('phone_number')?.invalid && ServiceForm.get('phone_number')?.touched}">
+              <label for="phone_number">Numéro de téléphone</label>
+              <div *ngIf="ServiceForm.get('phone_number')?.invalid && ServiceForm.get('phone_number')?.touched" class="invalid-feedback">
+                Ce champ est requis.
+              </div>
+            </div>
+          </div>
+
+          <!-- Date de naissance -->
+          <div class="col-lg-4 mb-3">
+            <div class="form-floating">
+              <input type="date" formControlName="birthdate" class="form-control"
+                [ngClass]="{'is-invalid': ServiceForm.get('birthdate')?.invalid && ServiceForm.get('birthdate')?.touched}">
+              <label for="birthdate">Date de naissance</label>
+              <div *ngIf="ServiceForm.get('birthdate')?.invalid && ServiceForm.get('birthdate')?.touched" class="invalid-feedback">
+                Ce champ est requis.
+              </div>
+            </div>
+          </div>
+
+          <!-- Adresse -->
+          <div class="col-lg-4 mb-3">
+            <div class="form-floating">
+              <input type="text" formControlName="address" class="form-control"
+                [ngClass]="{'is-invalid': ServiceForm.get('address')?.invalid && ServiceForm.get('address')?.touched}">
+              <label for="address">Adresse</label>
+              <div *ngIf="ServiceForm.get('address')?.invalid && ServiceForm.get('address')?.touched" class="invalid-feedback">
+                Ce champ est requis.
+              </div>
+            </div>
+          </div>
+
+          <!-- Genre -->
+          <div class="col-lg-4 mb-3">
+            <div class="form-floating">
+              <select class="form-select" formControlName="gender"
+                [ngClass]="{'is-invalid': ServiceForm.get('gender')?.invalid && ServiceForm.get('gender')?.touched}">
+                <option value="" disabled selected>Choisir une option</option>
+                <option value="male">Masculin</option>
+                <option value="female">Féminin</option>
+              </select>
+              <label for="gender">Genre</label>
+              <div *ngIf="ServiceForm.get('gender')?.invalid && ServiceForm.get('gender')?.touched" class="invalid-feedback">
+                Ce champ est requis.
+              </div>
+            </div>
+          </div>
+
+          <!-- Nationalité -->
+          <div class="col-lg-4 mb-3">
+            <div class="form-floating">
+              <input type="text" formControlName="nationality" class="form-control"
+                [ngClass]="{'is-invalid': ServiceForm.get('nationality')?.invalid && ServiceForm.get('nationality')?.touched}">
+              <label for="nationality">Nationalité</label>
+              <div *ngIf="ServiceForm.get('nationality')?.invalid && ServiceForm.get('nationality')?.touched" class="invalid-feedback">
+                Ce champ est requis.
+              </div>
+            </div>
+          </div>
+
+          <!-- Filière -->
+          <div class="col-lg-4 mb-3">
+            <angular2-multiselect
+              [data]="departments"
+              [settings]="DepartmentDropdownSettings"
+              formControlName="program_uuid"
+              [ngClass]="{'is-invalid': ServiceForm.get('program_uuid')?.invalid && ServiceForm.get('program_uuid')?.touched}"
+              placeholder="Sélectionner une filière">
+            </angular2-multiselect>
+            <div *ngIf="ServiceForm.get('program_uuid')?.invalid && ServiceForm.get('program_uuid')?.touched" class="invalid-feedback">
+              Ce champ est requis.
+            </div>
+          </div>
+
+          <!-- Spécialité -->
+          <div class="col-lg-4 mb-3">
+            <angular2-multiselect
+              [data]="speciality"
+              [settings]="specialityDropdownSettings"
+              formControlName="speciality_uuid"
+              [ngClass]="{'is-invalid': ServiceForm.get('speciality_uuid')?.invalid && ServiceForm.get('speciality_uuid')?.touched}"
+              placeholder="Sélectionner la spécialité">
+            </angular2-multiselect>
+            <div *ngIf="ServiceForm.get('speciality_uuid')?.invalid && ServiceForm.get('speciality_uuid')?.touched" class="invalid-feedback">
+              Ce champ est requis.
+            </div>
+          </div>
+
+          <!-- Année académique -->
+          <div class="col-lg-4 mb-3">
+            <angular2-multiselect
+              [data]="academic_years"
+              [settings]="dropdownSettings"
+              formControlName="academic_year_uuid"
+              [ngClass]="{'is-invalid': ServiceForm.get('academic_year_uuid')?.invalid && ServiceForm.get('academic_year_uuid')?.touched}"
+              placeholder="Sélectionner une année scolaire">
+            </angular2-multiselect>
+            <div *ngIf="ServiceForm.get('academic_year_uuid')?.invalid && ServiceForm.get('academic_year_uuid')?.touched" class="invalid-feedback">
+              Ce champ est requis.
+            </div>
+          </div>
+
+          <!-- Classe -->
+          <div class="col-lg-4 mb-3">
+            <angular2-multiselect
+              [data]="classes"
+              [settings]="ClassDropdownSettings"
+              formControlName="group_uuid"
+              [ngClass]="{'is-invalid': ServiceForm.get('group_uuid')?.invalid && ServiceForm.get('group_uuid')?.touched}"
+              placeholder="Sélectionner une classe">
+            </angular2-multiselect>
+            <div *ngIf="ServiceForm.get('group_uuid')?.invalid && ServiceForm.get('group_uuid')?.touched" class="invalid-feedback">
+              Ce champ est requis.
+            </div>
+          </div>
+
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

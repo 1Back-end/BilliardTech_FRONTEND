@@ -1,0 +1,162 @@
+<div class="col-md-12 col-sm-12 mb-3">
+    <div class="card">
+      <div class="card-body border-2">
+        <form [formGroup]="UserForm" (ngSubmit)="onSubmit()">
+          
+          <!-- En-tête -->
+          <div class="d-flex justify-content-between gap-2 flex-column flex-lg-row">
+            <h4>Modifier un utilisateur</h4>
+            <div class="d-flex gap-2">
+              <button type="submit" class="btn btn-primary border-0 px-2 py-2 rounded-1" [disabled]="UserForm.invalid">
+                Modifier
+              </button>
+              <button type="reset" class="btn btn-secondary border-0 px-2 py-2 rounded-1">Annuler</button>
+            </div>
+          </div>
+  
+          <!-- Photo -->
+          <div class="row mt-4">
+            <div class="col-lg-4 mb-3">
+              <input
+                type="file"
+                (change)="onFileSelected($event)"
+                id="fileInput"
+                class="d-none"
+                formControlName="avatar_uuid"
+                accept="image/*"
+              />
+          
+              <label
+                for="fileInput"
+                class="border border-2 rounded-2 p-3 d-flex justify-content-center align-items-center text-center w-50"
+                style="border-style: dashed!important; cursor: pointer;"
+              >
+                <!-- Si une image est sélectionnée localement -->
+                <ng-container *ngIf="filePreview">
+                  <div class="position-relative d-inline-block">
+                    <img [src]="filePreview" alt="Aperçu" class="img-thumbnail" style="max-width: 150px;">
+                    <button type="button" class="btn btn-danger btn-sm position-absolute top-0 end-0" (click)="removeFile()">
+                      &times;
+                    </button>
+                  </div>
+                </ng-container>
+          
+                <!-- Si une image vient du backend -->
+                <ng-container *ngIf="!filePreview && fileUrl">
+                  <div class="position-relative d-inline-block">
+                    <img [src]="fileUrl" alt="Avatar" class="img-thumbnail" style="max-width: 150px;">
+                    <button type="button" class="btn btn-danger btn-sm position-absolute top-0 end-0" (click)="removeFile()">
+                      &times;
+                    </button>
+                  </div>
+                </ng-container>
+          
+                <!-- Si aucune image n'existe -->
+                <ng-container *ngIf="!filePreview && !fileUrl">
+                  <div class="text-center">
+                    <div>Choisir une photo</div>
+                    <i class='bx bx-cloud-upload fs-2'></i>
+                  </div>
+                </ng-container>
+              </label>
+            </div>
+          </div>
+          
+  
+          <!-- Informations de l'utilisateur -->
+          <div class="row mt-4">
+            
+            <!-- Nom -->
+            <div class="col-lg-4 mb-3">
+              <div class="form-floating">
+                <input type="text" id="first_name" formControlName="first_name" class="form-control"
+                  [ngClass]="{'is-invalid': UserForm.get('first_name')?.invalid && UserForm.get('first_name')?.touched}">
+                <label for="first_name">Nom</label>
+                <div *ngIf="UserForm.get('first_name')?.invalid && UserForm.get('first_name')?.touched" class="invalid-feedback">
+                  Ce champ est requis.
+                </div>
+              </div>
+            </div>
+  
+            <!-- Prénom -->
+            <div class="col-lg-4 mb-3">
+              <div class="form-floating">
+                <input type="text" id="last_name" formControlName="last_name" class="form-control"
+                  [ngClass]="{'is-invalid': UserForm.get('last_name')?.invalid && UserForm.get('last_name')?.touched}">
+                <label for="last_name">Prénom</label>
+                <div *ngIf="UserForm.get('last_name')?.invalid && UserForm.get('last_name')?.touched" class="invalid-feedback">
+                  Ce champ est requis.
+                </div>
+              </div>
+            </div>
+  
+            <!-- Email -->
+            <div class="col-lg-4 mb-3">
+              <div class="form-floating">
+                <input type="email" id="email" formControlName="email" class="form-control"
+                  [ngClass]="{'is-invalid': UserForm.get('email')?.invalid && UserForm.get('email')?.touched}">
+                <label for="email">Email</label>
+                <div *ngIf="UserForm.get('email')?.invalid && UserForm.get('email')?.touched" class="invalid-feedback">
+                  Ce champ est requis.
+                </div>
+              </div>
+            </div>
+  
+            <!-- Code du pays -->
+            <div class="col-lg-4 mb-3">
+              <div class="form-floating">
+                <input type="text" id="country_code" readonly formControlName="country_code" class="form-control"
+                  [ngClass]="{'is-invalid': UserForm.get('country_code')?.invalid && UserForm.get('country_code')?.touched}">
+                <label for="country_code">Code du pays</label>
+                <div *ngIf="UserForm.get('country_code')?.invalid && UserForm.get('country_code')?.touched" class="invalid-feedback">
+                  Ce champ est requis.
+                </div>
+              </div>
+            </div>
+  
+            <!-- Téléphone -->
+            <div class="col-lg-4 mb-3">
+              <div class="form-floating">
+                <input type="text" id="phone_number" formControlName="phone_number" class="form-control"
+                  [ngClass]="{'is-invalid': UserForm.get('phone_number')?.invalid && UserForm.get('phone_number')?.touched}">
+                <label for="phone_number">Numéro de téléphone</label>
+                <div *ngIf="UserForm.get('phone_number')?.invalid && UserForm.get('phone_number')?.touched" class="invalid-feedback">
+                  Ce champ est requis.
+                </div>
+              </div>
+            </div>
+  
+            <!-- Rôle -->
+            <div class="col-lg-4 mb-3">
+              <div class="form-floating">
+                <select id="role" formControlName="role" class="form-select"
+                  [ngClass]="{'is-invalid': UserForm.get('role')?.invalid && UserForm.get('role')?.touched}">
+                  <option disabled selected></option>
+                  <option value="ADMIN">ADMIN</option>
+                  <option value="EDIMESTRE">EDIMESTRE</option>
+                </select>
+                <label for="role">Choisir un rôle</label>
+                <div *ngIf="UserForm.get('role')?.invalid && UserForm.get('role')?.touched" class="invalid-feedback">
+                  Ce champ est requis.
+                </div>
+              </div>
+            </div>
+  
+            <!-- Login -->
+            <div class="col-lg-4 mb-3">
+              <div class="form-floating">
+                <input type="text" id="login" formControlName="login" class="form-control"
+                  [ngClass]="{'is-invalid': UserForm.get('login')?.invalid && UserForm.get('login')?.touched}">
+                <label for="login">Login</label>
+                <div *ngIf="UserForm.get('login')?.invalid && UserForm.get('login')?.touched" class="invalid-feedback">
+                  Ce champ est requis.
+                </div>
+              </div>
+            </div>
+  
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  

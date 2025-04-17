@@ -1,0 +1,74 @@
+<main class="main d-flex">
+    <!-- Sidebar, visible only if authenticated -->
+    <nav *ngIf="authService.isAuthenticated()" class="d-none d-lg-block">
+      <div class="d-flex flex-column flex-shrink-0 p-2 shadow vh-100 bg-body-secondary h-100" style="width: 275px;">
+        <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+          <span class="fs-4 text-uppercase fw-bold">BilliardTech</span>
+        </a>
+        <hr>
+        <app-menu></app-menu>
+      </div>
+    </nav>
+  
+    <div class="d-flex flex-column w-100" *ngIf="isAuthenticated">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light shadow rounded-3 p-2 py-lg-3 px-3 mb-3">
+        <div class="container-fluid">
+          <div class="d-flex justify-content-between w-100 align-items-center">
+            <!-- Centre dropdown section -->
+            <div class="d-flex align-items-center">
+              <div class="d-flex d-lg-none mt-0" style="top: -5px;">
+                <a class="btn shadow-none border-0" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
+                  <i class="bx bx-menu fs-1"></i>
+                </a>
+              </div>
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <input type="search" class="form-control form-control-lg">
+              </ul>
+            </div>
+    
+            <!-- Profile section -->
+            <div class="d-flex align-items-center">
+              <div class="dropdown">
+                <!-- Affichage de l'avatar si disponible, sinon photo par défaut -->
+                <img [src]="userInfo.avatarUrl" alt="Profil" class="rounded-circle img-fluid img-thumbnail profile-img"
+                  data-bs-toggle="dropdown" aria-expanded="false" />
+                <ul class="dropdown-menu dropdown-menu-end border-0 p-0">
+                  <li>
+                    <button class="dropdown-item text-danger" (click)="logout()">
+                      <i class="bi bi-box-arrow-right mx-1"></i> Déconnexion
+                    </button>
+                  </li>
+                  <li>
+                    <button class="dropdown-item text-success">
+                      <i class="bi bi-person-vcard mx-1"></i> Mon profil
+                    </button>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+   
+  
+      <!-- Offcanvas menu for small screens, visible only when authenticated -->
+      <div *ngIf="authService.isAuthenticated()" class="offcanvas offcanvas-start d-lg-none" data-bs-scroll="true"
+        tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title text-uppercase fw-bold" id="offcanvasExampleLabel">BilliardTech</h5>
+          <button type="button" class="btn-close shadow-none border-0" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <hr>
+        <div class="offcanvas-body">
+          <app-menu (closeOffCanvas)="closeOffCanvas()"></app-menu>
+        </div>
+      </div>
+  
+      <!-- Button to toggle offcanvas menu (only visible on small screens) -->
+  
+      <!-- Main router outlet for displaying content -->
+      <div class="mt-4 mx-1 mx-lg-3">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </main>

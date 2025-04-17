@@ -1,0 +1,111 @@
+<!-- NAVBAR FIXE EN HAUT -->
+<div class="col-lg-12 col-sm-12 mb-3">
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow py-3 px-lg-5 fixed-top">
+      <div class="container-fluid justify-content-between">
+        <a class="navbar-brand fw-bold text-primary text-uppercase">RésulCampus</a>
+  
+        <button class="navbar-toggler shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavCenter" aria-controls="navbarNavCenter" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+  
+        <div class="collapse navbar-collapse justify-content-center" id="navbarNavCenter">
+          <ul class="navbar-nav text-center">
+            <li class="nav-item mx-2">
+              <a class="nav-link active" aria-current="page" href="#">Accueil</a>
+            </li>
+            <li class="nav-item mx-2">
+              <a class="nav-link" href="#">À propos</a>
+            </li>
+            <li class="nav-item mx-2">
+              <a class="nav-link" href="#">Résultats</a>
+            </li>
+          </ul>
+        
+        <div class="d-flex">
+          <a [routerLink]="['/login']" class="btn btn-outline-primary mx-2">Se connecter</a>
+        </div>
+        </div>
+      </div>
+    </nav>    
+  </div>
+  
+  <!-- SECTION "LES RÉSULTATS" -->
+<!-- SECTION CENTRÉE "CONSULTER LES RÉSULTATS" -->
+<div class="container">
+    <div class="d-flex align-items-center justify-content-center" style="margin-top: 150px;">
+        <div class="col-lg-6 col-md-8 col-sm-10 py-5 form-shadow bg-light text-center p-3 rounded-5">
+          <h2 class="text-title mb-3 fw-bold">Consultation des Résultats</h2>
+          <hr class="mb-4">
+          <p class="mb-4 text-muted">
+            Entrez votre matricule ci-dessous pour accéder à vos résultats d’examen en toute simplicité.
+          </p>
+          <form>
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control rounded-2" id="floatingInput" placeholder="name@example.com">
+                <label for="floatingInput">Matricule</label>
+              </div>
+    
+              <div class="d-grid gap-2">
+                <button class="btn btn-outline-primary py-3 px-3 btn-lg shadow-none" type="button">Consulter</button>
+              </div>
+              
+          </form>
+          
+        </div>
+      </div>
+      
+</div>
+
+
+<footer class="text-center text-lg-start bg-light text-muted mt-5">
+
+    <!-- Main Content -->
+    <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
+      <div class="container text-center text-md-start mt-5">
+        <div class="row mt-3">
+  
+          <!-- About -->
+          <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+            <h6 class="text-uppercase fw-bold mb-4">
+              <i class="fas fa-graduation-cap me-3"></i>RésulCampus
+            </h6>
+            <p>
+              RésulCampus est une plateforme numérique permettant aux étudiants de consulter facilement leurs résultats académiques en ligne.
+            </p>
+          </div>
+  
+          <!-- Liens -->
+          <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+            <h6 class="text-uppercase fw-bold mb-4">Menus</h6>
+            <p><a href="#" class="text-reset text-decoration-none">Accueil</a></p>
+            <p><a href="#" class="text-reset text-decoration-none">À propos</a></p>
+            <p><a href="#" class="text-reset text-decoration-none">Résultats</a></p>
+          </div>
+  
+          <!-- Infos utiles -->
+          <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+            <h6 class="text-uppercase fw-bold mb-4">Support</h6>
+            <p><a href="#" class="text-reset text-decoration-none">FAQ</a></p>
+            <p><a href="#" class="text-reset text-decoration-none">Aide</a></p>
+            <p><a href="#" class="text-reset text-decoration-none">Confidentialité</a></p>
+          </div>
+  
+          <!-- Contact -->
+          <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+            <h6 class="text-uppercase fw-bold mb-4">Contact</h6>
+            <p><i class="fas fa-home me-2"></i> Yaoundé, Cameroun</p>
+            <p><i class="fas fa-phone me-2"></i> +237 6 90 00 00 00</p>
+            <p><i class="fas fa-globe me-2"></i> www.resulcampus.com</p>
+          </div>
+  
+        </div>
+      </div>
+    </section>
+  
+    <!-- Copyright -->
+    <div class="text-center p-4 bg-light border-top">
+      
+    </div>
+  </footer>
+  <!-- End Footer -->
+  
