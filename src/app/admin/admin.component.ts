@@ -11,7 +11,7 @@ import { Observable, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import { TranslateService } from '@ngx-translate/core'; // Ajout de l'importation de TranslateService
 import { TranslateModule } from '@ngx-translate/core';
-
+import { ThemeService } from '../services/theme.service';
 @Component({
   selector: 'app-admin',
   standalone: true,
@@ -38,13 +38,14 @@ export class AdminComponent {
     private toastr: ToastrService,
     @Inject(PLATFORM_ID) private platformId: Object,
     private http: HttpClient,
-    private translate: TranslateService
+    private translate: TranslateService,
+    private themeService: ThemeService
   ) {}
 
   ngOnInit(): void {
     // Vérifie si l'utilisateur est authentifié
     this.isAuthenticated = !!this.authService.getToken();
-    
+    this.themeService.applyTheme(this.themeService.getTheme());
     // Récupère les informations de l'utilisateur
     this.userInfo = this.authService.getUserInfo();
 
@@ -56,6 +57,10 @@ export class AdminComponent {
     this.currentLanguage = this.translate.currentLang || 'fr';
     this.updateLanguageInfo();
   }
+  onToggleTheme(): void {
+    this.themeService.toggleTheme();
+  }
+
 
   logout(): void {
     this.authService.logout(); // Appel à la méthode de déconnexion

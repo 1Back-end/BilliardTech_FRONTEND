@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,CUSTOM_ELEMENTS_SCHEMA  } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -10,11 +10,14 @@ import { FormsModule } from '@angular/forms';
 import { AngularMultiSelectModule } from 'angular2-multiselect-dropdown';
 import {AcademicYear} from './interface/academic_years'; 
 import {Speciality} from './interface/speciality';
+import { TranslateModule } from '@ngx-translate/core'; // Assure-toi que @ngx-translate/core est installé
+import {LanguageHeaderService} from '../admin/language-header.service';
 @Component({
   selector: 'app-group',
-  imports: [CommonModule, ReactiveFormsModule, FormsModule,AngularMultiSelectModule],
+  imports: [CommonModule, ReactiveFormsModule, FormsModule,AngularMultiSelectModule,TranslateModule],
   templateUrl: './group.component.html',
-  styleUrl: './group.component.css'
+  styleUrl: './group.component.css',
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]  // Ajoute cette ligne ici
 })
 export class GroupComponent implements OnInit {
   services: any[] = [];
@@ -81,7 +84,7 @@ export class GroupComponent implements OnInit {
     this.isLoading = true;
     const params = new HttpParams()
       .set('page', this.currentPage.toString())
-      .set('limit', this.titlesPerPage.toString());
+      .set('per_page', this.titlesPerPage.toString());
   
     this.http.get<any>(`${CONFIG.apiUrl}/class/get_many`, { params }).subscribe(
       (response) => {

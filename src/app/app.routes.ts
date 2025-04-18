@@ -24,6 +24,7 @@ import {EditStudentComponent} from './student/edit-student/edit-student.componen
 import {EditUtilisateursComponent} from './utilisateurs/edit-utilisateurs/edit-utilisateurs.component';
 import {AddProfesseursComponent} from './profesors/add-professeurs/add-professeurs.component';
 import {ProfileUsersComponent} from './profile-users/profile-users.component';
+import {EditProfesseursComponent} from './profesors/edit-professeurs/edit-professeurs.component';
 
 export const routes: Routes = [
   // Route de login
@@ -119,6 +120,12 @@ export const routes: Routes = [
       {
         path :'teachers/add',
         component : AddProfesseursComponent,
+        canActivate : [AuthGuard]
+
+      },
+      {
+        path :'teachers/edit/:uuid',
+        component : EditProfesseursComponent,
         canActivate : [AuthGuard]
 
       },

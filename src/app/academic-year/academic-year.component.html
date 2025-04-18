@@ -149,17 +149,17 @@
                                       <ul class="dropdown-menu border-0">
                                         <li *ngIf="service.status === 'ACTIVE' && role.getUserRole() === 'SUPER_ADMIN'">
                                           <a class="dropdown-item text-primary" (click)="updateStatus(service.uuid, 'CLOSED')">
-                                            <i class="fa fa-lock me-2"></i> {{ 'ACTIONS.CLOSE' | translate }}
+                                            <i class="fa-solid fa-circle-xmark mx-1 fs-5"></i> {{ 'ACTIONS.CLOSE' | translate }}
                                           </a>
                                         </li>
                                         <li>
                                           <a class="dropdown-item text-warning" (click)="editService(service)">
-                                            <i class="fa fa-edit me-2"></i> {{ 'ACTIONS.EDIT' | translate }}
+                                            <i class="fa fa-edit mx-1 fs-5"></i> {{ 'ACTIONS.EDIT' | translate }}
                                           </a>
                                         </li>
                                         <li *ngIf="role.getUserRole() === 'SUPER_ADMIN'">
                                           <a class="dropdown-item text-danger" (click)="deleteService(service.uuid)">
-                                            <i class="fa fa-trash me-2"></i> {{ 'ACTIONS.DELETE' | translate }}
+                                            <i class="fa fa-trash mx-1 fs-5"></i> {{ 'ACTIONS.DELETE' | translate }}
                                           </a>
                                         </li>
                                       </ul>

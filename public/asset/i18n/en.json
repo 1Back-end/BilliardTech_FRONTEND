@@ -64,7 +64,9 @@
     "GENDER": "Gender",
     "COURSE": "Course",
     "SPECIALTY": "Specialty",
-    "CLASS": "Class"
+    "CLASS": "Class",
+    "ADDRESS" : "Address",
+    "COURS" :"Course"
   },
   "COMMON": {
     "CREATED_BY_DATE": "Created by (Date)",
@@ -76,10 +78,26 @@
     "LIST_STUDENT" : "List of students"
   },
   "STATUS": {
-    "ACTIVE": "In progress",
-    "INACTIVE": "Inactive",
-    "CLOSED": "Closed"
-  },
+  "ACTIVE": "Active",
+  "INACTIVE": "Inactive",
+  "PENDING": "Pending",
+  "SUSPENDED": "Suspended",
+  "CLOSED": "Closed",
+  "ARCHIVED": "Archived",
+  "IN_PROGRESS": "In progress",
+  "COMPLETED": "Completed",
+  "CANCELLED": "Cancelled",
+  "EXPIRED": "Expired",
+  "DRAFT": "Draft",
+  "VALIDATED": "Validated",
+  "REJECTED": "Rejected",
+  "APPROVED": "Approved",
+  "DECLINED": "Declined",
+  "UNDER_REVIEW": "Under review",
+  "FAILED": "Failed",
+  "SUCCESS": "Success",
+  "BLOCKED": "Blocked"
+},
   "PAGINATION": {
     "PAGE_INFO": "{{current}} of {{total}} ({{items}} total)",
      "PREVIOUS": "‹ Previous",
@@ -92,8 +110,12 @@
   "POWERED_BY": "Créé par Laurent Alphonse",
   "LOGIN_MESSAGE": "Log in to access your personal space.",
   "MESSAGE" : {
-    "CREATE_TEACHER" : "Create a teacher",
-    "CHOOSE_FILE" : "Choose file"
+    "CREATE_TEACHER": "Create a teacher",
+    "CREATE_STUDENT": "Create a student",
+    "CHOOSE_FILE": "Choose file",
+    "EDIT_TEACHER": "Edit teacher",
+    "EDIT_STUDENT": "Edit student"
+
   },
   "LABEL": {
   "LAST_NAME": "Last Name",
@@ -108,7 +130,14 @@
   "MATRICULE" : "Registration number",
   "PHONE_NUMBER_2" : "Secondary Phone Number",
   "PROFILE" : "My profile",
-  "COUNTRY_CODE" : "Country code"
+  "COUNTRY_CODE" : "Country code",
+  "LIST_OF_TEACHERS" : "List of teachers",
+  "CREATE_CLASS" : "Creating a class",
+  "EDIT_CLASS" : "Modifying a class",
+  "NAME_CLASS" : "Name",
+  "LEVEL_CLASS" : "Level",
+  "SELECT_ACADEMIC_YEAR": "Select an academic year",
+  "LIST_OF_CLASS" : "List of classes"
 }
 
 

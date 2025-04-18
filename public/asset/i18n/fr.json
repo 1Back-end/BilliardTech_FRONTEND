@@ -62,7 +62,9 @@
     "GENDER": "Genre",
     "COURSE": "Filière",
     "SPECIALTY": "Spécialité",
-    "CLASS": "Classe"
+    "CLASS": "Classe",
+    "ADDRESS" : "Addresse",
+    "COURS" :"Cours"
   },
   "COMMON": {
     "CREATED_BY_DATE": "Crée par (Date)",
@@ -74,10 +76,26 @@
     "LIST_STUDENT" : "Liste des étudiants"
   },
   "STATUS": {
-    "ACTIVE": "En cours",
-    "INACTIVE": "Inactif",
-    "CLOSED": "Terminé"
-  },
+  "ACTIVE": "Actif",
+  "INACTIVE": "Inactif",
+  "PENDING": "En attente",
+  "SUSPENDED": "Suspendu",
+  "CLOSED": "Clôturé",
+  "ARCHIVED": "Archivé",
+  "IN_PROGRESS": "En cours",
+  "COMPLETED": "Terminé",
+  "CANCELLED": "Annulé",
+  "EXPIRED": "Expiré",
+  "DRAFT": "Brouillon",
+  "VALIDATED": "Validé",
+  "REJECTED": "Rejeté",
+  "APPROVED": "Approuvé",
+  "DECLINED": "Refusé",
+  "UNDER_REVIEW": "En révision",
+  "FAILED": "Échoué",
+  "SUCCESS": "Réussi",
+  "BLOCKED": "Bloqué"
+},
   "PAGINATION": {
       "PAGE_INFO": "{{current}} sur {{total}} ({{items}} total)",
       "PREVIOUS": "‹ Précédent",
@@ -91,8 +109,11 @@
   "POWERED_BY": "Créé par Laurent Alphonse",
   "LOGIN_MESSAGE": "Connectez-vous pour accéder à votre espace personnel.",
   "MESSAGE" : {
-    "CREATE_TEACHER" : "Créer un professeur",
-    "CHOOSE_FILE" : "Choisir la photo"
+    "CREATE_TEACHER": "Créer un enseignant",
+    "CREATE_STUDENT": "Créer un étudiant",
+    "CHOOSE_FILE": "Choisir un fichier",
+    "EDIT_TEACHER": "Modifier l'enseignant",
+    "EDIT_STUDENT": "Modifier l'étudiant"
   },
   "LABEL" :{
     "LAST_NAME" : "Nom",
@@ -107,7 +128,14 @@
     "MY_ACCOUNT" : "Mon profil",
     "MATRICULE" : "Matricule",
     "PROFILE" : "Mon profile",
-    "COUNTRY_CODE": "Code du pays"
+    "COUNTRY_CODE": "Code du pays",
+    "LIST_OF_TEACHERS" : "Liste des professeurs",
+    "CREATE_CLASS" :"Création d'une classe",
+    "EDIT_CLASS" : "Modification d'une classe",
+    "NAME_CLASS" : "Nom",
+    "LEVEL_CLASS" : "Niveau",
+    "SELECT_ACADEMIC_YEAR": "Sélectionner une année scolaire",
+    "LIST_OF_CLASS" : "Liste des classes"
   }
 
 

@@ -1,17 +1,17 @@
 <div class="col-lg-12 col-sm-12 mb-3">
     <div class="d-flex align-items-center justify-content-between">
         <div class="mb-0">
-            <h4 class="text-uppercase fw-bold">Liste des professeurs</h4>
+            <h4 class="text-uppercase fw-bold"> {{'LABEL.LIST_OF_TEACHERS' | translate}}</h4>
         </div>
         <div class="ml-auto">
             <a  class="mb-2 px-2 py-2 shadow-none btn btn-primary rounded-1 text-white btn-responsive mx-2" routerLink="/admin/teachers/add">
-                <i class="fa-solid fa-square-plus"></i> Créer un nouveau
+                <i class="fa-solid fa-square-plus"></i> {{'ACTIONS.ADD_NEW' | translate}}
             </a>
             <a  class="mb-2 px-2 py-2 shadow-none btn btn-success rounded-1 text-white btn-responsive mx-2" routerLink="/admin/users/add">
-                <i class="fa-solid fa-rotate"></i> Rafraichir
+                <i class="fa-solid fa-rotate"></i> {{'ACTIONS.RELOAD' | translate}}
             </a>
             <a  class="mb-2 px-2 py-2 shadow-none btn btn-info rounded-1 text-white btn-responsive mx-2" routerLink="/admin/users/add">
-                <i class="fa-solid fa-file-arrow-down"></i> Exporter
+                <i class="fa-solid fa-file-arrow-down"></i> {{'ACTIONS.EXPORT' | translate}}
             </a>
         </div>
     </div>
@@ -32,66 +32,198 @@
                         </th>
                         <th scope="col" (click)="sortBy('id')" class="cursor-pointer">
                             <span class="d-flex align-items-center gap-2 cursor-pointer">
-                                Nom
+                                {{'TABLE.PHOTO' | translate}}
                                 <i class="fa-solid fs-5" [class]="direction['id'] === 'asc' ? 'fa-arrow-down-wide-short' : 'fa-arrow-up-wide-short'"></i>
                             </span>
                         </th>
                         <th scope="col" (click)="sortBy('id')" class="cursor-pointer">
                             <span class="d-flex align-items-center gap-2 cursor-pointer">
-                                Prénom
+                                {{'LABEL.LOGIN' | translate}}
                                 <i class="fa-solid fs-5" [class]="direction['id'] === 'asc' ? 'fa-arrow-down-wide-short' : 'fa-arrow-up-wide-short'"></i>
                             </span>
                         </th>
                         <th scope="col" (click)="sortBy('id')" class="cursor-pointer">
                             <span class="d-flex align-items-center gap-2 cursor-pointer">
-                                Email
+                                {{'TABLE.LAST_NAME' | translate}}
                                 <i class="fa-solid fs-5" [class]="direction['id'] === 'asc' ? 'fa-arrow-down-wide-short' : 'fa-arrow-up-wide-short'"></i>
                             </span>
                         </th>
                         <th scope="col" (click)="sortBy('id')" class="cursor-pointer">
                             <span class="d-flex align-items-center gap-2 cursor-pointer">
-                               N° de téléphone
+                                {{'TABLE.FIRST_NAME' | translate}}
+                                <i class="fa-solid fs-5" [class]="direction['id'] === 'asc' ? 'fa-arrow-down-wide-short' : 'fa-arrow-up-wide-short'"></i>
+                            </span>
+                        </th>
+                       
+                        <th scope="col" (click)="sortBy('id')" class="cursor-pointer">
+                            <span class="d-flex align-items-center gap-2 cursor-pointer">
+                                {{'TABLE.PHONE_NUMBER' | translate}}
                                 <i class="fa-solid fs-5" [class]="direction['id'] === 'asc' ? 'fa-arrow-down-wide-short' : 'fa-arrow-up-wide-short'"></i>
                             </span>
                         </th>
                         <th scope="col" (click)="sortBy('id')" class="cursor-pointer">
                             <span class="d-flex align-items-center gap-2 cursor-pointer">
-                                Adresse
+                                {{'LABEL.EMAIL_ADDRESS' | translate}}
+                                <i class="fa-solid fs-5" [class]="direction['id'] === 'asc' ? 'fa-arrow-down-wide-short' : 'fa-arrow-up-wide-short'"></i>
+                            </span>
+                        </th>
+                       
+                        <th scope="col" (click)="sortBy('id')" class="cursor-pointer">
+                            <span class="d-flex align-items-center gap-2 cursor-pointer">
+                                {{'LABEL.GRADE' | translate}}
+                                <i class="fa-solid fs-5" [class]="direction['id'] === 'asc' ? 'fa-arrow-down-wide-short' : 'fa-arrow-up-wide-short'"></i>
+                            </span>
+                        </th>
+
+                        
+                        <th scope="col" (click)="sortBy('id')" class="cursor-pointer">
+                            <span class="d-flex align-items-center gap-2 cursor-pointer">
+                                <span class="d-flex align-items-center gap-2 cursor-pointer">
+                                    {{'COMMON.STATUS' | translate}}
+                                    <i class="fa-solid fs-5" [class]="direction['id'] === 'asc' ? 'fa-arrow-down-wide-short' : 'fa-arrow-up-wide-short'"></i>
+                                </span>
                                 <i class="fa-solid fs-5" [class]="direction['id'] === 'asc' ? 'fa-arrow-down-wide-short' : 'fa-arrow-up-wide-short'"></i>
                             </span>
                         </th>
                         <th scope="col" (click)="sortBy('id')" class="cursor-pointer">
                             <span class="d-flex align-items-center gap-2 cursor-pointer">
-                                Grade
+                                {{'COMMON.CREATED_BY_DATE' | translate}}
                                 <i class="fa-solid fs-5" [class]="direction['id'] === 'asc' ? 'fa-arrow-down-wide-short' : 'fa-arrow-up-wide-short'"></i>
                             </span>
                         </th>
                         <th scope="col" (click)="sortBy('id')" class="cursor-pointer">
                             <span class="d-flex align-items-center gap-2 cursor-pointer">
-                                Cours
-                                <i class="fa-solid fs-5" [class]="direction['id'] === 'asc' ? 'fa-arrow-down-wide-short' : 'fa-arrow-up-wide-short'"></i>
-                            </span>
-                        </th>
-                        <th scope="col" (click)="sortBy('id')" class="cursor-pointer">
-                            <span class="d-flex align-items-center gap-2 cursor-pointer">
-                                Crée par (Date)
-                                <i class="fa-solid fs-5" [class]="direction['id'] === 'asc' ? 'fa-arrow-down-wide-short' : 'fa-arrow-up-wide-short'"></i>
-                            </span>
-                        </th>
-                        <th scope="col" (click)="sortBy('id')" class="cursor-pointer">
-                            <span class="d-flex align-items-center gap-2 cursor-pointer">
-                                Actions
+                                {{'COMMON.OPERATIONS' | translate}}
                                 <i class="fa-solid fs-5" [class]="direction['id'] === 'asc' ? 'fa-arrow-down-wide-short' : 'fa-arrow-up-wide-short'"></i>
                             </span>
                         </th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="align-items-center">
-                        <td colspan="10">Aucun élément trouvé</td>
+                    <tr *ngIf="isLoading">
+                        <td colspan="15" class="text-center py-5">
+                            <div class="spinner-border text-primary" role="status">
+                                <span class="visually-hidden">{{ 'COMMON.LOADING' | translate }}</span>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr *ngIf="services.length === 0">
+                        <td colspan="15" class="text-center">{{ 'COMMON.NO_DATA' | translate }}</td>
+                    </tr>
+                    <tr *ngFor="let service of services; let i = index">
+                        <td>{{ i + 1 }}</td> <!-- Affiche le numéro de ligne -->
+                        <td>
+                            <img *ngIf="service.avatar?.url; else defaultAvatar"
+                            [src]="service.avatar.url"
+                            alt="Avatar"
+                            style="width: 50px; height: 50px; object-fit: cover; border-radius: 50%;">
+                            <ng-template #defaultAvatar>
+                                <img src="assets/images/profile_user.jpg"
+                                    alt="Avatar par défaut"
+                                    style="width: 50px; height: 50px; object-fit: cover; border-radius: 50%;">
+                            </ng-template>
+                          </td>
+                          <td>{{service.login | uppercase}}</td>
+                          <td>{{service.last_name | uppercase }}</td>
+                          <td>{{service.first_name | uppercase }}</td>
+                          <td>{{service.phone_number}}</td>
+                          <td class="text-truncate">{{service.email}}</td>
+                          <td>{{service.grade}}</td>
+                          
+                          <td>
+                            <span class="badge"
+                                  [ngClass]="{
+                                    'badge-success': service.status === 'ACTIVE',
+                                    'badge-danger': service.status === 'INACTIVE',
+                                  }">
+                              {{ 'STATUS.' + service.status | translate }}
+                            </span>
+                          </td>      
+                          <td>
+                            <span class="badge"
+                                  [ngClass]="{
+                                    'badge-success': service.user.role === 'ADMIN',
+                                    'badge-info': service.user.role === 'EDIMESTRE',
+                                    'badge-primary': service.user.role === 'SUPER_ADMIN'
+                                  }">
+                              {{ service.user.role ==='ADMIN' ? 'admin system' : (service.user.role ==='SUPER_ADMIN' ? 'super admin' : 'édimestre') }}
+                            </span>
+                            {{ service.created_at | date: 'dd/MM/yyyy HH:mm' }}
+                          </td>
+
+                          <td>
+                            <div class="dropdown">
+                              <button class="btn btn-outline-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                {{ 'COMMON.OPERATIONS' | translate }}
+                              </button>
+                              <ul class="dropdown-menu border-0 shadow-sm">
+                                <li>
+                                  <a class="dropdown-item text-warning" [routerLink]="['/admin/teachers/edit', service.uuid]">
+                                    <i class="fa fa-edit me-2 fs-5"></i> {{ 'ACTIONS.EDIT' | translate }}
+                                  </a>
+                                </li>
+                                <li>
+                                  <a class="dropdown-item text-danger">
+                                    <i class="fa fa-trash me-2 fs-5"></i> {{ 'ACTIONS.DELETE' | translate }}
+                                  </a>
+                                </li>
+                                <li *ngIf="service.status === 'ACTIVE'">
+                                  <a class="dropdown-item text-danger" (click)="updateStatus(service.uuid, 'INACTIVE')">
+                                    <i class="fa-solid fa-toggle-off me-2 fs-5"></i> {{ 'STATUS.INACTIVE' | translate }}
+                                  </a>
+                                </li>
+                                <li *ngIf="service.status === 'INACTIVE'">
+                                  <a class="dropdown-item text-success" (click)="updateStatus(service.uuid, 'ACTIVE')">
+                                    <i class="fa-solid fa-toggle-on me-2 fs-5"></i> {{ 'STATUS.ACTIVE' | translate }}
+                                  </a>
+                                </li>
+                              </ul>
+                            </div>
+                          </td>
+                          
+
+                          
+                          
                     </tr>
                 </tbody>
             </table>
         </div>
+        <!-- Pagination -->
+        <div class="d-flex justify-content-between align-items-center">
+            <div class="d-flex align-items-center">
+                <label for="itemsPerPage" class="me-2">{{ 'COMMON.SHOW' | translate }}:</label>
+                <select class="form-select cursor-pointer" id="itemsPerPage"
+                    [(ngModel)]="titlesPerPage"
+                    name="itemsPerPage"
+                    (change)="onItemsPerPageChange()">
+            <option [ngValue]="5">5</option>
+            <option [ngValue]="10">10</option>
+            <option [ngValue]="25">25</option>
+            <option [ngValue]="50">50</option>
+            <option [ngValue]="100">100</option>
+            </select>
+
+            </div>
+
+            <div class="pagination-info d-flex align-items-center">
+           
+                <!-- Navigation buttons: Précédent / Suivant -->
+                <ul class="pagination mb-0">
+                    <li class="page-item" [class.disabled]="currentPage === 1">
+                        <a class="page-link" href="javascript:void(0)" (click)="goToPage(currentPage - 1)">{{ 'PAGINATION.PREVIOUS' | translate }}</a>
+                    </li>
+                    <li class="page-item" [class.disabled]="currentPage === totalPages">
+                        <a class="page-link" href="javascript:void(0)" (click)="goToPage(currentPage + 1)">{{ 'PAGINATION.NEXT' | translate }}</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="pagination-info">
+                <span>{{ 'PAGINATION.PAGE_INFO' | translate:{ current: currentPage, total: totalPages, items: totalItems } }}</span>
+            </div>
+        </div>
+
+         <!-- Pagination Info -->
+       
     </div>
 </div>
