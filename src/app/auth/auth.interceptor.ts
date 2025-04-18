@@ -1,7 +1,6 @@
 import { HttpInterceptorFn } from '@angular/common/http';
 import { HttpRequest, HttpHandlerFn } from '@angular/common/http';
 import { Injectable, Inject, PLATFORM_ID } from '@angular/core';
-
 export const authInterceptor: HttpInterceptorFn = (req: HttpRequest<any>, next: HttpHandlerFn) => {
   if (typeof window !== 'undefined') { // Vérifie si l'environnement est bien côté client
     const tokenString = localStorage.getItem('token');  // Récupère le token depuis localStorage

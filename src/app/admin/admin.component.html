@@ -1,17 +1,17 @@
 <main class="main d-flex">
     <!-- Sidebar, visible only if authenticated -->
     <nav *ngIf="authService.isAuthenticated()" class="d-none d-lg-block">
-      <div class="d-flex flex-column flex-shrink-0 rounded-3  p-2 shadow vh-100 bg-body-secondary h-100" style="width: 275px;">
+      <div class="d-flex flex-column flex-shrink-0 p-1 mb-3 bg-light shadow-lg rounded-3" style="width: 295px; height: 100vh;">
         <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
           <span class="fs-4 text-uppercase fw-bold">BilliardTech</span>
         </a>
         <hr>
         <app-menu></app-menu>
-      </div>
+      </div>      
     </nav>
   
     <div class="d-flex flex-column w-100" *ngIf="isAuthenticated">
-      <nav class="navbar navbar-expand-lg navbar-light bg-light shadow rounded-3 p-2 py-lg-3 px-3 mb-3">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm p-2 py-lg-3 px-3 mb-3">
         <div class="container-fluid">
           <div class="d-flex justify-content-between w-100 align-items-center">
             <!-- Centre dropdown section -->
@@ -59,12 +59,12 @@
                 <ul class="dropdown-menu dropdown-menu-end border-0 p-0">
                   <li>
                     <button class="dropdown-item text-danger" (click)="logout()">
-                      <i class="bi bi-box-arrow-right mx-1"></i> Déconnexion
+                      <i class="fa-solid fa-power-off"></i> {{ 'LABEL.LOGOUT' | translate }}
                     </button>
                   </li>
-                  <li>
+                  <li routerLink="/admin/profile">
                     <button class="dropdown-item text-success">
-                      <i class="bi bi-person-vcard mx-1"></i> Mon profil
+                      <i class="fa-solid fa-address-card"></i> {{ 'LABEL.MY_ACCOUNT' | translate }}
                     </button>
                   </li>
                 </ul>

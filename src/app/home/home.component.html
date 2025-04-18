@@ -11,18 +11,43 @@
         <div class="collapse navbar-collapse justify-content-center" id="navbarNavCenter">
           <ul class="navbar-nav text-center">
             <li class="nav-item mx-2">
-              <a class="nav-link active" aria-current="page" href="#">Accueil</a>
+              <a class="nav-link active" aria-current="page">{{'HOME.HOME' | translate}}</a>
             </li>
             <li class="nav-item mx-2">
-              <a class="nav-link" href="#">À propos</a>
+              <a class="nav-link" href="#">{{'HOME.ABOUT' | translate}}</a>
             </li>
             <li class="nav-item mx-2">
-              <a class="nav-link" href="#">Résultats</a>
+              <a class="nav-link" href="#">{{'HOME.RESULT' | translate}}</a>
             </li>
           </ul>
         
-        <div class="d-flex">
-          <a [routerLink]="['/login']" class="btn btn-outline-primary mx-2">Se connecter</a>
+        <div class="d-flex align-items-center justify-content-between">
+
+          <div class="mb-0 mx-2">
+            <a [routerLink]="['/login']" class="btn btn-outline-primary mx-2">{{'ACTIONS.LOGIN' | translate}}</a>
+
+          </div>
+          <div class="nav-item dropdown border-0 list-unstyled">
+            <!-- Langue active avec drapeau -->
+            <a class="nav-link dropdown-toggle d-flex align-items-center" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <img [src]="languageService.getCurrentFlag()" width="30" class="me-2">
+              <span class="text-capitalize">{{ languageService.getCurrentLanguageName() }}</span>
+            </a>
+        
+            <ul class="dropdown-menu border-0 shadow-sm">
+              <li>
+                <a class="dropdown-item d-flex align-items-center text-decoration-none" (click)="changeLanguage('fr')">
+                  <img src="https://flagcdn.com/fr.svg" width="30" class="me-2"> {{ 'LANGUAGE.FRENCH' | translate }}
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item d-flex align-items-center text-decoration-none" (click)="changeLanguage('en')">
+                  <img src="https://flagcdn.com/gb.svg" width="30" class="me-2"> {{ 'LANGUAGE.ENGLISH' | translate }}
+                </a>
+              </li>
+            </ul>
+          </div>
+          
         </div>
         </div>
       </div>
@@ -34,19 +59,19 @@
 <div class="container">
     <div class="d-flex align-items-center justify-content-center" style="margin-top: 150px;">
         <div class="col-lg-6 col-md-8 col-sm-10 py-5 form-shadow bg-light text-center p-3 rounded-5">
-          <h2 class="text-title mb-3 fw-bold">Consultation des Résultats</h2>
+          <h2 class="text-title mb-3 fw-bold">{{ 'HOME.CONSULT_RESULTS' | translate }}</h2>
           <hr class="mb-4">
           <p class="mb-4 text-muted">
-            Entrez votre matricule ci-dessous pour accéder à vos résultats d’examen en toute simplicité.
+            {{ 'HOME.CONSULT_INFO' | translate }}
           </p>
           <form>
             <div class="form-floating mb-3">
                 <input type="text" class="form-control rounded-2" id="floatingInput" placeholder="name@example.com">
-                <label for="floatingInput">Matricule</label>
+                <label for="floatingInput">{{ 'LABEL.MATRICULE' | translate }}</label>
               </div>
     
               <div class="d-grid gap-2">
-                <button class="btn btn-outline-primary py-3 px-3 btn-lg shadow-none" type="button">Consulter</button>
+                <button class="btn btn-outline-primary py-3 px-3 btn-lg shadow-none" type="button">{{ 'ACTIONS.CONSULTATION' | translate }}</button>
               </div>
               
           </form>
@@ -70,16 +95,16 @@
               <i class="fas fa-graduation-cap me-3"></i>RésulCampus
             </h6>
             <p>
-              RésulCampus est une plateforme numérique permettant aux étudiants de consulter facilement leurs résultats académiques en ligne.
+              {{ 'HOME.CONSULT_DESCRIPTION' | translate }}
             </p>
           </div>
   
           <!-- Liens -->
           <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
             <h6 class="text-uppercase fw-bold mb-4">Menus</h6>
-            <p><a href="#" class="text-reset text-decoration-none">Accueil</a></p>
-            <p><a href="#" class="text-reset text-decoration-none">À propos</a></p>
-            <p><a href="#" class="text-reset text-decoration-none">Résultats</a></p>
+            <p><a href="#" class="text-reset text-decoration-none">{{'HOME.HOME' | translate}}</a></p>
+            <p><a href="#" class="text-reset text-decoration-none">{{'HOME.ABOUT' | translate}}</a></p>
+            <p><a href="#" class="text-reset text-decoration-none">{{'HOME.RESULT' | translate}}</a></p>
           </div>
   
           <!-- Infos utiles -->

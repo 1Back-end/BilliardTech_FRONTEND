@@ -10,7 +10,7 @@ import { FormsModule } from '@angular/forms';
 import {RoleService } from '../services/role.service';
 import { TranslateModule } from '@ngx-translate/core';
 import { TranslateService } from '@ngx-translate/core'; // Assure-toi que @ngx-translate/core est installé
-
+import {LanguageHeaderService} from '../admin/language-header.service';
 @Component({
   selector: 'app-academic-year',
   standalone: true,
@@ -32,7 +32,7 @@ export class AcademicYearComponent implements OnInit {
   direction: { [key: string]: 'asc' | 'desc' } = {};
 
 
-  constructor(private toastr: ToastrService, private fb: FormBuilder, private http: HttpClient,public role: RoleService,private translate: TranslateService) {
+  constructor(private toastr: ToastrService, private fb: FormBuilder, private http: HttpClient,public role: RoleService,private translate: TranslateService,private languageHeaderService: LanguageHeaderService,) {
     this.ServiceForm = this.fb.group({
       name: ['', Validators.required],
       start_date : ['',Validators.required],
@@ -106,9 +106,7 @@ export class AcademicYearComponent implements OnInit {
   // Ajouter un service
   async addService(): Promise<void> {
     const serviceData = this.ServiceForm.value;
-    const currentLang = this.translate.currentLang || 'fr';  // Utilise ngx-translate ou un autre mécanisme pour obtenir la langue active.
-    // Ajouter l'en-tête Accept-Language
-    const headers = new HttpHeaders().set('Accept-Language', currentLang);
+    const headers = this.languageHeaderService.getLanguageHeader();
     this.http.post(`${CONFIG.apiUrl}/academic_year/create`, serviceData,{ headers }).subscribe(
       (response: any) => {
         this.toastr.success(response?.message || 'Enregistrement effectué avec succès');

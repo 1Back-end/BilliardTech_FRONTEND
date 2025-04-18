@@ -1,0 +1,128 @@
+<div class="col-lg-6 col-sm-12 mb-3">
+    <div class="card">
+      <div class="card-body border-2">
+        <form [formGroup]="UserForm" (ngSubmit)="onSubmit()">
+          <div class="d-flex justify-content-between gap-2 flex-column flex-lg-row">
+            <h4>{{'LABEL.PROFILE' | translate}}</h4>
+            <div class="d-flex gap-2">
+              <button type="submit" class="btn btn-primary border-0 px-2 py-2 rounded-1" [disabled]="UserForm.invalid">
+                {{'ACTIONS.EDIT' | translate}} <i class="fa-solid fa-floppy-disk"></i>
+              </button>
+              <button type="reset" class="btn btn-secondary border-0 px-2 py-2 rounded-1">
+                {{'ACTIONS.CANCEL' | translate}} <i class="fa-solid fa-rectangle-xmark"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Photo -->
+          <div class="row mt-4">
+            <div class="col-lg-12 mb-3">
+              <input
+                type="file"
+                (change)="onFileSelected($event)"
+                id="fileInput"
+                class="d-none"
+                formControlName="avatar_uuid"
+                accept="image/*"
+              />
+              <label
+                for="fileInput"
+                class="border border-2 rounded-2 p-3 d-flex justify-content-center align-items-center text-center w-50"
+                style="border-style: dashed!important;"
+              >
+                <!-- Si une image est sélectionnée localement (filePreview) -->
+                <ng-container *ngIf="filePreview">
+                  <div class="position-relative d-inline-block">
+                    <img [src]="filePreview" alt="Aperçu" class="img-thumbnail" style="max-width: 150px;">
+                    <button type="button" class="btn btn-danger btn-sm position-absolute top-0 end-0" (click)="removeFile()">
+                      &times;
+                    </button>
+                  </div>
+                </ng-container>
+          
+                <!-- Si l'image est récupérée depuis le backend (fileUrl) -->
+                <ng-container *ngIf="!filePreview && fileUrl">
+                  <div class="position-relative d-inline-block">
+                    <img [src]="fileUrl" alt="Avatar" class="img-thumbnail" style="max-width: 150px;">
+                    <button type="button" class="btn btn-danger btn-sm position-absolute top-0 end-0" (click)="removeFile()">
+                      &times;
+                    </button>
+                  </div>
+                </ng-container>
+          
+                <!-- Si aucune image n'est sélectionnée ni disponible, afficher l'option pour choisir une photo -->
+                <ng-container *ngIf="!filePreview && !fileUrl">
+                  <span class="d-flex justify-content-center align-items-center gap-2 cursor-pointer">
+                    <span>Choisir la photo</span>
+                    <i class='bx bx-cloud-upload fs-2'></i>
+                  </span>
+                </ng-container>
+              </label>
+            </div>
+          </div>
+          
+        <div class="row mt-4">
+            <div class="col-lg-4 mb-3">
+                <div class="form-floating mb-3">
+                    <input type="text" formControlName="last_name" [ngClass]="{'is-invalid': UserForm.get('last_name')?.invalid && UserForm.get('last_name')?.touched}" class="form-control" id="floatingInput" placeholder="name@example.com">
+                    <label for="floatingInput">{{'LABEL.LAST_NAME' | translate}}</label>
+                    <div *ngIf="UserForm.get('last_name')?.invalid && UserForm.get('last_name')?.touched" class="invalid-feedback">
+                        {{'VALIDATION.REQUIRED_FIELD' | translate}}
+                      </div>
+                </div>  
+            </div>
+            <div class="col-lg-4 mb-3">
+                <div class="form-floating mb-3">
+                    <input type="text" formControlName="first_name"[ngClass]="{'is-invalid': UserForm.get('first_name')?.invalid && UserForm.get('first_name')?.touched}" class="form-control" id="floatingInput" placeholder="name@example.com">
+                    <label for="floatingInput">{{'LABEL.FIRST_NAME' | translate}}</label>
+                    <div *ngIf="UserForm.get('first_name')?.invalid && UserForm.get('first_name')?.touched" class="invalid-feedback">
+                        {{'VALIDATION.REQUIRED_FIELD' | translate}}
+                      </div>
+                </div>  
+            </div>
+
+            <div class="col-lg-4 mb-3">
+                <div class="form-floating mb-3">
+                    <input type="email" formControlName="email"[ngClass]="{'is-invalid': UserForm.get('email')?.invalid && UserForm.get('email')?.touched}" class="form-control" id="floatingInput" placeholder="name@example.com">
+                    <label for="floatingInput">{{'LABEL.EMAIL_ADDRESS' | translate}}</label>
+                    <div *ngIf="UserForm.get('email')?.invalid && UserForm.get('email')?.touched" class="invalid-feedback">
+                        {{'VALIDATION.REQUIRED_FIELD' | translate}}
+                      </div>
+                </div>  
+            </div>
+
+            <div class="col-lg-4 mb-3">
+                <div class="form-floating mb-3">
+                    <input type="tel" formControlName="country_code" [ngClass]="{'is-invalid': UserForm.get('country_code')?.invalid && UserForm.get('country_code')?.touched}" class="form-control" id="floatingInput" placeholder="name@example.com">
+                    <label for="floatingInput">{{'LABEL.COUNTRY_CODE' | translate}}</label>
+                    <div *ngIf="UserForm.get('country_code')?.invalid && UserForm.get('country_code')?.touched" class="invalid-feedback">
+                        {{'VALIDATION.REQUIRED_FIELD' | translate}}
+                      </div>
+                </div>  
+            </div>
+
+            <div class="col-lg-4 mb-3">
+                <div class="form-floating mb-3">
+                    <input type="tel" formControlName="phone_number" [ngClass]="{'is-invalid': UserForm.get('phone_number')?.invalid && UserForm.get('phone_number')?.touched}" class="form-control" id="floatingInput" placeholder="name@example.com">
+                    <label for="floatingInput">{{'LABEL.PHONE_NUMBER' | translate}}</label>
+                    <div *ngIf="UserForm.get('phone_number')?.invalid && UserForm.get('phone_number')?.touched" class="invalid-feedback">
+                        {{'VALIDATION.REQUIRED_FIELD' | translate}}
+                      </div>
+                </div>  
+            </div>
+
+
+            
+
+
+            
+            <div class="col-lg-4 mb-3">
+                <div class="form-floating mb-3">
+                    <input type="tel" formControlName="login" [ngClass]="{'is-invalid': UserForm.get('login')?.invalid && UserForm.get('login')?.touched}" class="form-control" id="floatingInput" placeholder="name@example.com">
+                    <label for="floatingInput">{{'LABEL.LOGIN' | translate}}</label>
+                    <div *ngIf="UserForm.get('login')?.invalid && UserForm.get('login')?.touched" class="invalid-feedback">
+                        {{'VALIDATION.REQUIRED_FIELD' | translate}}
+                      </div>
+                </div>  
+            </div>
+        </div>

@@ -22,6 +22,8 @@ import {StudentComponent} from './student/student.component';
 import {AddStudentComponent} from './student/add-student/add-student.component';
 import {EditStudentComponent} from './student/edit-student/edit-student.component';
 import {EditUtilisateursComponent} from './utilisateurs/edit-utilisateurs/edit-utilisateurs.component';
+import {AddProfesseursComponent} from './profesors/add-professeurs/add-professeurs.component';
+import {ProfileUsersComponent} from './profile-users/profile-users.component';
 
 export const routes: Routes = [
   // Route de login
@@ -45,6 +47,11 @@ export const routes: Routes = [
         path: 'dashboard', 
         component: DashboardComponent, // Composant de dashboard pour l'admin
         canActivate: [AuthGuard] // Protège cette route avec le même guard d'authentification
+      },
+      {
+        path: 'profile',
+        component: ProfileUsersComponent,
+        canActivate : [AuthGuard]
       },
       {
         path: 'users',
@@ -106,6 +113,12 @@ export const routes: Routes = [
       {
         path :'students/add',
         component : AddStudentComponent,
+        canActivate : [AuthGuard]
+
+      },
+      {
+        path :'teachers/add',
+        component : AddProfesseursComponent,
         canActivate : [AuthGuard]
 
       },

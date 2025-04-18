@@ -5,6 +5,17 @@
     "GERMAN": "German",
     "SPANISH": "Spanish"
   },
+  "HOME":{
+    "HOME" : "Home",
+    "ABOUT" : "About",
+    "RESULT" : "Results",
+    "CONSULT_RESULTS" : "Consultation of Results",
+    "CONSULT_INFO" : "Enter your registration number below to easily access your exam results.",
+    "CONSULT_DESCRIPTION" :"RésulCampus is a digital platform allowing students to easily consult their academic results online.",
+    "MENUS" : "Menus"
+
+
+  },
   "MENU": {
     "DASHBOARD": "Dashboard",
     "ACADEMIC_YEAR": "Academic Year Management",
@@ -38,7 +49,10 @@
     "DELETE": "Delete",
     "ADD_NEW" : "Create a new",
     "RELOAD" : "Refresh",
-    "EXPORT" : "Export"
+    "EXPORT" : "Export",
+    "LOGIN" : "Login",
+    "FORGOT_PASSWORD" : "Forgot your password?",
+    "CONSULTATION" : "To consult"
   },
   "TABLE":{
     "YEAR" : "School year",
@@ -70,7 +84,36 @@
     "PAGE_INFO": "{{current}} of {{total}} ({{items}} total)",
      "PREVIOUS": "‹ Previous",
       "NEXT": "Next ›"
-  }
+  },
+  "INPUT" : {
+    "PASSWORD" : "Password",
+    "EMAIL" : "Email"
+  },
+  "POWERED_BY": "Créé par Laurent Alphonse",
+  "LOGIN_MESSAGE": "Log in to access your personal space.",
+  "MESSAGE" : {
+    "CREATE_TEACHER" : "Create a teacher",
+    "CHOOSE_FILE" : "Choose file"
+  },
+  "LABEL": {
+  "LAST_NAME": "Last Name",
+  "FIRST_NAME": "First Name",
+  "EMAIL_ADDRESS": "Email Address",
+  "PHONE_NUMBER" : "Phone Number",
+  "ADDRESS" : "Address",
+  "GRADE" : "Grade",
+  "LOGIN" : "Login",
+  "LOGOUT" : "Logout",
+  "MY_ACCOUNT" : "My account",
+  "MATRICULE" : "Registration number",
+  "PHONE_NUMBER_2" : "Secondary Phone Number",
+  "PROFILE" : "My profile",
+  "COUNTRY_CODE" : "Country code"
+}
+
+
+
+
   
   
 }

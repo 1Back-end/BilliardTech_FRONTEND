@@ -1,5 +1,5 @@
 import { Component, ElementRef, ViewChild, Inject, PLATFORM_ID } from '@angular/core';
-import { Router, RouterOutlet } from '@angular/router';
+import { Router,RouterLink ,RouterOutlet } from '@angular/router';
 import { MenuComponent } from '../menu/menu.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
@@ -15,7 +15,7 @@ import { TranslateModule } from '@ngx-translate/core';
 @Component({
   selector: 'app-admin',
   standalone: true,
-  imports: [RouterOutlet, FormsModule, ReactiveFormsModule, MenuComponent, CommonModule, TranslateModule],
+  imports: [RouterOutlet, FormsModule, ReactiveFormsModule,RouterLink, MenuComponent, CommonModule, TranslateModule],
   templateUrl: './admin.component.html',
   styleUrls: ['./admin.component.css']
 })

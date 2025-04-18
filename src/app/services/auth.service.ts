@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
-
+import {LanguageHeaderService} from '../admin/language-header.service';
 
 @Injectable({
   providedIn: 'root'
@@ -18,24 +18,25 @@ export class AuthService {
     @Inject(PLATFORM_ID) private platformId: Object, 
     private router: Router,
     private toastr: ToastrService,
+    private languageHeaderService: LanguageHeaderService,
   ) {}
 
   login(email: string, password: string): Observable<any> {
-    return this.http.post<any>(`${CONFIG.apiUrl}/authentification/login/administrator`, { email, password }).pipe(
+    const headers = this.languageHeaderService.getLanguageHeader();
+    return this.http.post<any>(`${CONFIG.apiUrl}/authentification/login/administrator`, { email, password },{headers}).pipe(
       tap(response => {
-        // Si nous sommes dans le navigateur, stocke le access_token
         if (isPlatformBrowser(this.platformId)) {
           localStorage.setItem('token', JSON.stringify(response.token));
           localStorage.setItem('user', btoa(JSON.stringify(response.user)));
-            
         }
       }),
       catchError(error => {
-        console.error('Erreur de connexion:', error);
-        return throwError(() => new Error('Échec de connexion, vérifiez vos identifiants.'));
+        // Ne renvoie pas un message générique ici
+        return throwError(() => error); // Laisse le message original du backend passer
       })
     );
   }
+  
   logout(): void {
     const token = localStorage.getItem('token');
     if (!token) return;

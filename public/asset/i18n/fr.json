@@ -5,6 +5,16 @@
     "GERMAN": "Allemand",
     "SPANISH": "Espagnol"
   },
+  "HOME":{
+    "HOME" : "Accueil",
+    "ABOUT" : "À propos",
+    "RESULT" : "Résultats",
+    "CONSULT_RESULTS" : "Consultation des Résultats",
+    "CONSULT_INFO" : "Entrez votre matricule ci-dessous pour accéder à vos résultats d’examen en toute simplicité.",
+    "CONSULT_DESCRIPTION" : "RésulCampus est une plateforme numérique permettant aux étudiants de consulter facilement leurs résultats académiques en ligne.",
+    "MENUS" : "Menus"
+
+  },
   "MENU": {
     "DASHBOARD": "Tableau de bord",
     "ACADEMIC_YEAR": "Gestion des années académiques",
@@ -37,7 +47,10 @@
     "DELETE": "Supprimer",
     "ADD_NEW" : "Créer un nouveau",
     "RELOAD" : "Rafraichir",
-    "EXPORT" : "Exporter"
+    "EXPORT" : "Exporter",
+    "LOGIN" : "Se connecter",
+    "FORGOT_PASSWORD" : "Mot de passe oublié?",
+    "CONSULTATION" : "Consulter"
   },
   "TABLE": {
     "YEAR" : "Année scolaire",
@@ -69,6 +82,34 @@
       "PAGE_INFO": "{{current}} sur {{total}} ({{items}} total)",
       "PREVIOUS": "‹ Précédent",
       "NEXT": "Suivant ›"
+  },
+  "INPUT":{
+    "PASSWORD" : "Mot de passe",
+    "EMAIL" : "Email"
+
+  },
+  "POWERED_BY": "Créé par Laurent Alphonse",
+  "LOGIN_MESSAGE": "Connectez-vous pour accéder à votre espace personnel.",
+  "MESSAGE" : {
+    "CREATE_TEACHER" : "Créer un professeur",
+    "CHOOSE_FILE" : "Choisir la photo"
+  },
+  "LABEL" :{
+    "LAST_NAME" : "Nom",
+    "FIRST_NAME" : "Prénom",
+    "EMAIL_ADDRESS" : "Email",
+    "PHONE_NUMBER" :"N° de téléphone",
+    "PHONE_NUMBER_2" : "N° de téléphone secondaire",
+    "ADDRESS" : "Addresse",
+    "GRADE" : "Grade",
+    "LOGIN" : "Login",
+    "LOGOUT" : "Déconnexion",
+    "MY_ACCOUNT" : "Mon profil",
+    "MATRICULE" : "Matricule",
+    "PROFILE" : "Mon profile",
+    "COUNTRY_CODE": "Code du pays"
   }
+
+
     
 }
