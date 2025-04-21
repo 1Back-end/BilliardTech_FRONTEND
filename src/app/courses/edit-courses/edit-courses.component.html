@@ -1,0 +1,129 @@
+<div class="col-lg-12 col-sm-12 mb-3">
+    <div class="card">
+        <div class="card-body border-2">
+            <form [formGroup]="ServiceForm" (ngSubmit)="onSubmit()">
+                <div class="d-flex justify-content-between gap-2 flex-column flex-lg-row">
+                  <h4>{{ 'LABEL.EDIT_COURSE' | translate }}</h4>
+                  <div class="d-flex gap-2">
+                    <button type="submit" class="btn btn-primary border-0 px-2 py-2 rounded-1" [disabled]="ServiceForm.invalid">
+                      <i class="fa-solid fa-floppy-disk fs-5 mx-1"></i>
+                      {{ 'ACTIONS.EDIT' | translate }}
+                    </button>
+                    <button type="reset" class="btn btn-danger border-0 px-2 py-2 rounded-1">
+                      <i class="fa-solid fa-xmark mx-1 fs-5"></i>
+                      {{ 'ACTIONS.CANCEL' | translate }}
+                    </button>
+                    <a class="btn btn-secondary border-0 px-2 py-2 rounded-1" routerLink="/admin/courses">
+                      <i class="fa-solid fa-arrows-turn-right fs-5 mx-1"></i>
+                      {{ 'ACTIONS.BACK' | translate }}
+                    </a>
+                  </div>
+                </div>
+              
+                <div class="row mt-5">
+                  <!-- Code -->
+                  <div class="col-lg-4 mb-3">
+                    <div class="form-floating mb-3">
+                      <input type="text" formControlName="code"
+                        [ngClass]="{ 'is-invalid': ServiceForm.get('code')?.invalid && ServiceForm.get('code')?.touched }"
+                        class="form-control" id="floatingInputCode" placeholder="Code">
+                      <label for="floatingInputCode">{{ 'LABEL.CODE' | translate }}</label>
+                      <div *ngIf="ServiceForm.get('code')?.invalid && ServiceForm.get('code')?.touched" class="invalid-feedback">
+                        {{ 'VALIDATION.REQUIRED_FIELD' | translate }}
+                      </div>
+                    </div>
+                  </div>
+              
+                  <!-- Intitulé -->
+                  <div class="col-lg-4 mb-3">
+                    <div class="form-floating mb-3">
+                      <input type="text" formControlName="title"
+                        [ngClass]="{ 'is-invalid': ServiceForm.get('title')?.invalid && ServiceForm.get('title')?.touched }"
+                        class="form-control" id="floatingInputTitle" placeholder="Intitulé">
+                      <label for="floatingInputTitle">{{ 'LABEL.COURSES' | translate }}</label>
+                      <div *ngIf="ServiceForm.get('title')?.invalid && ServiceForm.get('title')?.touched" class="invalid-feedback">
+                        {{ 'VALIDATION.REQUIRED_FIELD' | translate }}
+                      </div>
+                    </div>
+                  </div>
+              
+                  <!-- Crédits -->
+                  <div class="col-lg-4 mb-3">
+                    <div class="form-floating mb-3">
+                      <input type="text" formControlName="credits"
+                        [ngClass]="{ 'is-invalid': ServiceForm.get('credits')?.invalid && ServiceForm.get('credits')?.touched }"
+                        class="form-control" id="floatingInputCredits" placeholder="Crédits">
+                      <label for="floatingInputCredits">{{ 'LABEL.CREDITS' | translate }}</label>
+                      <div *ngIf="ServiceForm.get('credits')?.invalid && ServiceForm.get('credits')?.touched" class="invalid-feedback">
+                        <div *ngIf="ServiceForm.get('credits')?.errors?.['required']">
+                          {{ 'VALIDATION.REQUIRED_FIELD' | translate }}
+                        </div>
+                        <div *ngIf="ServiceForm.get('credits')?.errors?.['pattern']">
+                          {{ 'VALIDATION.NUMERIC_ONLY' | translate }}
+                        </div>
+                      </div>
+                      
+                    </div>
+                  </div>
+              
+                  <!-- Type de cours -->
+                  <div class="col-lg-4 mb-3">
+                    <div class="form-floating">
+                      <select class="form-select cursor-pointer" formControlName="type"
+                        [ngClass]="{ 'is-invalid': ServiceForm.get('type')?.invalid && ServiceForm.get('type')?.touched }"
+                        id="floatingSelect" aria-label="Floating label select example">
+                        <option disabled selected>{{ 'SELECT.CHOOSE_OPTION' | translate }}</option>
+                        <option value="CM">{{ 'COURSE.TYPE.CM' | translate }}</option>
+                        <option value="TP">{{ 'COURSE.TYPE.TP' | translate }}</option>
+                        <option value="TD">{{ 'COURSE.TYPE.TD' | translate }}</option>
+                      </select>
+                      <label for="floatingSelect">{{ 'LABEL.TYPE_LABEL' | translate }}</label>
+                      <div *ngIf="ServiceForm.get('type')?.invalid && ServiceForm.get('type')?.touched" class="invalid-feedback">
+                        {{ 'VALIDATION.REQUIRED_FIELD' | translate }}
+                      </div>
+                    </div>
+                  </div>
+              
+                  <!-- Spécialité -->
+                  <div class="col-lg-4 mb-3">
+                    <angular2-multiselect [data]="speciality" [settings]="specialityDropdownSettings"
+                      formControlName="speciality_uuid"
+                      [ngClass]="{ 'is-invalid': ServiceForm.get('speciality_uuid')?.invalid && ServiceForm.get('speciality_uuid')?.touched }"
+                      placeholder="Sélectionner la spécialité">
+                    </angular2-multiselect>
+                    <div *ngIf="ServiceForm.get('speciality_uuid')?.invalid && ServiceForm.get('speciality_uuid')?.touched"
+                      class="invalid-feedback">
+                      {{ 'VALIDATION.REQUIRED_FIELD' | translate }}
+                    </div>
+                  </div>
+              
+                  <!-- Classe -->
+                  <div class="col-lg-4 mb-3">
+                    <angular2-multiselect [data]="classes" [settings]="ClassDropdownSettings" formControlName="group_uuid"
+                      [ngClass]="{ 'is-invalid': ServiceForm.get('group_uuid')?.invalid && ServiceForm.get('group_uuid')?.touched }"
+                      placeholder="Sélectionner une classe">
+                    </angular2-multiselect>
+                    <div *ngIf="ServiceForm.get('group_uuid')?.invalid && ServiceForm.get('group_uuid')?.touched"
+                      class="invalid-feedback">
+                      {{ 'VALIDATION.REQUIRED_FIELD' | translate }}
+                    </div>
+                  </div>
+              
+                  <!-- Année académique -->
+                  <div class="col-lg-4 mb-3">
+                    <angular2-multiselect [data]="academic_years" [settings]="dropdownSettings"
+                      formControlName="academic_year_uuid"
+                      [ngClass]="{ 'is-invalid': ServiceForm.get('academic_year_uuid')?.invalid && ServiceForm.get('academic_year_uuid')?.touched }"
+                      placeholder="Sélectionner une année scolaire">
+                    </angular2-multiselect>
+                    <div *ngIf="ServiceForm.get('academic_year_uuid')?.invalid && ServiceForm.get('academic_year_uuid')?.touched"
+                      class="invalid-feedback">
+                      {{ 'VALIDATION.REQUIRED_FIELD' | translate }}
+                    </div>
+                  </div>
+                </div>
+              </form>
+              
+        </div>
+    </div>
+</div>

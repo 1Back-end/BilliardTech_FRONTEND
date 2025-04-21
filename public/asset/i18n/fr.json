@@ -26,7 +26,9 @@
     "PROFESSORS": "Gestion des professeurs",
     "STUDENTS": "Gestion des étudiants",
     "NOTES": "Gestion des notes",
-    "USERS": "Gestion des utilisateurs"
+    "USERS": "Gestion des utilisateurs",
+    "COURSES" : "Gestion des cours",
+    "COURSES_ASSIGMENT" :"Affectation des cours"
   },
   "ACADEMIC_YEAR": {
     "CREATE": "Création d'une année académique",
@@ -37,7 +39,8 @@
     "LIST" : "Liste des années académiques"
   },
   "VALIDATION": {
-    "REQUIRED_FIELD": "Ce champ est requis."
+    "REQUIRED_FIELD": "Ce champ est requis.",
+    "NUMERIC_ONLY": "Veuillez entrer uniquement des chiffres."
   },
   "ACTIONS": {
     "CREATE": "Enregistrer",
@@ -50,7 +53,10 @@
     "EXPORT" : "Exporter",
     "LOGIN" : "Se connecter",
     "FORGOT_PASSWORD" : "Mot de passe oublié?",
-    "CONSULTATION" : "Consulter"
+    "CONSULTATION" : "Consulter",
+    "BACK" : "Retour",
+    "ADD_NEW_ASSIGNMENT": "Nouvelle affectation",
+    "INFO" :"Détails"
   },
   "TABLE": {
     "YEAR" : "Année scolaire",
@@ -68,6 +74,7 @@
   },
   "COMMON": {
     "CREATED_BY_DATE": "Crée par (Date)",
+    "UPDATED_BY_DATE": "Mise à jour par (Date)",
     "STATUS" : "Statut",
     "OPERATIONS" : "Actions",
     "LOADING": "Chargement...",
@@ -135,8 +142,43 @@
     "NAME_CLASS" : "Nom",
     "LEVEL_CLASS" : "Niveau",
     "SELECT_ACADEMIC_YEAR": "Sélectionner une année scolaire",
-    "LIST_OF_CLASS" : "Liste des classes"
-  }
+    "LIST_OF_CLASS" : "Liste des classes",
+    "LIST_OF_COURSES" : "Liste des cours",
+    "CODE" : "Code",
+    "COURSES" : "Cours",
+    "CREDITS" : "Crédits",
+    "TYPE" : "Type",
+    "CREATE_COURSE" : "Créer un cours",
+    "TYPE_LABEL": "Type de cours",
+    "EDIT_COURSE" : "Modifier un cours",
+    "ALL_AFFECTIONS_OF_COURSES" : "TOUTES LES AFFECTATIONS DES COURS",
+    "SEMESTER" :"Semestre",
+    "TEACHER_NAME" :"Professeur",
+    "RELATED_COURS" :"Cours associés",
+    "EMPTY_COURSES" : "Aucun cours disponible"
+  },
+  "COURSE": {
+    "TYPE": {
+      "CM": "Cours Magistral",
+      "TD": "Travaux Dirigés",
+      "TP": "Travaux Pratiques",
+      "OTHER": "Autre"
+    }
+  },
+  "USER": {
+    "ROLE": {
+      "ADMIN": "Administrateur système",
+      "SUPER_ADMIN": "Super administrateur",
+      "EDIMESTRE": "Édimestre"
+    }
+  },
+  "SELECT": {
+    "CHOOSE_OPTION": "Choisir une option"
+  },
+  "FIELDS": {
+  "TEACHERS": "Enseignant",
+  "COURSES": "Cours"
+}
 
 
     

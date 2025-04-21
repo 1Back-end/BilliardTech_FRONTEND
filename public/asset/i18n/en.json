@@ -18,16 +18,18 @@
   },
   "MENU": {
     "DASHBOARD": "Dashboard",
-    "ACADEMIC_YEAR": "Academic Year Management",
-    "GROUPS": "Class Management",
-    "SEMESTER": "Semester Management",
-    "PROGRAMS": "Program Management",
-    "DEPARTMENTS": "Department Management",
-    "TYPE_OF_EXAMS": "Exam Type Management",
-    "PROFESSORS": "Professor Management",
-    "STUDENTS": "Student Management",
-    "NOTES": "Grade Management",
-    "USERS": "User Management"
+    "ACADEMIC_YEAR": "Academic year management",
+    "GROUPS": "Class management",
+    "SEMESTER": "Semester management",
+    "PROGRAMS": "Program management",
+    "DEPARTMENTS": "Department management",
+    "TYPE_OF_EXAMS": "Exam type management",
+    "PROFESSORS": "Professor management",
+    "STUDENTS": "Student management",
+    "NOTES": "Grade management",
+    "USERS": "User management",
+    "COURSES" : "Courses management",
+    "COURSES_ASSIGMENT" :"Course mssignment"
   },
   "ACADEMIC_YEAR": {
     "CREATE": "Creation of an academic year",
@@ -38,7 +40,8 @@
     "LIST" : "List of academic years"
   },
   "VALIDATION": {
-    "REQUIRED_FIELD": "This field is required."
+    "REQUIRED_FIELD": "This field is required.",
+    "NUMERIC_ONLY": "Please enter numbers only."
   },
   "ACTIONS": {
     "CREATE": "Save",
@@ -52,7 +55,10 @@
     "EXPORT" : "Export",
     "LOGIN" : "Login",
     "FORGOT_PASSWORD" : "Forgot your password?",
-    "CONSULTATION" : "To consult"
+    "CONSULTATION" : "To consult",
+    "BACK" : "Back",
+    "ADD_NEW_ASSIGNMENT": "New assignment",
+    "INFO" : "View more"
   },
   "TABLE":{
     "YEAR" : "School year",
@@ -70,6 +76,7 @@
   },
   "COMMON": {
     "CREATED_BY_DATE": "Created by (Date)",
+    "UPDATED_BY_DATE": "Updated by (Date)",
     "STATUS" : "Status",
     "OPERATIONS" : "Actions",
     "LOADING": "Loading...",
@@ -137,7 +144,42 @@
   "NAME_CLASS" : "Name",
   "LEVEL_CLASS" : "Level",
   "SELECT_ACADEMIC_YEAR": "Select an academic year",
-  "LIST_OF_CLASS" : "List of classes"
+  "LIST_OF_CLASS" : "List of classes",
+  "LIST_OF_COURSES" : "List of courses",
+  "CODE" : "Code",
+  "COURSES" : "Courses",
+  "CREDITS" :"Credits",
+  "TYPE" : "Type",
+  "CREATE_COURSE" : "Create courses",
+  "TYPE_LABEL": "Course type",
+  "EDIT_COURSE" : "Edit courses",
+  "ALL_AFFECTIONS_OF_COURSES" : "ALL COURSE ASSIGNMENTS",
+  "SEMESTER" : "Semester",
+  "TEACHER_NAME" :"Teacher",
+  "RELATED_COURS" : "Related courses",
+  "EMPTY_COURSES" : "No courses available"
+},
+"COURSE": {
+    "TYPE": {
+      "CM": "Lecture",
+      "TD": "Tutorials",
+      "TP": "Lab Work",
+      "OTHER": "Other"
+    }
+  },
+  "USER": {
+    "ROLE": {
+      "ADMIN": "System Admin",
+      "SUPER_ADMIN": "Super Admin",
+      "EDIMESTRE": "Content Manager"
+    }
+  },
+  "SELECT": {
+    "CHOOSE_OPTION": "Choose an option"
+  },
+  "FIELDS": {
+  "TEACHERS": "Teacher",
+  "COURSES": "Courses"
 }
 
 

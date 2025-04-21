@@ -25,7 +25,10 @@ import {EditUtilisateursComponent} from './utilisateurs/edit-utilisateurs/edit-u
 import {AddProfesseursComponent} from './profesors/add-professeurs/add-professeurs.component';
 import {ProfileUsersComponent} from './profile-users/profile-users.component';
 import {EditProfesseursComponent} from './profesors/edit-professeurs/edit-professeurs.component';
-
+import {CoursesComponent} from './courses/courses.component';
+import {AddCoursesComponent} from './courses/add-courses/add-courses.component';
+import {EditCoursesComponent} from './courses/edit-courses/edit-courses.component';
+import {AffectationsCoursesComponent} from './affectations-courses/affectations-courses.component';
 export const routes: Routes = [
   // Route de login
   { 
@@ -75,6 +78,11 @@ export const routes: Routes = [
         canActivate: [AuthGuard] // Protège cette route avec le même guard d'authentification
       },
       {
+        path :'affectations_courses',
+        component: AffectationsCoursesComponent, // Composant pour la gestion des années académiques
+        canActivate: [AuthGuard] // Protège cette route avec le même guard d'authentification
+      },
+      {
         path :'semester',
         component: SemesterComponent, // Composant pour la gestion des années académiques
         canActivate: [AuthGuard] // Protège cette route avec le même guard d'authentification
@@ -108,6 +116,24 @@ export const routes: Routes = [
       {
         path :'students',
         component : StudentComponent,
+        canActivate : [AuthGuard]
+
+      },
+      {
+        path : 'courses',
+        component : CoursesComponent,
+        canActivate : [AuthGuard]
+
+      },
+      {
+        path : 'courses/add',
+        component : AddCoursesComponent,
+        canActivate : [AuthGuard]
+
+      },
+      {
+        path : 'courses/edit/:uuid',
+        component : EditCoursesComponent,
         canActivate : [AuthGuard]
 
       },

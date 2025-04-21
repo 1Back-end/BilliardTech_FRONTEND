@@ -96,6 +96,24 @@ export class MenuComponent {
       subMenuRoutes: [],
     },
     {
+      id: 'courses',
+      path: '/admin/courses',
+      label: 'MENU.COURSES',
+      icon: 'fa-solid fa-pen-to-square', // Livre ouvert
+      permission: 'CentreController::index',
+      children: [],
+      subMenuRoutes: [],
+    },
+    {
+      id: 'affectations_courses',
+      path: '/admin/affectations_courses',
+      label: 'MENU.COURSES_ASSIGMENT',
+      icon: 'fa-solid fa-share-nodes', // Professeur
+      permission: 'CentreController::index',
+      children: [],
+      subMenuRoutes: [],
+    },
+    {
       id: 'students',
       path: '/admin/students',
       label: 'MENU.STUDENTS',
