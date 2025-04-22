@@ -29,11 +29,22 @@ import {CoursesComponent} from './courses/courses.component';
 import {AddCoursesComponent} from './courses/add-courses/add-courses.component';
 import {EditCoursesComponent} from './courses/edit-courses/edit-courses.component';
 import {AffectationsCoursesComponent} from './affectations-courses/affectations-courses.component';
+
+
+
+import {LoginTeacherComponent} from './authentification-teacher/login-teacher/login-teacher.component';
+
+
 export const routes: Routes = [
   // Route de login
   { 
     path: 'login', 
     component: LoginComponent, 
+    canActivate: [LoginGuard] 
+  },
+  { 
+    path: 'login_teacher', 
+    component: LoginTeacherComponent, 
     canActivate: [LoginGuard] 
   },
   {

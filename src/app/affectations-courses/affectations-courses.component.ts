@@ -26,6 +26,8 @@ export class AffectationsCoursesComponent implements OnInit {
 
   coursesList: any[] = [];
   selectedCourses: any[] = [];
+  teacherDetails: any;
+  isModalOpen = false;
 
   multiSelectSettings = {};
   courseMultiSelectSettings = {};
@@ -39,6 +41,7 @@ export class AffectationsCoursesComponent implements OnInit {
 
   editMode: boolean = false;
   currentAssignmentUuid: string | null = null;
+  currentTeacherUuid: string | null = null;
 
   constructor(
     private http: HttpClient,
@@ -55,6 +58,7 @@ export class AffectationsCoursesComponent implements OnInit {
       .subscribe({
         next: (response) => {
           this.teachersWithCourses = response.data;
+          console.log(response.data);
           this.currentPage = response.current_page;
           this.totalPages = response.pages;
           this.totalItems = response.total;
@@ -65,6 +69,9 @@ export class AffectationsCoursesComponent implements OnInit {
           this.isLoading = false;
         }
       });
+  }
+  trackByTeacherName(index: number, teacher: any): string {
+    return teacher.name;
   }
   
   goToPage(page: number): void {
@@ -116,6 +123,7 @@ export class AffectationsCoursesComponent implements OnInit {
       labelKey: "title",
       primaryKey: "uuid"
     };
+    
   }
  
 
@@ -171,19 +179,70 @@ export class AffectationsCoursesComponent implements OnInit {
   }
   openEditModal(teacher: any) {
     this.editMode = true;
-    this.currentAssignmentUuid = teacher.uuid;
+    this.currentTeacherUuid = teacher.uuid; // Changer ici pour utiliser teacher_uuid
   
-    // Pré-remplir le professeur
-    this.selectedTeachers = this.teachersList.filter(t => t.uuid === teacher.teacher.uuid);
-  
-    // Pré-remplir les cours (en single selection ici, mais adapter si nécessaire)
-    this.selectedCourses = this.coursesList.filter(course =>
-      teacher.courses.some((c: any) => c.uuid === course.uuid)
-    );
-  
-    // Ouvrir la modale
-    const modal = new (window as any).bootstrap.Modal(document.getElementById('assignTeacherModal'));
+    // Préremplir enseignant (basé sur full_name)
+    this.selectedTeachers = this.teachersList.filter(t => t.full_name === teacher.name);
+    // Préremplir cours (basé sur le title, en supposant que teacher.courses contient title seulement)
+    const courseTitles = teacher.courses.map((c: any) => c.title);
+    this.selectedCourses = this.coursesList.filter(course => courseTitles.includes(course.title));
+    // Afficher la modale
+    const modal = new (window as any).bootstrap.Modal(document.getElementById('editAssignmentModal'));
     modal.show();
   }
+  
+  saveChanges() {
+    if (!this.selectedTeachers.length || !this.selectedCourses.length) {
+      this.toastr.error("Veuillez sélectionner un professeur et au moins un cours.");
+      return;
+    }
+  
+    // Construct the payload
+    const payload = {
+      teacher_uuid: this.selectedTeachers[0]?.uuid, // Utilise teacher_uuid ici
+      course_uuids: this.selectedCourses.map(c => c.uuid)
+    };
+  
+    // Send the request to update the assignment
+    this.http.put(`${CONFIG.apiUrl}/course-assignments/update-teacher-courses`, payload)
+      .subscribe({
+        next: (response: any) => {
+          this.toastr.success(response.message);
+          // Clear selections and close the modal if needed
+          this.selectedTeachers = [];
+          this.selectedCourses = [];
+          this.editMode = false;
+          const modal = new (window as any).bootstrap.Modal(document.getElementById('editAssignmentModal'));
+          modal.hide();
+        },
+        error: (error: any) => {
+          this.toastr.error(error?.error?.detail || 'Erreur lors de la sauvegarde.');
+        }
+      });
+  }
+  openDetailsModal(teacher: any): void {
+    this.editMode = true;
+    console.log(teacher); // Vérifie que teacher contient bien le uuid
+    if (!teacher || !teacher.uuid) {
+      console.error("Teacher UUID is undefined");
+      return;
+    }
+  
+    const currentTeacherUuid = teacher.uuid; // Utilisation de teacher.uuid
+  
+    const url = `${CONFIG.apiUrl}/course-assignments/get-by-teacher?teacher_uuid=${currentTeacherUuid}`; // Utilisation de currentTeacherUuid ici
+    console.log(url);  // Vérifie que l'URL est correcte
+  
+    this.http.get(url).subscribe((data: any) => {
+      console.log(data); // Vérifie les données reçues
+      this.teacherDetails = data;
+      const modal = new (window as any).bootstrap.Modal(document.getElementById('InfoAssignmentModal'));
+      modal.show();
+    });
+  }
+  
+  
+  
+
   
 }
