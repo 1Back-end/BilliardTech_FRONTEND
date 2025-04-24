@@ -1,6 +1,6 @@
 import { Injectable, Inject, PLATFORM_ID } from '@angular/core';
 import { CanActivate, Router } from '@angular/router';
-import { isPlatformBrowser } from '@angular/common'; // Importation nécessaire
+import { isPlatformBrowser } from '@angular/common';
 
 @Injectable({
   providedIn: 'root',
@@ -8,29 +8,35 @@ import { isPlatformBrowser } from '@angular/common'; // Importation nécessaire
 export class LoginGuard implements CanActivate {
   constructor(
     private router: Router,
-    @Inject(PLATFORM_ID) private platformId: Object // Injection de PLATFORM_ID
+    @Inject(PLATFORM_ID) private platformId: Object
   ) {}
 
   canActivate(): boolean {
-    if (isPlatformBrowser(this.platformId)) { // Vérification si nous sommes dans un navigateur
-      const tokenString = localStorage.getItem('token');  // Récupère l'objet entier du token depuis localStorage
-      
-      if (tokenString) {
-        try {
-          const token = JSON.parse(tokenString);  // Parser la chaîne JSON pour obtenir l'objet
+    if (isPlatformBrowser(this.platformId)) {
+      const tokenUserString = localStorage.getItem('user');
+      const tokenTeacherString = localStorage.getItem('token_teacher');
 
-          // Vérifie si le token contient un access_token valide
+      try {
+        if (tokenUserString) {
+          const token = JSON.parse(tokenUserString);
           if (token && token.access_token) {
-            // Redirige vers la page admin si l'utilisateur est déjà connecté
-            this.router.navigate(['/admin/dashboard']);
+            this.router.navigate(['/admin/dashboard']); // Redirection utilisateur
             return false;
           }
-        } catch (error) {
-          console.error('Error parsing token:', error);
         }
+
+        if (tokenTeacherString) {
+          const token = JSON.parse(tokenTeacherString);
+          if (token && token.access_token) {
+            this.router.navigate(['/teacher/dashboard']); // Redirection enseignant
+            return false;
+          }
+        }
+      } catch (error) {
+        console.error('Erreur lors du parsing du token :', error);
       }
     }
-  
-    return true; // Si le token n'est pas présent ou est invalide, on autorise l'accès
+
+    return true; // Autorise l'accès si aucun token valide trouvé
   }
 }

@@ -92,8 +92,22 @@
                 </div>
               </div>
             </div>
-  
+
             <div class="col-lg-4 mb-3">
+              <angular-phone-number-input
+               id="phone_number"
+                formControlName="phone_number"
+                [defaultCountry]="'CM'"
+                [preferredCountries]="[]"
+                [error]="UserForm.get('phone_number')?.touched && UserForm.get('phone_number')?.invalid"
+              ></angular-phone-number-input>
+              <div *ngIf="UserForm.get('phone_number')?.invalid && UserForm.get('phone_number')?.touched" class="invalid-feedback">
+                Ce champ est requis.
+              </div>
+            </div>
+  
+           
+            <!-- <div class="col-lg-4 mb-3">
               <div class="form-floating">
                 <input type="text" id="phone_number" name="phone_number" formControlName="phone_number"
                   class="form-control" [ngClass]="{'is-invalid': UserForm.get('phone_number')?.invalid && UserForm.get('phone_number')?.touched}">
@@ -102,7 +116,7 @@
                   Ce champ est requis.
                 </div>
               </div>
-            </div>
+            </div> -->
   
             <!-- Rôle -->
             <div class="col-lg-4 mb-3">

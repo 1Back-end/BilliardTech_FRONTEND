@@ -64,14 +64,21 @@
           <p class="mb-4 text-muted">
             {{ 'HOME.CONSULT_INFO' | translate }}
           </p>
-          <form>
+          <form [formGroup]="ServiceForm" (ngSubmit)="onSubmit()">
             <div class="form-floating mb-3">
-                <input type="text" class="form-control rounded-2" id="floatingInput" placeholder="name@example.com">
-                <label for="floatingInput">{{ 'LABEL.MATRICULE' | translate }}</label>
+              <input type="text" 
+                     [ngClass]="{'is-invalid': ServiceForm.get('matricule')?.invalid && ServiceForm.get('matricule')?.touched}" 
+                     formControlName="matricule"  
+                     class="form-control rounded-2" 
+                     id="floatingInput" placeholder="Matricule">
+              <label for="floatingInput">{{ 'LABEL.MATRICULE' | translate }}</label>
+              <div *ngIf="ServiceForm.get('matricule')?.invalid && ServiceForm.get('matricule')?.touched" class="invalid-feedback">
+                {{ 'VALIDATION.REQUIRED_FIELD' | translate }}
               </div>
+            </div>
     
               <div class="d-grid gap-2">
-                <button class="btn btn-outline-primary py-3 px-3 btn-lg shadow-none" type="button">{{ 'ACTIONS.CONSULTATION' | translate }}</button>
+                <button [disabled]="ServiceForm.invalid" class="btn btn-outline-primary py-3 px-3 btn-lg shadow-none" type="submit">{{ 'ACTIONS.CONSULTATION' | translate }}</button>
               </div>
               
           </form>

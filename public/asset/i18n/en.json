@@ -29,7 +29,11 @@
     "NOTES": "Grade management",
     "USERS": "User management",
     "COURSES" : "Courses management",
-    "COURSES_ASSIGMENT" :"Course mssignment"
+    "COURSES_ASSIGMENT" :"Course mssignment",
+    "SAVE_NOTES": "Save Grades",
+    "MY_COURSES": "My Courses"
+    
+
   },
   "ACADEMIC_YEAR": {
     "CREATE": "Creation of an academic year",
@@ -59,7 +63,8 @@
     "BACK" : "Back",
     "ADD_NEW_ASSIGNMENT": "New assignment",
     "EDIT_ASSIGNMENT" : "Edit assignment",
-    "INFO" : "View more"
+    "INFO" : "View more",
+    "SHOW" : "Show"
   },
   "TABLE":{
     "YEAR" : "School year",
@@ -158,7 +163,9 @@
   "SEMESTER" : "Semester",
   "TEACHER_NAME" :"Teacher",
   "RELATED_COURS" : "Related courses",
-  "EMPTY_COURSES" : "No courses available"
+  "EMPTY_COURSES" : "No courses available",
+  "LOGIN_DESCRIPTION" :"Log in to your personal space by entering your username and password.",
+  "LOGIN_REMEMBER" : "Keep me logged in"
 },
 "COURSE": {
     "TYPE": {
@@ -176,7 +183,10 @@
     }
   },
   "SELECT": {
-    "CHOOSE_OPTION": "Choose an option"
+    "CHOOSE_OPTION": "Choose an option",
+    "CHOOSE_CLASSES" : "Choose classe",
+    "CHOOSE_ACADEMIC_YEAR" : "Choose school year"
+
   },
   "FIELDS": {
   "TEACHERS": "Teacher",

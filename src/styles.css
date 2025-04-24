@@ -225,3 +225,17 @@ p {
   display: flex;
   width: 100%;
 }
+.wrap[_ngcontent-ng-c1857249126] .ng-phone-number-input-modal-wrap[_ngcontent-ng-c1857249126] {
+  position: absolute;
+  background-color: #fff;
+  top: 55px;
+  left: 0;
+  border-radius:4px;
+  padding:6px;
+  z-index: 100;
+  width: 100%;
+}
+.flex[_ngcontent-ng-c1857249126] {
+  display: flex;
+  cursor: pointer;
+}

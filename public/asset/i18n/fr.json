@@ -28,7 +28,9 @@
     "NOTES": "Gestion des notes",
     "USERS": "Gestion des utilisateurs",
     "COURSES" : "Gestion des cours",
-    "COURSES_ASSIGMENT" :"Affectation des cours"
+    "COURSES_ASSIGMENT" :"Affectation des cours",
+    "SAVE_NOTES": "Enregistrer les notes",
+    "MY_COURSES": "Mes cours"
   },
   "ACADEMIC_YEAR": {
     "CREATE": "Création d'une année académique",
@@ -49,7 +51,7 @@
     "EDIT": "Modifier",
     "DELETE": "Supprimer",
     "ADD_NEW" : "Créer un nouveau",
-    "RELOAD" : "Rafraichir",
+    "RELOAD" : "Actualiser",
     "EXPORT" : "Exporter",
     "LOGIN" : "Se connecter",
     "FORGOT_PASSWORD" : "Mot de passe oublié?",
@@ -57,7 +59,8 @@
     "BACK" : "Retour",
     "ADD_NEW_ASSIGNMENT": "Nouvelle affectation",
     "EDIT_ASSIGNMENT" : "Modifier une affectation",
-    "INFO" :"Détails"
+    "INFO" :"Détails",
+    "SHOW" : "Afficher"
   },
   "TABLE": {
     "YEAR" : "Année scolaire",
@@ -156,7 +159,10 @@
     "SEMESTER" :"Semestre",
     "TEACHER_NAME" :"Professeur",
     "RELATED_COURS" :"Cours associés",
-    "EMPTY_COURSES" : "Aucun cours disponible"
+    "EMPTY_COURSES" : "Aucun cours disponible",
+    "LOGIN_DESCRIPTION" : "Connectez-vous à votre espace personnel en entrant votre identifiant et votre mot de passe.",
+    "LOGIN_REMEMBER" : "Rester connecté"
+    
   },
   "COURSE": {
     "TYPE": {
@@ -174,7 +180,9 @@
     }
   },
   "SELECT": {
-    "CHOOSE_OPTION": "Choisir une option"
+    "CHOOSE_OPTION": "Choisir une option",
+    "CHOOSE_CLASSES" : "Choisir une classe",
+    "CHOOSE_ACADEMIC_YEAR" : "Choisir une année scolaire"
   },
   "FIELDS": {
   "TEACHERS": "Enseignant",

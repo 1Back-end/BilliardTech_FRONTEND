@@ -25,11 +25,15 @@
     "@ng-select/ng-select": "^14.4.0",
     "@ngx-translate/core": "^16.0.4",
     "@ngx-translate/http-loader": "^16.0.1",
+    "angular-phone-number-input": "^1.0.7",
     "angular2-multiselect-dropdown": "^10.0.0",
+    "awesome-phonenumber": "^3.3.0",
     "bootstrap": "^5.3.5",
     "express": "^4.18.2",
     "intl-tel-input": "^25.3.1",
+    "jspdf": "^3.0.1",
     "ngx-intl-tel-input": "^17.0.0",
+    "ngx-intl-telephone-input": "^1.0.1",
     "ngx-select-dropdown": "^3.3.2",
     "ngx-toastr": "^19.0.0",
     "rxjs": "~7.8.0",
@@ -49,6 +53,7 @@
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
+    "libphonenumber-js": "^1.12.7",
     "typescript": "~5.7.2"
   }
 }

@@ -1,0 +1,52 @@
+<ul class="nav nav-pills flex-column mb-auto gap-1">
+    <li class=""
+        [ngClass]="[menu.children.lenght ? 'nav-item dropdown' : '']"
+        *ngFor="let menu of menuRoutes"
+    >
+      <a [routerLink]="menu.path"
+         class="nav-link fs-6"
+         routerLinkActive="active"
+         ariaCurrentWhenActive="page"
+         (click)="closeCanvas()"
+         *ngIf="!menu.children.length"
+      >
+        <i [class]='menu.icon'></i>
+        {{ menu.label | translate}}
+      </a>
+  
+      <a
+        class="nav-link dropdown-toggle d-flex align-items-center gap-1"
+        href="#"
+        role="button"
+        data-bs-toggle="collapse"
+        [attr.aria-expanded]="isActiveSubmenu(menu.subMenuRoutes)"
+        [attr.data-bs-target]="'#' + menu.id"
+        [class.show]="isActiveSubmenu(menu.subMenuRoutes)"
+        *ngIf="menu.children.length"
+      >
+        <i [class]='menu.icon'></i>
+        {{ menu.label }}
+      </a>
+  
+      <div
+        class="collapse ps-3"
+        [class.show]="isActiveSubmenu(menu.subMenuRoutes)"
+        [id]="menu.id"
+      >
+        <ul class="nav nav-pills flex-column">
+          <li class="nav-item" *ngFor="let child of menu.children">
+            <a [routerLink]="child.path"
+               class="nav-link"
+               routerLinkActive="active"
+               ariaCurrentWhenActive="page"
+            >
+              <i [class]='child.icon'></i>
+              {{ child.label }}
+            </a>
+          </li>
+        </ul>
+      </div>
+    </li>
+  
+  </ul>
+  

@@ -23,7 +23,7 @@ export class AdminComponent {
   centres: any[] = [];
   selectedCentre: string = '';
   userFullName: string = '';
-  userInfo: { email: string, avatarUrl: string } = { email: '', avatarUrl: 'assets/images/profile_user.png' };
+  userInfo: { email: string, avatarUrl: string } = { email: '', avatarUrl: 'assets/profile.png' };
 
   currentLanguage: string = 'fr'; // Langue par défaut
   currentLanguageFlag: string = 'https://flagcdn.com/fr.svg'; // Drapeau par défaut

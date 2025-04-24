@@ -120,18 +120,25 @@
                           
                         <td>{{ user.first_name | uppercase }}</td>
                         <td>{{ user.last_name | uppercase }}</td>
-                        <td>{{ user.login || 'Non renseigné' | uppercase }}</td>
+                        <td>{{ user.login || 'Non renseigné' }}</td>
                         <td>{{ user.email }}</td>
-                        <td>{{ user.country_code }} {{ user.phone_number }}</td>
+                        <td>+237 {{ user.phone_number }}</td>
                         <td>
                             <span class="badge"
                                   [ngClass]="{
                                     'badge-success': user.role === 'ADMIN',
                                     'badge-info': user.role === 'EDIMESTRE',
+                                    'badge-danger': user.role === 'PROFESSEUR'
                                   }">
-                               {{ user.role === 'ADMIN' ? 'admin system' : (user.role==='EDIMESTRE' ? 'édimestre system' : 'édimestre system') }}
+                              {{
+                                user.role === 'ADMIN' ? 'Admin' :
+                                user.role === 'EDIMESTRE' ? 'Edimestre' :
+                                user.role === 'PROFESSEUR' ? 'Professeur' :
+                                'rôle inconnu'
+                              }}
                             </span>
                           </td>
+                          
                           <td>
                             <span class="badge"
                                   [ngClass]="{
@@ -154,31 +161,31 @@
                               </button>
                               <ul class="dropdown-menu border-0">
                                 <li><a class="dropdown-item text-danger"  (click)="deleteUser(user.uuid)">
-                                  <i class="bi bi-trash3 mx-1 text-danger"></i> Supprimer
+                                    <i class="fa-solid fa-trash me-1 fs-5"></i> Supprimer
                                 </a></li>
                         
                                 <li [routerLink]="['/admin/users/edit', user.uuid]">
                                     <a class="dropdown-item text-warning">
-                                  <i class="bi bi-pencil mx-1 text-warning"></i> Modifier
+                                        <i class="fa-solid fa-pen-to-square me-1 fs-5"></i> Modifier
                                 </a>
                             </li>
                         
                                 <li *ngIf="user.status !== 'BLOCKED'">
                                     <a class="dropdown-item text-info" (click)="updateStatus(user.uuid, 'BLOCKED')">
-                                      <i class="bi bi-lock-fill mx-1 text-info"></i> Bloquer
+                                        <i class="fa-solid fa-user-lock me-1 fs-5"></i> Bloquer
                                     </a>
                                   </li>
                                   
                                 <!-- Condition d'affichage des actions en fonction de l'état -->
                                 <li *ngIf="user.status === 'ACTIVED'">
                                   <a class="dropdown-item text-primary" (click)="updateStatus(user.uuid, 'UNACTIVED')">
-                                    <i class="bi bi-toggle-off text-primary"></i> Désactiver
+                                    <i class="fa-solid fa-toggle-off fs-5 mx-1"></i> Désactiver
                                   </a>
                                 </li>
                         
                                 <li *ngIf="user.status === 'UNACTIVED'">
                                   <a class="dropdown-item text-success" (click)="updateStatus(user.uuid, 'ACTIVED')">
-                                    <i class="bi bi-toggle-on text-success"></i> Activer
+                                    <i class="fa-solid fa-toggle-on fs-5 mx-1"></i> Activer
                                   </a>
                                 </li>
                               </ul>

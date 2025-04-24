@@ -61,17 +61,17 @@ export class AuthService {
 
   getUserInfo() {
     if (typeof window === 'undefined' || !localStorage.getItem('user')) {
-      return { email: '', avatarUrl: 'assets/images/profile_user.png' };
+      return { email: '', avatarUrl: 'assets/profile.png' };
     }
   
     try {
       const userData = localStorage.getItem('user');
       const user = JSON.parse(atob(userData!));
-      const avatarUrl = user.avatar?.url || 'assets/images/profile_user.png';
+      const avatarUrl = user.avatar?.url || 'assets/profile.png';
       return { email: user.email, avatarUrl: avatarUrl };
     } catch (error) {
       console.error('Erreur lors du parsing du user :', error);
-      return { email: '', avatarUrl: 'assets/images/profile_user.png' };
+      return { email: '', avatarUrl: 'assets/profile.png' };
     }
   }
   

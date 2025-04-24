@@ -5,14 +5,14 @@ import { ToastrService } from 'ngx-toastr';
 import { HttpClient } from '@angular/common/http';
 import { CONFIG } from '../../../config';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
-
-
+import { AngularPhoneNumberInput } from 'angular-phone-number-input';
 @Component({
   standalone: true,
   selector: 'app-add-utilisateurs',
   imports: [
     CommonModule,
     ReactiveFormsModule,
+    AngularPhoneNumberInput
   ],
   templateUrl: './add-utilisateurs.component.html',
   styleUrl: './add-utilisateurs.component.css'
@@ -22,6 +22,7 @@ export class AddUtilisateursComponent implements OnInit {
   filePreview: string | ArrayBuffer | null = null;
   selectedFile: File | null = null;
 
+ 
 
   constructor(
     private fb: FormBuilder,
@@ -34,11 +35,14 @@ export class AddUtilisateursComponent implements OnInit {
       last_name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       country_code: ['+237', [Validators.required,Validators.pattern(/^\+237$/)]],
-      phone_number: [null, [Validators.required,Validators.pattern(/^([6-9]{1}[0-9]{8})$/)]],  // Validation pour le numéro de téléphone
+      phone_number: [''],  // Validation pour le numéro de téléphone
       role: ['', Validators.required],
       login: ['', Validators.required],
       avatar_uuid : [null]
     });
+  }
+  onInputChange(event: any): void {
+    console.log(event); // Debug to check event data
   }
 
   onFileSelected(event: Event) {
@@ -68,7 +72,7 @@ export class AddUtilisateursComponent implements OnInit {
       return;
     }
   
-    const formData = { ...this.UserForm.value,avatar_uuid: null };
+    const formData = { ...this.UserForm.value, avatar_uuid: null };
 
     const fileInput = document.getElementById('fileInput') as HTMLInputElement;
     const file = fileInput?.files?.[0];
@@ -89,7 +93,6 @@ export class AddUtilisateursComponent implements OnInit {
             this.toastr.warning("UUID manquant. Enregistrement sans image.");
           }
 
-  
           this.createUsers(formData);
         },
         error: (err) => {
@@ -103,9 +106,6 @@ export class AddUtilisateursComponent implements OnInit {
       // Pas d'image : envoyer directement
       this.createUsers(formData);
     }
-    
-  
-    
   }
   
   createUsers(data: any): void {
@@ -121,5 +121,4 @@ export class AddUtilisateursComponent implements OnInit {
       }
     });
   }
-
 }

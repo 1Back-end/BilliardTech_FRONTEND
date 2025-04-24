@@ -59,7 +59,9 @@ export class AcademicYearComponent implements OnInit {
           this.isLoading = false;
         },
         (error) => {
-          this.toastr.error('Erreur lors du chargement des voix');
+          const message = error?.error?.message || error?.error?.detail || "Erreur lors de l'enregistrement.";
+          this.toastr.error(message);
+          console.error("Erreur lors de l'enregistrement :", error);
           this.isLoading = false;
         }
       );
@@ -117,7 +119,6 @@ export class AcademicYearComponent implements OnInit {
       (error: any) => {
         const message = error?.error?.message || error?.error?.detail || "Erreur lors de l'enregistrement.";
         this.toastr.error(message);
-        console.error("Erreur lors de l'enregistrement :", error);
       }
     );
   }
@@ -143,7 +144,6 @@ export class AcademicYearComponent implements OnInit {
       (error) => {
         const msg = error?.error?.detail || 'Erreur lors de la modification';
         this.toastr.error(msg);
-        console.error('Erreur de mise à jour :', error);
       }
     );
   }
@@ -171,9 +171,8 @@ export class AcademicYearComponent implements OnInit {
             this.getAllServices();
           },
           (error) => {
-            const message = error?.error?.detail || 'Ce service ne peut pas être supprimé car il est associé à des éléments liés.';
+            const message = error?.error?.message || error?.error?.detail || "Erreur lors de l'enregistrement.";
             this.toastr.error(message);
-            console.error('Erreur lors de la suppression :', error);
           }
         );
     }
@@ -186,7 +185,6 @@ export class AcademicYearComponent implements OnInit {
           this.getAllServices(); // Rafraîchir la liste
         },
         (error) => {
-          console.error('Erreur :', error);
           const errorMessage = error?.error?.detail || 'Erreur lors de la mise à jour du statut';
           this.toastr.error(errorMessage);
         }

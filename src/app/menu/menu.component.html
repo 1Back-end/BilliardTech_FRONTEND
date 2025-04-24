@@ -3,16 +3,16 @@
       [ngClass]="[menu.children.lenght ? 'nav-item dropdown' : '']"
       *ngFor="let menu of menuRoutes"
   >
-    <a [routerLink]="menu.path"
-       class="nav-link fs-6"
-       routerLinkActive="active"
-       ariaCurrentWhenActive="page"
-       (click)="closeCanvas()"
-       *ngIf="!menu.children.length"
-    >
-      <i [class]='menu.icon'></i>
-      {{ menu.label | translate}}
-    </a>
+    <a *ngIf="!menu.children.length && hasPermission(menu)"
+    [routerLink]="menu.path"
+    class="nav-link fs-6"
+    routerLinkActive="active"
+    ariaCurrentWhenActive="page"
+    (click)="closeCanvas()">
+  <i [class]="menu.icon"></i>
+  {{ menu.label | translate }}
+  </a>
+
 
     <a
       class="nav-link dropdown-toggle d-flex align-items-center gap-1"

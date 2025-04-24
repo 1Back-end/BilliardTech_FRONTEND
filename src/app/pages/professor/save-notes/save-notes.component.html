@@ -1,0 +1,59 @@
+<div class="col-lg-12 col-sm-12 mb-3">
+    <h4 class="text-uppercase fw-bold text-center">Enregistrer les notes</h4>
+</div>
+<div class="col-lg-12 col-sm-12 mb-3">
+   <div class="card shadow p-4 border-0 my-3 rounded">
+    <div class="row justify-content-center align-items-center g-3 text-center">
+        <!-- SELECTS élargis -->
+        <div class="col-lg-3 col-sm-6">
+            <div class="form-floating">
+                <select class="form-select cursor-pointer" id="selectSemester">
+                  <option selected>{{'SELECT.CHOOSE_OPTION' | translate}}</option>
+                  <option></option>
+                </select>
+                <label for="selectSemester">{{'LABEL.SEMESTER' | translate}}</label>
+            </div>
+        </div>
+
+        <div class="col-lg-3 col-sm-6">
+            <div class="form-floating">
+                <select class="form-select cursor-pointer" id="selectClass">
+                  <option selected>{{'SELECT.CHOOSE_CLASSES' | translate}}</option>
+                  <option></option>
+                </select>
+                <label for="selectClass">{{'TABLE.CLASS' | translate}}</label>
+            </div>
+        </div>
+
+        <div class="col-lg-3 col-sm-6">
+            <div class="form-floating">
+                <select class="form-select cursor-pointer" id="selectYear">
+                  <option selected>{{'ACADEMIC_YEAR.SCHOOL_YEAR' | translate}}</option>
+                  <option></option>
+                </select>
+                <label for="selectYear">{{'SELECT.CHOOSE_ACADEMIC_YEAR' | translate}}</label>
+            </div>
+        </div>
+
+        <!-- BOUTONS réduits -->
+        <div class="col-lg-1 col-sm-4">
+            <button class="btn btn-primary px-2 rounded-1 py-3" type="button">
+                <i class="fa-solid fa-magnifying-glass fs-5"></i> {{'ACTIONS.SHOW' | translate}}
+            </button>
+        </div>
+
+        <div class="col-lg-1 col-sm-4">
+            <button class="btn btn-success px-2 rounded-1 py-3" type="button">
+                <i class="fa-solid fa-rotate fs-5"></i> {{'ACTIONS.RELOAD' | translate}}
+            </button>
+        </div>
+
+        <div class="col-lg-1 col-sm-4">
+            <button class="btn btn-secondary px-2 rounded-1 py-3" type="button">
+                <i class="fa-solid fa-xmark fs-5"></i> {{'ACTIONS.CANCEL' | translate}}
+            </button>
+        </div>
+
+    </div>
+   </div>
+</div>
