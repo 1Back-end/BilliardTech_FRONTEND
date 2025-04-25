@@ -20,7 +20,7 @@
                   </div>
                   <div class="col-12">
                     <div class="form-floating mb-3">
-                      <input type="password" formControlName="password"  [ngClass]="{'is-invalid': LoginForm.get('password')?.invalid && LoginForm.get('password')?.touched}" class="form-control" name="password" id="password" value="" placeholder="Password" required>
+                      <input [type]="showPassword ? 'text' : 'password'" formControlName="password"  [ngClass]="{'is-invalid': LoginForm.get('password')?.invalid && LoginForm.get('password')?.touched}" class="form-control" name="password" id="password" value="" placeholder="Password" required>
                       <label for="password" class="form-label">{{ 'INPUT.PASSWORD' | translate }}</label>
                       <div *ngIf="LoginForm.get('password')?.invalid && LoginForm.get('password')?.touched" class="invalid-feedback">
                         {{ 'VALIDATION.REQUIRED_FIELD' | translate }}
@@ -29,12 +29,12 @@
                   </div>
                   <div class="col-12">
                     <div class="d-flex gap-2 justify-content-between">
-                      <!-- <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" name="rememberMe" id="rememberMe">
-                        <label class="form-check-label text-secondary" for="rememberMe">
-                            Rester connecté
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" name="rememberMe" (change)="togglePasswordVisibility($event)">
+                        <label class="form-check-label text-secondary">
+                          {{ 'LABEL.SHOW_PASSWORD' | translate }}
                         </label>
-                      </div> -->
+                      </div>
                       <a routerLinkActive="active" ariaCurrentWhenActive="page" routerLink="/auth/forgot-password" class="link-primary text-decoration-none">
                         {{ 'ACTIONS.FORGOT_PASSWORD' | translate }}
                       </a>
@@ -46,7 +46,26 @@
                         {{ 'ACTIONS.LOGIN' | translate }}
                       </button>
                     </div>
+                  
+                    <!-- Boutons de connexion sociale -->
+                    <div class="d-flex justify-content-center gap-3">
+                      <!-- GitHub -->
+                      <a href="/auth/github" class="btn btn-outline-dark" title="Connexion avec GitHub">
+                        <i class="fab fa-github fa-lg"></i>
+                      </a>
+                  
+                      <!-- Google -->
+                      <a href="/auth/google" class="btn btn-outline-danger" title="Connexion avec Google">
+                        <i class="fab fa-google fa-lg"></i>
+                      </a>
+                  
+                      <!-- Facebook -->
+                      <a href="/auth/facebook" class="btn btn-outline-primary" title="Connexion avec Facebook">
+                        <i class="fab fa-facebook-f fa-lg"></i>
+                      </a>
+                    </div>
                   </div>
+                  
                 </div>
               </form>
             </div>

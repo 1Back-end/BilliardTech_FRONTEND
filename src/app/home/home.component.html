@@ -1,4 +1,6 @@
 <!-- NAVBAR FIXE EN HAUT -->
+
+
 <div class="col-lg-12 col-sm-12 mb-3">
     <nav class="navbar navbar-expand-lg navbar-light bg-white shadow py-3 px-lg-5 fixed-top">
       <div class="container-fluid justify-content-between">
@@ -54,38 +56,234 @@
     </nav>    
   </div>
   
-  <!-- SECTION "LES RÉSULTATS" -->
-<!-- SECTION CENTRÉE "CONSULTER LES RÉSULTATS" -->
-<div class="container">
+  <div class="container">
     <div class="d-flex align-items-center justify-content-center" style="margin-top: 150px;">
-        <div class="col-lg-6 col-md-8 col-sm-10 py-5 form-shadow bg-light text-center p-3 rounded-5">
-          <h2 class="text-title mb-3 fw-bold">{{ 'HOME.CONSULT_RESULTS' | translate }}</h2>
-          <hr class="mb-4">
-          <p class="mb-4 text-muted">
-            {{ 'HOME.CONSULT_INFO' | translate }}
-          </p>
-          <form [formGroup]="ServiceForm" (ngSubmit)="onSubmit()">
-            <div class="form-floating mb-3">
-              <input type="text" 
-                     [ngClass]="{'is-invalid': ServiceForm.get('matricule')?.invalid && ServiceForm.get('matricule')?.touched}" 
-                     formControlName="matricule"  
-                     class="form-control rounded-2" 
-                     id="floatingInput" placeholder="Matricule">
-              <label for="floatingInput">{{ 'LABEL.MATRICULE' | translate }}</label>
-              <div *ngIf="ServiceForm.get('matricule')?.invalid && ServiceForm.get('matricule')?.touched" class="invalid-feedback">
-                {{ 'VALIDATION.REQUIRED_FIELD' | translate }}
+      <div class="col-lg-6 col-md-8 col-sm-10 py-5 form-shadow bg-light text-center p-3 rounded-5">
+        <h2 class="text-title mb-3 fw-bold">{{ 'HOME.CONSULT_RESULTS' | translate }}</h2>
+        <hr class="mb-4">
+        <p class="mb-4 text-muted">{{ 'HOME.CONSULT_INFO' | translate }}</p>
+        <form [formGroup]="ServiceForm" (ngSubmit)="onSubmit()">
+          <div class="form-floating mb-3">
+            <input type="text"
+                   [ngClass]="{'is-invalid': ServiceForm.get('matricule')?.invalid && ServiceForm.get('matricule')?.touched}"
+                   formControlName="matricule"  
+                   class="form-control rounded-2" 
+                   id="floatingInput" placeholder="Matricule">
+            <label for="floatingInput">{{ 'LABEL.MATRICULE' | translate }}</label>
+            <div *ngIf="ServiceForm.get('matricule')?.invalid && ServiceForm.get('matricule')?.touched" class="invalid-feedback">
+              {{ 'VALIDATION.REQUIRED_FIELD' | translate }}
+            </div>
+          </div>
+  
+          <div class="d-grid gap-2">
+            <button [disabled]="ServiceForm.invalid" class="btn btn-outline-primary py-3 px-3 btn-lg shadow-none" type="submit" data-bs-toggle="modal" data-bs-target="#viewResultat">
+              {{ 'ACTIONS.CONSULTATION' | translate }}
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+ <!-- Modal -->
+ <div id="result-pdf-content">
+<div class="modal fade" id="viewResultat" tabindex="-1" aria-labelledby="viewResultat" aria-hidden="true">
+  <div class="modal-dialog modal-lg border-1 rounded">
+    <div class="modal-content p-3">
+      <div class="mb-3 border-bottom pb-2">
+        <div class="row text-center align-items-center">
+          <!-- À gauche -->
+          <div class="col-md-4 text-start text-center">
+            <p class="mb-0 fw-bold">République du Cameroun</p>
+            <p class="mb-0">Paix – Travail – Patrie</p>
+            <p class="mb-0">Ministère des Enseignements Secondaires</p>
+          </div>
+      
+          <!-- Au milieu (Logo) -->
+          <div class="col-md-4 text-center">
+            <img src="assets/images/logo.png" alt="Logo" class="img-fluid" style="max-height: 80px;" />
+          </div>
+      
+          <!-- À droite (en anglais) -->
+          <div class="col-md-4 text-end text-center">
+            <p class="mb-0 fw-bold">Republic of Cameroon</p>
+            <p class="mb-0">Peace – Work – Fatherland</p>
+            <p class="mb-0">Ministry of Secondary Education</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <h5 class="text-center fw-bold text-uppercase">
+          Relevé des notes des évaluations académiques {{ studentResults[0]?.course.academic_year.name }}
+        </h5>
+      </div>
+
+      <div class="mb-3 px-3">
+        <div class="row align-items-center">
+          
+          <!-- Infos de l'étudiant -->
+          <div class="col-md-8">
+            <div class="mb-2">
+              <p class="mb-0 fs-6">
+                <strong>M/Mme/Mlle : {{ studentResults[0]?.student.first_name }} {{ studentResults[0]?.student.last_name }}</strong>
+              </p>
+              <small class="text-muted">M/Mme/Mlle</small>
+            </div>
+          
+            <div class="mb-2">
+              <p class="mb-0 fs-6">
+                <strong>Matricule :</strong> {{ studentResults[0]?.student.matricule }}
+              </p>
+              <small class="text-muted">Identifiant étudiant</small>
+            </div>
+          
+            <div class="mb-2">
+              <p class="mb-0 fs-6">
+                <strong>Email :</strong> {{ studentResults[0]?.student.email }}
+              </p>
+              <small class="text-muted">Adresse électronique</small>
+            </div>
+      
+            <div class="mb-2">
+              <p class="mb-0 fs-6">
+                <strong>Né le :</strong> {{ studentResults[0]?.student.birthdate }} à {{ studentResults[0]?.student.address }}
+              </p>
+              <small class="text-muted">Date & Lieu de naissance</small>
+            </div>
+      
+            <div class="d-flex justify-content-between mb-2">
+              <div>
+                <p class="mb-0 fs-6">
+                  <strong>Filière:</strong> {{ studentResults[0]?.student.program.name }}
+                </p>
+                <small class="text-muted mt-1">Filière</small>
+              </div>
+              <div>
+                <p class="mb-0 fs-6">
+                  <strong>Spécialité:</strong> {{ studentResults[0]?.student.speciality.name }}
+                </p>
+                <small class="text-muted mt-1">Spécialité</small>
               </div>
             </div>
-    
-              <div class="d-grid gap-2">
-                <button [disabled]="ServiceForm.invalid" class="btn btn-outline-primary py-3 px-3 btn-lg shadow-none" type="submit">{{ 'ACTIONS.CONSULTATION' | translate }}</button>
+      
+            <div class="d-flex justify-content-between mb-2">
+              <div>
+                <p class="mb-0 fs-6">
+                  <strong>Classe:</strong> {{ studentResults[0]?.student.group.name }}
+                </p>
+                <small class="text-muted mt-1">Classe</small>
               </div>
-              
-          </form>
+              <div>
+                <p class="mb-0 fs-6">
+                  <strong>Niveau:</strong> {{ studentResults[0]?.student.group.level }}
+                </p>
+                <small class="text-muted mt-1">Niveau</small>
+              </div>
+            </div>
+          </div>
+      
+          <!-- QR Code (aligné à droite) -->
+          <div class="col-md-4 text-end mb-3">
+            <img 
+              [src]="'https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=' + studentResults[0]?.student.matricule" 
+              alt="QR Code"
+              class="img-fluid border img-thumbnail rounded"
+              style="max-height: 300px;" />
+            <p class="text-muted mt-1 small">QR Code Matricule</p>
+          </div>
           
         </div>
       </div>
       
+      <!-- Loader pendant le chargement -->
+      <div *ngIf="isLoading" class="text-center my-2">
+        <div class="spinner-border text-primary" role="status">
+          <span class="visually-hidden">{{'ACTIONS.LOADING' | translate}}</span>
+        </div>
+        <p class="mt-2">{{'ACTIONS.LOADING_RESULTS' | translate}}</p>
+      </div>
+
+      <!-- Tableau des résultats -->
+      <table class="table table-bordered table-striped text-center" *ngIf="!isLoading">
+        <thead class="thead-dark">
+          <tr>
+            <th>#</th>
+            <th>{{'ACTIONS.CODE' | translate}}</th>
+            <th>{{'ACTIONS.UE' | translate}}</th>
+            <th>{{'ACTIONS.CREDIT' | translate}}</th>
+            <th>{{'ACTIONS.CC' | translate}}</th>
+            <th>{{'ACTIONS.SN' | translate}}</th>
+            <th>{{'ACTIONS.FINAL_NOTE' | translate}}</th>
+            <th>{{'ACTIONS.STATUS' | translate}}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Affichage du message si aucun résultat -->
+          <tr *ngIf="studentResults.length === 0">
+            <td colspan="10" class="text-center text-danger">{{'ACTIONS.NO_RESULTS' | translate}}</td>
+          </tr>
+
+          <!-- Affichage des résultats -->
+          <tr *ngFor="let result of studentResults let i = index">
+            <td>{{ i + 1 }}</td> <!-- Affiche le numéro de ligne -->
+            <td>{{ result.course.code }}</td>
+            <td>{{ result.course.title }}</td>
+            <td>{{ result.course.credits }}</td>
+
+            <!-- Note CC -->
+            <td>
+              <ng-container *ngIf="result.note_cc !== null && result.note_cc !== undefined; else emptyIcon">
+                {{ result.note_cc }}
+              </ng-container>
+            </td>
+
+            <!-- Note SN -->
+            <td>
+              <ng-container *ngIf="result.note_sn !== null && result.note_sn !== undefined; else emptyIcon">
+                {{ result.note_sn }}
+              </ng-container>
+            </td>
+
+            <!-- Note finale -->
+            <td>
+              <ng-container *ngIf="result.final_note !== null && result.final_note !== undefined; else emptyIcon">
+                {{ result.final_note }}
+              </ng-container>
+            </td>
+
+            <!-- Badge statut -->
+            <td>
+              <span class="badge"
+                    [ngClass]="{
+                      'badge-success': result.status === 'Validé',
+                      'badge-danger': result.status === 'Rattrapage',
+                      'badge-warning text-white': result.status === 'En attente'
+                    }">
+                <i *ngIf="result.status === 'Validé'" class="fas fa-check-circle"></i>
+                <i *ngIf="result.status === 'Rattrapage'" class="fas fa-times-circle"></i>
+                <i *ngIf="result.status === 'En attente'" class="fas fa-clock"></i>
+            
+                {{ result.status === 'Validé' ? ('ACTIONS.VALIDATED' | translate) :
+                   result.status === 'Rattrapage' ? ('ACTIONS.RESIT' | translate) : ('ACTIONS.PENDING' | translate) }}
+              </span>
+            </td>            
+          </tr>
+        </tbody>
+      </table>
+    
+      <!-- Icône vide -->
+      <ng-template #emptyIcon>
+        <i class="bi bi-dash-circle text-muted" title="{{'ACTIONS.NOT_AVAILABLE' | translate}}"></i>
+      </ng-template>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger mx-2 px-2 py-2 rounded border-1 btn-sm" data-bs-dismiss="modal">
+          <i class="fa fa-close me-lg-1"></i>{{'ACTIONS.CLOSE' | translate}}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
 </div>
 
 

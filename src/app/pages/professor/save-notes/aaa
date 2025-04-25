@@ -1,0 +1,109 @@
+<div class="col-lg-12 col-sm-12 mb-3">
+  <h4 class="text-uppercase fw-bold text-center">{{'LABEL.SAVE_NOTES' | translate}}</h4>
+</div>
+  <div class="card-body bord-0">
+    
+    <div class="d-flex justify-content-between gap-2 flex-column flex-lg-row">
+      <div class="card shadow p-3 border-0 rounded">
+        <div class="row">
+
+          <!-- SELECT CLASSE -->
+          <div class="col-lg-6 col-sm-12">
+            <div class="form-floating">
+              <select class="form-select cursor-pointer" id="selectClass" (change)="onClassChange($event)">
+                <option value="" selected disabled>{{ 'SELECT.CHOOSE_CLASSES' | translate }}</option>
+                <option *ngFor="let group of teacherClasses" [value]="group.uuid">{{ group.name }}</option>
+              </select>
+              <label for="selectClass">{{ 'TABLE.CLASS' | translate }}</label>
+            </div>
+          </div>
+
+          <!-- SELECT SEMESTRE -->
+          <div class="col-lg-6 col-sm-12">
+            <div class="form-floating">
+              <select class="form-select cursor-pointer" id="selectSemester" [(ngModel)]="selectedSemesterUuid">
+                <option value="" disabled selected>{{ 'SELECT.CHOOSE_SEMESTER' | translate }}</option>
+                <option *ngFor="let sem of semester" [value]="sem.uuid">{{ sem.name }}</option>
+              </select>
+              <label for="selectSemester">{{ 'LABEL.SEMESTER' | translate }}</label>
+            </div>
+          </div>
+          <div class="row mt-3" *ngIf="courses.length > 0">
+              <div class="col-12 w-100">
+                <div class="form-floating">
+                  <select class="form-select cursor-pointer" id="selectCourse" [(ngModel)]="selectedCourseUuid">
+                    <option value="" selected disabled>{{ 'SELECT.CHOOSE_OPTION' | translate }}</option>
+                    <option *ngFor="let course of courses" [value]="course.uuid">
+                      {{ course.title }} - {{ course.code }}
+                    </option>
+                  </select>
+                  <label for="selectCourse">{{ 'TABLE.COURS' | translate }}</label>
+                </div>
+              </div>
+            </div>
+        </div>
+      </div>
+   
+    <div class="d-flex gap-2 mt-3">
+      <!-- BOUTON ANNULER -->
+      <div class="col-lg-12 col-sm-12">
+        <button class="btn btn-secondary px-2 rounded-1 py-2 w-100" type="button" (click)="resetForm()">
+          <i class="fa-solid fa-xmark fs-5"></i> {{ 'ACTIONS.CANCEL' | translate }}
+        </button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<!-- CARTE ETUDIANTS -->
+<div class="col-lg-12 col-sm-12 mb-3 mt-3" *ngIf="students.length > 0">
+  <div class="card shadow p-3 border-0 rounded">
+    <div class="d-flex align-items-center justify-content-between mb-3">
+      <h4 class="text-uppercase fw-bold">{{'COMMON.LIST_STUDENT' | translate}}</h4>
+      <button class="btn btn-primary border-0 px-2 py-2 rounded-1" type="button" (click)="onSaveNotes()">
+        <i class="fa-solid fa-floppy-disk fs-5 mx-1"></i>
+        {{ 'ACTIONS.CREATE' | translate }}
+      </button>
+    </div>
+
+    <div class="table-responsive">
+      <table class="table table-striped table-bordered table-hover">
+        <thead>
+          <tr>
+              <th>{{ 'TABLE.STUDENT' | translate }}</th>
+              <th>{{ 'TABLE.EXAM' | translate }}</th>
+              <th>{{ 'TABLE.GRADE' | translate }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let student of students; let i = index">
+            <td>
+              <input
+                type="text"
+                class="form-control py-lg-2 text-uppercase"
+                [value]="(student.matricule).toUpperCase()"
+                disabled
+              />
+            </td>
+
+            <!-- Select type d'examen -->
+            <td>
+              <select class="form-select cursor-pointer py-lg-2" [(ngModel)]="student.exam_type">
+                <option value="note_cc">CC</option>
+                <option value="note_sn">SN</option>
+              </select>
+            </td>
+
+            <!-- Champ note -->
+            <td>
+              <input type="number" class="form-control py-lg-2" [(ngModel)]="student.grade" min="0" max="20" />
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+

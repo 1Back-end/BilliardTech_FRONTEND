@@ -30,6 +30,8 @@ import {AddCoursesComponent} from './courses/add-courses/add-courses.component';
 import {EditCoursesComponent} from './courses/edit-courses/edit-courses.component';
 import {AffectationsCoursesComponent} from './affectations-courses/affectations-courses.component';
 import {SaveNotesComponent} from './pages/professor/save-notes/save-notes.component';
+import {StudentResultsComponent} from './pages/student-results/student-results.component';
+
 
 export const routes: Routes = [
   { 
@@ -161,6 +163,11 @@ export const routes: Routes = [
         component : EditStudentComponent,
         canActivate : [AuthGuard]
 
+      },
+      {
+        path: 'student-results',
+        component: StudentResultsComponent,
+        canActivate : [AuthGuard]
       },
       {
         path: 'professor/save_notes',

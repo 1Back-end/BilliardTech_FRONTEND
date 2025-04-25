@@ -31,7 +31,8 @@
     "COURSES" : "Courses management",
     "COURSES_ASSIGMENT" :"Course mssignment",
     "SAVE_NOTES": "Save Grades",
-    "MY_COURSES": "My Courses"
+    "MY_COURSES": "My Courses",
+    "STUDENT_RESULTS": "Student Results"
     
 
   },
@@ -64,7 +65,24 @@
     "ADD_NEW_ASSIGNMENT": "New assignment",
     "EDIT_ASSIGNMENT" : "Edit assignment",
     "INFO" : "View more",
-    "SHOW" : "Show"
+    "SHOW" : "Show",
+    "MY_RESULT": "My Results",
+    "LOADING": "Loading...",
+    "LOADING_RESULTS": "Loading results...",
+    "CODE": "Code",
+    "UE": "UE",
+    "CREDIT": "Credit",
+    "CC": "CC/20",
+    "SN": "SN/20",
+    "FINAL_NOTE": "Grade/20",
+    "STATUS": "Status",
+    "NO_RESULTS": "No results found",
+    "VALIDATED": "Validated",
+    "RESIT": "Resit",
+    "PENDING": "Pending",
+    "NOT_AVAILABLE": "Not available",
+    "PRINT_PDF": "Print as PDF",
+    "DOWNLOAD_PDF": "Download as PDF"
   },
   "TABLE":{
     "YEAR" : "School year",
@@ -78,7 +96,10 @@
     "SPECIALTY": "Specialty",
     "CLASS": "Class",
     "ADDRESS" : "Address",
-    "COURS" :"Course"
+    "COURS" :"Course",
+    "STUDENT": "Student",
+    "EXAM": "Exam",
+    "GRADE": "Grade"
   },
   "COMMON": {
     "CREATED_BY_DATE": "Created by (Date)",
@@ -165,7 +186,9 @@
   "RELATED_COURS" : "Related courses",
   "EMPTY_COURSES" : "No courses available",
   "LOGIN_DESCRIPTION" :"Log in to your personal space by entering your username and password.",
-  "LOGIN_REMEMBER" : "Keep me logged in"
+  "LOGIN_REMEMBER" : "Keep me logged in",
+  "SAVE_NOTES" : "Save Grades",
+  "SHOW_PASSWORD" : "Show password"
 },
 "COURSE": {
     "TYPE": {
@@ -185,7 +208,8 @@
   "SELECT": {
     "CHOOSE_OPTION": "Choose an option",
     "CHOOSE_CLASSES" : "Choose classe",
-    "CHOOSE_ACADEMIC_YEAR" : "Choose school year"
+    "CHOOSE_ACADEMIC_YEAR" : "Choose school year",
+    "CHOOSE_SEMESTER" :"Choose semester"
 
   },
   "FIELDS": {

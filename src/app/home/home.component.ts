@@ -12,8 +12,8 @@ import {LanguageService } from '../admin/language.service';
 import {LanguageHeaderService} from '../admin/language-header.service';
 import { HttpClient } from '@angular/common/http'; // Ajout de l'importation d'HttpClient
 import { CONFIG } from '../../config';
-import { jsPDF } from 'jspdf';
-
+import html2canvas from 'html2canvas';
+import jsPDF from 'jspdf';
 
 @Component({
   selector: 'app-home',
@@ -26,7 +26,7 @@ export class HomeComponent {
   ServiceForm: FormGroup;
   studentResults: any[] = []; // Pour stocker les résultats de l'étudiant
   isLoading: boolean = false; // Pour indiquer le chargement des résultats
-
+  qrCodeData: string = '';
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
@@ -42,6 +42,14 @@ export class HomeComponent {
     });
   }
   ngOnInit(): void {
+    const student = this.studentResults[0]?.student;
+        if (student) {
+          const rawData = `Nom: ${student.first_name} ${student.last_name}
+      Matricule: ${student.matricule}
+      Email: ${student.email}`;
+
+    this.qrCodeData = encodeURIComponent(rawData);
+  }
     this.languageService.initLanguage(); // 👈 Init langue
   }
   changeLanguage(lang: string): void {
@@ -50,21 +58,21 @@ export class HomeComponent {
   onSubmit(): void {
     if (this.ServiceForm.valid) {
       const matricule = this.ServiceForm.get('matricule')?.value;
-      this.isLoading = true;
+      this.isLoading = true;  // Affichage du loader
   
       console.log('Appel à l\'API pour récupérer les résultats pour le matricule:', matricule);
   
-      // Appel à l'API pour récupérer les résultats de l'étudiant
+      // Appel à l'API pour récupérer les résultats
       this.http.get<any[]>(`${CONFIG.apiUrl}/notes/students/${matricule}/exam-results`)
         .subscribe({
           next: (data) => {
-            console.log('Réponse de l\'API:', data); // Affiche la réponse brute de l'API
+            console.log('Réponse de l\'API:', data); // Affiche les résultats de l'API
             this.studentResults = data; // Stockage des résultats
-            console.log('Résultats stockés:', this.studentResults);
   
-            // Génération du PDF
-            // this.generatePDF(this.studentResults); // Appel à la fonction pour générer le PDF
-            this.isLoading = false; // Arrêt du chargement
+            // Simuler un délai de 3 secondes avant de masquer le loader
+            setTimeout(() => {
+              this.isLoading = false; // Arrêt du chargement
+            }, 3000);  // 3 secondes
           },
           error: (error) => {
             console.error('Erreur lors de l\'appel API:', error); 
@@ -74,6 +82,21 @@ export class HomeComponent {
         });
     }
   }
+  generatePDF() {
+    const content: any = document.getElementById('result-pdf-content');
   
+    html2canvas(content).then(canvas => {
+      const imgData = canvas.toDataURL('image/png');
+      const pdf = new jsPDF('p', 'mm', 'a4');
+  
+      const imgProps = pdf.getImageProperties(imgData);
+      const pdfWidth = pdf.internal.pageSize.getWidth();
+      const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
+  
+      pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
+      pdf.save('releve-notes.pdf');
+    });
+  }
  
 }
+ 

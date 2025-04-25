@@ -36,6 +36,10 @@ export class LoginComponent implements OnInit {
       password: ['', Validators.required],
     });
   }
+  togglePasswordVisibility(event: Event): void {
+    const isChecked = (event.target as HTMLInputElement).checked;
+    this.showPassword = isChecked;
+  }
   ngOnInit(): void {
     this.languageService.initLanguage(); // 👈 Init langue
   }

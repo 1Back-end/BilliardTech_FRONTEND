@@ -30,7 +30,8 @@
     "COURSES" : "Gestion des cours",
     "COURSES_ASSIGMENT" :"Affectation des cours",
     "SAVE_NOTES": "Enregistrer les notes",
-    "MY_COURSES": "Mes cours"
+    "MY_COURSES": "Mes cours",
+    "STUDENT_RESULTS": "Résultats des étudiants"
   },
   "ACADEMIC_YEAR": {
     "CREATE": "Création d'une année académique",
@@ -60,7 +61,24 @@
     "ADD_NEW_ASSIGNMENT": "Nouvelle affectation",
     "EDIT_ASSIGNMENT" : "Modifier une affectation",
     "INFO" :"Détails",
-    "SHOW" : "Afficher"
+    "SHOW" : "Afficher",
+    "MY_RESULT": "Mes résultats",
+    "LOADING": "Chargement...",
+    "LOADING_RESULTS": "Chargement des résultats...",
+    "CODE": "Code",
+    "UE": "UE",
+    "CREDIT": "Crédit",
+    "CC": "CC/20",
+    "SN": "SN/20",
+    "FINAL_NOTE": "Note/20",
+    "STATUS": "Statut",
+    "NO_RESULTS": "Aucun résultat trouvé",
+    "VALIDATED": "Validé",
+    "RESIT": "Rattrapage",
+    "PENDING": "En attente",
+    "NOT_AVAILABLE": "Non disponible",
+    "PRINT_PDF": "Imprimer en pdf",
+    "DOWNLOAD_PDF": "Télécharger en pdf"
   },
   "TABLE": {
     "YEAR" : "Année scolaire",
@@ -74,7 +92,10 @@
     "SPECIALTY": "Spécialité",
     "CLASS": "Classe",
     "ADDRESS" : "Addresse",
-    "COURS" :"Cours"
+    "COURS" :"Cours",
+    "STUDENT": "Étudiant",
+    "EXAM": "Examen",
+    "GRADE": "Note"
   },
   "COMMON": {
     "CREATED_BY_DATE": "Crée par (Date)",
@@ -161,7 +182,9 @@
     "RELATED_COURS" :"Cours associés",
     "EMPTY_COURSES" : "Aucun cours disponible",
     "LOGIN_DESCRIPTION" : "Connectez-vous à votre espace personnel en entrant votre identifiant et votre mot de passe.",
-    "LOGIN_REMEMBER" : "Rester connecté"
+    "LOGIN_REMEMBER" : "Rester connecté",
+    "SAVE_NOTES" :"Enregistrer les notes",
+    "SHOW_PASSWORD" :"Afficher mot de passe"
     
   },
   "COURSE": {
@@ -182,7 +205,8 @@
   "SELECT": {
     "CHOOSE_OPTION": "Choisir une option",
     "CHOOSE_CLASSES" : "Choisir une classe",
-    "CHOOSE_ACADEMIC_YEAR" : "Choisir une année scolaire"
+    "CHOOSE_ACADEMIC_YEAR" : "Choisir une année scolaire",
+    "CHOOSE_SEMESTER" : "Choisir un semestre"
   },
   "FIELDS": {
   "TEACHERS": "Enseignant",

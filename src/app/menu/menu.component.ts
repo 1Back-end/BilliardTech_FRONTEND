@@ -145,6 +145,15 @@ export class MenuComponent {
       subMenuRoutes: [],
     },
     {
+      id: 'student-results',
+      path: '/admin/student-results',
+      label: 'MENU.STUDENT_RESULTS',
+      icon: 'fa-solid fa-clipboard-list',
+      visibleFor: ['SUPER_ADMIN'],
+      children: [],
+      subMenuRoutes: [],
+    },    
+    {
       id: 'notes',
       path: '/admin/notes',
       label: 'MENU.NOTES',
