@@ -31,7 +31,8 @@
     "COURSES_ASSIGMENT" :"Affectation des cours",
     "SAVE_NOTES": "Enregistrer les notes",
     "MY_COURSES": "Mes cours",
-    "STUDENT_RESULTS": "Résultats des étudiants"
+    "STUDENT_RESULTS": "Résultats des étudiants",
+    "EDIT_NOTES": "Modifier les notes"
   },
   "ACADEMIC_YEAR": {
     "CREATE": "Création d'une année académique",

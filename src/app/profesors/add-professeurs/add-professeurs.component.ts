@@ -8,13 +8,16 @@ import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angula
 import { TranslateModule } from '@ngx-translate/core';
 import { TranslateService } from '@ngx-translate/core'; // Assure-toi que @ngx-translate/core est installé
 import {LanguageHeaderService} from '../../admin/language-header.service';
+import { NgxIntlTelInputModule } from 'ngx-intl-tel-input';
+import { SearchCountryField, CountryISO } from 'ngx-intl-tel-input';
 
 @Component({
   selector: 'app-add-professeurs',
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    TranslateModule
+    TranslateModule,
+    NgxIntlTelInputModule
   ],
   templateUrl: './add-professeurs.component.html',
   styleUrl: './add-professeurs.component.css'
@@ -24,6 +27,8 @@ export class AddProfesseursComponent {
   UserForm: FormGroup;
   filePreview: string | ArrayBuffer | null = null;
   selectedFile: File | null = null;
+  CountryISO = CountryISO;
+  SearchCountryField = SearchCountryField;
 
 
   constructor(

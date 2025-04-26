@@ -29,10 +29,11 @@ export class SaveNotesComponent implements OnInit {
   isLoading: boolean = false;
   currentPage: number = 1;
   totalPages: number = 0;
-  titlesPerPage: number = 5;
+  titlesPerPage: number = 25;
   totalItems: number = 0;
   direction: { [key: string]: 'asc' | 'desc' } = {};
   services: any[] = [];
+  isEditMode: boolean = false;
   
   constructor(
     private toastr: ToastrService,
@@ -213,5 +214,22 @@ sortBy(column: string): void {
         this.toastr.error(message);
       }
     );
+  }
+  onEdit(service: any): void {
+    this.isEditMode = true;
+    // Pré-remplir les champs selon le service sélectionné
+    this.selectedGroupUuid = service.group_uuid;
+    this.selectedSemesterUuid = service.semester_uuid;
+    this.selectedCourseUuid = service.course_uuid;
+  
+    // Charger les cours et étudiants liés
+    this.onClassOrSemesterChange();
+  
+    // Charger les notes déjà saisies pour les étudiants
+    this.students = service.students.map((s: any) => ({
+      matricule: s.matricule,
+      exam_type: s.exam_type,
+      grade: s.grade
+    }));
   }
 }
