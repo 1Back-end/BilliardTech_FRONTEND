@@ -45,7 +45,6 @@ export class AddCoursesComponent implements OnInit {
       code: ['', Validators.required],
       title: ['', Validators.required],
       credits: ['', [Validators.required, Validators.pattern('^[0-9]+$')]],
-      type: ['', Validators.required],
       speciality_uuid: ['', Validators.required],
       group_uuid: ['', Validators.required],
       academic_year_uuid: ['', Validators.required],

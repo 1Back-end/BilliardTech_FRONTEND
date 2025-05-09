@@ -66,23 +66,7 @@
                     </div>
                   </div>
               
-                  <!-- Type de cours -->
-                  <div class="col-lg-4 mb-3">
-                    <div class="form-floating">
-                      <select class="form-select cursor-pointer" formControlName="type"
-                        [ngClass]="{ 'is-invalid': ServiceForm.get('type')?.invalid && ServiceForm.get('type')?.touched }"
-                        id="floatingSelect" aria-label="Floating label select example">
-                        <option disabled selected>{{ 'SELECT.CHOOSE_OPTION' | translate }}</option>
-                        <option value="CM">{{ 'COURSE.TYPE.CM' | translate }}</option>
-                        <option value="TP">{{ 'COURSE.TYPE.TP' | translate }}</option>
-                        <option value="TD">{{ 'COURSE.TYPE.TD' | translate }}</option>
-                      </select>
-                      <label for="floatingSelect">{{ 'LABEL.TYPE_LABEL' | translate }}</label>
-                      <div *ngIf="ServiceForm.get('type')?.invalid && ServiceForm.get('type')?.touched" class="invalid-feedback">
-                        {{ 'VALIDATION.REQUIRED_FIELD' | translate }}
-                      </div>
-                    </div>
-                  </div>
+                  
               
                   <!-- Spécialité -->
                   <div class="col-lg-4 mb-3">

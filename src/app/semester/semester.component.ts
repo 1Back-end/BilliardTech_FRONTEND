@@ -9,17 +9,19 @@ import { CONFIG } from '../../config';
 import { FormsModule } from '@angular/forms'; 
 import {RoleService } from '../services/role.service';
 import { NgSelectModule } from '@ng-select/ng-select';
-
+import { SelectDropDownModule } from 'ngx-select-dropdown'
+import {AcademicYear} from '../group/interface/academic_years';
+import { TranslateModule } from '@ngx-translate/core'; // Assure-toi que @ngx-translate/core est installé
+import {LanguageHeaderService} from '../admin/language-header.service';
+import { AngularMultiSelectModule } from 'angular2-multiselect-dropdown';
 @Component({
   selector: 'app-semester',
-  imports: [CommonModule, ReactiveFormsModule, FormsModule,NgSelectModule],
+  imports: [CommonModule, ReactiveFormsModule, FormsModule,NgSelectModule,SelectDropDownModule,TranslateModule,AngularMultiSelectModule],
   templateUrl: './semester.component.html',
   styleUrl: './semester.component.css'
 })
 export class SemesterComponent implements OnInit {
   services: any[] = [];
-  academic_years : any[] = [];
-  academicYears: any[] = [];
   serviceId: string | null = null;
   ServiceForm: FormGroup;
   selectedService: any = null;
@@ -30,7 +32,10 @@ export class SemesterComponent implements OnInit {
   totalItems: number = 0;
   direction: { [key: string]: 'asc' | 'desc' } = {};
 
+  academic_years: AcademicYear[] = [];
+  dropdownSettings = {};
 
+  
   constructor(private toastr: ToastrService, private fb: FormBuilder, private http: HttpClient,public role: RoleService, private cdRef: ChangeDetectorRef,) {
     this.ServiceForm = this.fb.group({
       name: ['', Validators.required],
@@ -44,18 +49,25 @@ export class SemesterComponent implements OnInit {
     this.getAllServices();
     // this.LoadAcademicYear();
     this.LoadData();
+    this.dropdownSettings = {
+      singleSelection: true,
+      text: "Sélectionner l'année scolaire",
+      enableSearchFilter: true,
+      labelKey: "name",
+      primaryKey: "uuid",
+      showCheckbox: true
+    };
   }
 
   
   LoadAcademicYear(): void {
-    this.http.get<any>(`${CONFIG.apiUrl}/academic_year/get_all`).subscribe(
+    this.http.get<any>(`${CONFIG.apiUrl}/academic_year/get_uuid_and_name_academic_year`).subscribe(
       (response) => {
-        this.academicYears = response;
-      console.log(this.academicYears); // Vérifie que chaque objet contient uuid et name
+        this.academic_years = response;
       },
       (error) => {
-        this.toastr.error('Erreur lors du chargement des données');
-        console.error(error);
+        const message = error?.error?.detail;
+        this.toastr.error(message || "Erreur lors du chargement des années académiques");
       }
     );
   }

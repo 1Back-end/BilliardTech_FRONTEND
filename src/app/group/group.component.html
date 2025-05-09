@@ -147,10 +147,7 @@
                                 <td>{{ service.speciality.name }}</td>
                                 <td>
                                     {{ service.academic_year.name }}
-                                    <ng-container [ngSwitch]="service.academic_year.status">
-                                      <span *ngSwitchCase="'ACTIVE'" class="badge badge-success p-2">{{'STATUS.ACTIVE' | translate}}</span>
-                                      <span *ngSwitchCase="'CLOSED'" class="badge badge-danger p-2">{{'STATUS.CLOSED' | translate}}</span>
-                                    </ng-container>
+                                    
                                   </td>
                                   <td>
                                     <span class="badge"

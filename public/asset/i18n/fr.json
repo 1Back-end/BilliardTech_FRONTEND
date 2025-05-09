@@ -79,7 +79,8 @@
     "PENDING": "En attente",
     "NOT_AVAILABLE": "Non disponible",
     "PRINT_PDF": "Imprimer en pdf",
-    "DOWNLOAD_PDF": "Télécharger en pdf"
+    "DOWNLOAD_PDF": "Télécharger en pdf",
+    "TO_JUSTIFY" : "Se justifier"
   },
   "TABLE": {
     "YEAR" : "Année scolaire",

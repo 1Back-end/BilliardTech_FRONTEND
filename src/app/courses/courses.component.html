@@ -46,12 +46,7 @@
                             <i class="fa-solid fs-5" [class]="direction['id'] === 'asc' ? 'fa-arrow-down-wide-short' : 'fa-arrow-up-wide-short'"></i>
                         </span>
                     </th>
-                    <th scope="col" (click)="sortBy('id')" class="cursor-pointer">
-                        <span class="d-flex align-items-center gap-2 cursor-pointer">
-                            {{'LABEL.TYPE' | translate}}
-                            <i class="fa-solid fs-5" [class]="direction['id'] === 'asc' ? 'fa-arrow-down-wide-short' : 'fa-arrow-up-wide-short'"></i>
-                        </span>
-                    </th>
+                    
                     <th scope="col" (click)="sortBy('id')" class="cursor-pointer">
                         <span class="d-flex align-items-center gap-2 cursor-pointer">
                             {{'TABLE.SPECIALTY' | translate}}
@@ -102,23 +97,7 @@
                         <td>{{ i + 1 }}</td> <!-- Affiche le numéro de ligne -->
                         <td>{{ service.code }}</td>
                         <td>{{ service.title }}</td>
-                        <td>{{ service.credits }}</td>
-                        <td>
-                            <ng-container [ngSwitch]="service.type">
-                              <span *ngSwitchCase="'CM'" class="badge badge-primary p-2">
-                                {{ 'COURSE.TYPE.CM' | translate }}
-                              </span>
-                              <span *ngSwitchCase="'TD'" class="badge badge-success p-2">
-                                {{ 'COURSE.TYPE.TD' | translate }}
-                              </span>
-                              <span *ngSwitchCase="'TP'" class="badge badge-warning p-2">
-                                {{ 'COURSE.TYPE.TP' | translate }}
-                              </span>
-                              <span *ngSwitchDefault class="badge badge-secondary p-2">
-                                {{ 'COURSE.TYPE.OTHER' | translate }}
-                              </span>
-                            </ng-container>
-                          </td>                          
+                        <td>{{ service.credits }}</td>              
                         <td>{{ service.speciality.name }}</td>
                         <td>{{ service.group.name }}</td>
                         <td>{{ service.semester.name }}</td>

@@ -83,7 +83,8 @@
     "PENDING": "Pending",
     "NOT_AVAILABLE": "Not available",
     "PRINT_PDF": "Print as PDF",
-    "DOWNLOAD_PDF": "Download as PDF"
+    "DOWNLOAD_PDF": "Download as PDF",
+    "TO_JUSTIFY" : "to provide justification"
   },
   "TABLE":{
     "YEAR" : "School year",

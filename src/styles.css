@@ -239,3 +239,9 @@ p {
   display: flex;
   cursor: pointer;
 }
+.btn-xs {
+  padding: 0.25rem 0.5rem;
+  font-size: 12px;
+  line-height: 1.5;
+  font-family: "Rubik", system-ui;
+}

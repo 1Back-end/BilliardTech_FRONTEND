@@ -46,7 +46,6 @@ export class EditCoursesComponent implements OnInit {
       code: ['', Validators.required],
       title: ['', Validators.required],
       credits: ['', [Validators.required, Validators.pattern('^[0-9]+$')]],
-      type: ['', Validators.required],
       speciality_uuid: ['', Validators.required],
       group_uuid: ['', Validators.required],
       academic_year_uuid: ['', Validators.required]
@@ -63,7 +62,6 @@ export class EditCoursesComponent implements OnInit {
           code : data.code || '',
           title : data.title || '',
           credits : data.credits || '',
-          type : data.type || '',
           academic_year_uuid: data.academic_year ? [data.academic_year] : [],
           group_uuid: data.group ? [data.group] : [],
           speciality_uuid: data.speciality ? [data.speciality] : [],

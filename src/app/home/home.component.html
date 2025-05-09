@@ -195,6 +195,7 @@
         </div>
       </div>
       
+      <div class="table-responsive-lg">
       <!-- Loader pendant le chargement -->
       <div *ngIf="isLoading" class="text-center my-2">
         <div class="spinner-border text-primary" role="status">
@@ -215,6 +216,10 @@
             <th>{{'ACTIONS.SN' | translate}}</th>
             <th>{{'ACTIONS.FINAL_NOTE' | translate}}</th>
             <th>{{'ACTIONS.STATUS' | translate}}</th>
+            <th>
+              Actions
+            </th>
+            
           </tr>
         </thead>
         <tbody>
@@ -266,11 +271,19 @@
                 {{ result.status === 'Validé' ? ('ACTIONS.VALIDATED' | translate) :
                    result.status === 'Rattrapage' ? ('ACTIONS.RESIT' | translate) : ('ACTIONS.PENDING' | translate) }}
               </span>
-            </td>            
+            </td>
+            <td>
+              <ng-container *ngIf="result.status === 'Rattrapage'; else disabledBtn">
+                <a href="#" class="btn btn-sm btn-info text-white btn-xs">Se justifier</a>
+              </ng-container>
+              <ng-template #disabledBtn>
+                <button class="btn btn-sm btn-secondary btn-xs" disabled>Indisponible</button>
+              </ng-template>
+            </td>                 
           </tr>
         </tbody>
       </table>
-    
+    </div>
       <!-- Icône vide -->
       <ng-template #emptyIcon>
         <i class="bi bi-dash-circle text-muted" title="{{'ACTIONS.NOT_AVAILABLE' | translate}}"></i>

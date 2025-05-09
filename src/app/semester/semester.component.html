@@ -9,20 +9,25 @@
                 </h5>                
               </div>
               <form [formGroup]="ServiceForm" (ngSubmit)="onSubmit()">
-                  <div class="form-floating mb-3">
-                    <select class="form-select cursor-pointer" name="academic_year_uuid" id="academic_year_uuid" formControlName="academic_year_uuid"
-                      [ngClass]="{'is-invalid': ServiceForm.get('academic_year_uuid')?.invalid && ServiceForm.get('academic_year_uuid')?.touched}"
-                      id="floatingSelect" aria-label="Floating label select example">
-                      <option *ngIf="!selectedService" disabled [ngValue]="null">Choisir une option</option>
-                      <option *ngFor="let year of academic_years" [ngValue]="year.uuid">
-                        {{ year.name }}
-                      </option>
-                    </select>
-                    <label for="floatingSelect">Année scolaire</label> 
+                <div class="form-floating mb-3">
+                  <angular2-multiselect
+                    [ngClass]="{
+                        'is-invalid': ServiceForm.get('academic_year_uuid')?.invalid && ServiceForm.get('academic_year_uuid')?.touched
+                    }"
+                    id="academic_year_uuid"
+                    [data]="academic_years"
+                    [settings]="dropdownSettings"
+                    formControlName="academic_year_uuid">
+                    </angular2-multiselect>
                     <div *ngIf="ServiceForm.get('academic_year_uuid')?.invalid && ServiceForm.get('academic_year_uuid')?.touched" class="invalid-feedback">
-                      Ce champ est requis.
+                      {{ 'VALIDATION.REQUIRED_FIELD' | translate }}
                     </div>
-                  </div>
+                </div>
+                  <ng-template #optionTemplate let-item="item" let-config="config">
+                    <i class="fa fa-plus"></i>
+                    {{item.name}}
+                    <span class="new badge"></span>
+                  </ng-template>
                   <!-- Vous pouvez retirer le debug <p> après vérification -->
                     <div class="form-floating mb-3">
                         <input type="text" id="floatingInput" name="name" formControlName="name" [ngClass]="{'is-invalid': ServiceForm.get('name')?.invalid && ServiceForm.get('name')?.touched}" class="form-control">
@@ -109,12 +114,7 @@
                                 </span>
                             </th>
 
-                            <th scope="col" (click)="sortBy('created_at')" class="cursor-pointer">
-                                <span class="d-flex align-items-center gap-2 cursor-pointer">
-                                    Statut
-                                    <i class="fa-solid fs-5" [class]="direction['created_at'] === 'asc' ? 'fa-arrow-down-wide-short' : 'fa-arrow-up-wide-short'"></i>
-                                </span>
-                            </th>
+                            
                            
                             <th>Actions</th>
         
@@ -148,17 +148,7 @@
                                     {{ service.created_at | date: 'dd/MM/yyyy' }}
                                   </td>
 
-                                  <td>
-                                    <span class="badge"
-                                          [ngClass]="{
-                                            'badge-success': service.status === 'ACTIVE',
-                                            'badge-info': service.status === 'INACTIVE',
-                                            'badge-danger': service.status === 'CLOSED'
-                                          }">
-                                      {{ service.status === 'ACTIVE' ? 'En cours' : (service.status === 'INACTIVE' ? 'Inactif' : 'Terminé') }}
-                                    </span>
-                                  </td>                                  
-
+                                 
                                   <td>
                                     <div class="dropdown">
                                       <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
